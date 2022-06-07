@@ -4,7 +4,8 @@
     <string name="enter_email">Enter Email</string>
     <string name="enter_password">Enter Password</string>
     <string name="forgot_password">Forget Password</string>
-    <string name="don_t_have_an_account">Don\'t have an account</string>
+    <string name="don_t_have_an_account">Don\'t have an account ?</string>
+    <string name="have_any_query">Have Any Query ?</string>
     <string name="signup">Signup</string>
     <string name="full_name">Full Name</string>
     <string name="enter_phone_number">Enter Phone Number</string>
@@ -22,6 +23,12 @@
     <string name="v_validpassword">Please Enter Valid Password</string>
     <string name="v_validtestfield">Please Enter Your Query In Text Field</string>
     <string name="valid_code">Please Enter Valid OTP</string>
+
+    //permission
+    <string name="permisionmsgfirst">Core fundamental are based on these permissions</string>
+    <string name="ok">Okay</string>
+    <string name="cancel">Cancel</string>
+    <string name="manualpermission">You need to allow necessary permissions in Settings manually</string>
 
 
     <string name="enter_the_email_associated_with_your_account_and_we_ll_send_an_email_with_6_digit_code_to_reset_your_password">Enter the email associated with your account and we\'ll send an email with <font color='#F6265F'>4-digit code </font>to reset your password.</string>

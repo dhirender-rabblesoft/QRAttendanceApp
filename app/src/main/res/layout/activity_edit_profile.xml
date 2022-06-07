@@ -213,7 +213,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/loginbutton"
-                        style="@style/mainbutton2"
+                        style="@style/mainbutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"

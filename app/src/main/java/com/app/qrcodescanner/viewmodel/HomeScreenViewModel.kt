@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Application
 import android.content.Context
 import android.content.pm.PackageManager
+import android.location.Location
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -16,23 +17,35 @@ import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityHomeScreenBinding
 import com.app.qrcodescanner.extension.gone
+import com.app.qrcodescanner.extension.isNotNull
 import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.ui.*
+import com.app.qrcodescanner.utils.Utils
+import com.bumptech.glide.util.Util
+import com.example.easywaylocation.EasyWayLocation
+import com.example.easywaylocation.Listener
+import com.google.android.gms.maps.model.LatLng
+import com.google.maps.android.SphericalUtil
+import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.activity_contact_us.view.*
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.fragment_filter_dailog.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
+import kotlin.jvm.internal.SpreadBuilder
 
 class HomeScreenViewModel(application: Application) : AppViewModel(application) {
     private val CAMERA_PERMISSION_CODE = 100
     private lateinit var binder: ActivityHomeScreenBinding
     private lateinit var baseActivity: KotlinBaseActivity
     lateinit var mContext: Context
+
     var ischeckin = false
+
     fun setBinder(binding: ActivityHomeScreenBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
         this.baseActivity = baseActivity
         this.mContext = binding.root.context
+
         setRecentListAdapter()
         setClick()
         settoolbar()
@@ -60,7 +73,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
 
     private fun settoolbar() {
         binder.toolbar.ivback.setImageResource(R.drawable.menu)
-        binder.toolbar.ivback.setPadding(16,0,0,0)
+        binder.toolbar.ivback.setPadding(16, 0, 0, 0)
         binder.toolbar.tvtitle.setText("Home")
         binder.toolbar.ivdot.gone()
     }
@@ -75,17 +88,12 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
 
     private fun setClick() {
         binder.checkin.setOnClickListener {
-            checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
-            baseActivity.openA(Scanner::class)
-            ischeckin = true
+            locationPermission()
+
         }
         binder.checkout.setOnClickListener {
-            if (ischeckin) {
-                baseActivity.openA(Scanner::class)
-                ischeckin = false
-            } else {
-                Toast.makeText(baseActivity, "You Must checkin fist", Toast.LENGTH_LONG).show()
-            }
+            locationPermission()
+
 
         }
 
@@ -105,17 +113,69 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         }
     }
 
-    fun checkPermission(permission: String, requestCode: Int) {
-        // Checking if permission is not granted
-        if (ContextCompat.checkSelfPermission(
-                baseActivity,
-                permission
-            ) == PackageManager.PERMISSION_DENIED
-        ) {
-            ActivityCompat.requestPermissions(baseActivity, arrayOf(permission), requestCode)
-        } else {
-            Toast.makeText(baseActivity, "Permission already granted", Toast.LENGTH_SHORT)
-                .show()
-        }
+    private fun locationPermission() {
+        val permissonList = ArrayList<String>()
+        permissonList.add(Manifest.permission.ACCESS_FINE_LOCATION)
+        permissonList.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+        permissonList.add(Manifest.permission.CAMERA)
+        PermissionX.init(baseActivity)
+            .permissions(permissonList)
+            .onExplainRequestReason { scope, deniedList ->
+                scope.showRequestReasonDialog(
+                    deniedList,
+                    baseActivity.getString(R.string.permisionmsgfirst),
+                    baseActivity.getString(R.string.ok),
+                    baseActivity.getString(R.string.cancel)
+                )
+            }
+            .onForwardToSettings { scope, deniedList ->
+                scope.showForwardToSettingsDialog(
+                    deniedList,
+                    baseActivity.getString(R.string.manualpermission),
+                    baseActivity.getString(R.string.ok),
+                    baseActivity.getString(R.string.cancel)
+                )
+            }
+            .request { allGranted, grantedList, deniedList ->
+                if (allGranted) {
+                    baseActivity.openA(Scanner::class)
+
+
+//                    checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
+//                    baseActivity.openA(Scanner::class)
+//                    ischeckin = true
+
+                    Log.e("permisssion granted", "permission granted")
+                }
+
+            }
     }
+
+
+
+
+    //self checking permission
+//    fun checkPermission(permission: String, requestCode: Int) {
+//        // Checking if permission is not granted
+//        if (ContextCompat.checkSelfPermission(
+//                baseActivity,
+//                permission
+//            ) == PackageManager.PERMISSION_DENIED
+//        ) {
+//            ActivityCompat.requestPermissions(baseActivity, arrayOf(permission), requestCode)
+//        } else {
+//            baseActivity.openA(Scanner::class)
+////            if (ischeckin) {
+////            baseActivity.openA(Scanner::class)
+////            ischeckin = false
+////        } else {
+////            Toast.makeText(baseActivity, "You Must checkin fist", Toast.LENGTH_LONG).show()
+////        }
+////
+////            Toast.makeText(baseActivity, "Permission already granted", Toast.LENGTH_SHORT)
+////                .show()
+//        }
+//    }
+
+
 }

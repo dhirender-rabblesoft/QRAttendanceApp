@@ -36,6 +36,9 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.maps.android:android-maps-utils:0.6.2'
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def lottieVersion = "3.4.0"
     implementation 'androidx.core:core-ktx:1.7.0'
@@ -56,6 +59,8 @@ dependencies {
     implementation 'id.zelory:compressor:3.0.1'
     implementation 'com.github.bumptech.glide:glide:4.13.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
-
-
+    //locations
+    implementation 'com.github.prabhat1707:EasyWayLocation:2.4'
+    // permission library android
+    implementation 'com.guolindev.permissionx:permissionx:1.6.1'
 }

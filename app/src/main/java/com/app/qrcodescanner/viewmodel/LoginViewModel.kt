@@ -8,10 +8,7 @@ import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityLoginBinding
 import com.app.qrcodescanner.extension.isEmailValid
-import com.app.qrcodescanner.ui.ForgotPassword
-import com.app.qrcodescanner.ui.HomeScreenActivity
-import com.app.qrcodescanner.ui.MainActivity
-import com.app.qrcodescanner.ui.SignupActivity
+import com.app.qrcodescanner.ui.*
 
 class LoginViewModel(application: Application) : AppViewModel(application) {
 
@@ -64,7 +61,7 @@ class LoginViewModel(application: Application) : AppViewModel(application) {
             baseActivity.openA(HomeScreenActivity::class)
         }
         binder.llsignup.setOnClickListener {
-            baseActivity.openA(SignupActivity::class)
+            baseActivity.openA(ContactUs::class)
 
         }
         binder.tvforgotpasssword.setOnClickListener {
