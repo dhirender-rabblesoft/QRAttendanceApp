@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.app.qrcodescanner.viewmodel.SingupViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.Login">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarSize="@dimen/_3sdp"
+            android:scrollbarThumbVertical="@color/primary_varient"
+            android:scrollbars="vertical">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llsignupcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_30sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!--                <androidx.appcompat.widget.AppCompatImageView-->
+                <!--                    android:layout_width="@dimen/_150sdp"-->
+                <!--                    android:layout_height="@dimen/_80sdp"-->
+                <!--                    android:paddingBottom="@dimen/_10sdp"-->
+                <!--                     />-->
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvtitle"
+                    style="@style/boldfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:text="@string/signup"
+                    android:textAlignment="center"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_30sdp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/namelayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_25sdp"
+                    android:hint="@string/full_name"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etusername"
+                        style="@style/edittextlogintitle"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:hint="@string/full_name" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emaillayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_email"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etemail"
+                        style="@style/edittextlogintitle"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:hint="@string/enter_email" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/phonelayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_email"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+                    <!--this is the actual edit text which takes the input-->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etphone"
+                        style="@style/edittextlogintitle"
+                        android:gravity="start"
+                        android:hint="@string/enter_phone_number"
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/passwordlayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_email"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp"
+                    app:passwordToggleEnabled="true">
+                    <!--this is the actual edit text which takes the input-->
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etpassword"
+                        style="@style/edittextlogintitle"
+                        android:gravity="start"
+                        android:hint="@string/enter_password"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/confirmpasswordlayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/enter_email"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etconfirmpassword"
+                        style="@style/edittextlogintitle"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:hint="@string/comfirm_password"
+                        android:inputType="textPassword" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/loginbutton"
+                    style="@style/mainbutton"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/signup"
+                    android:textAllCaps="false" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llogin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/boldfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Already have an account? "
+                        android:textAlignment="center"
+                        android:textColor="@color/black_1"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/boldfont"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/login"
+                        android:textAlignment="center"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

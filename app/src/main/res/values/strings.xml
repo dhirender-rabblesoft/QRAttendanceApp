@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">QRCodeScanner</string>
+    <string name="login">Login</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="forgot_password">Forget Password</string>
+    <string name="don_t_have_an_account">Don\'t have an account</string>
+    <string name="signup">Signup</string>
+    <string name="full_name">Full Name</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+    <string name="comfirm_password">Comfirm Password</string>
+
+    //validation
+    <string name="v_emailvalidation">Please Enter Email</string>
+    <string name="v_comfirmpassword">Comfirm Password should not be null</string>
+    <string name="phonelength">Phone Number should be 10 characters</string>
+    <string name="passwordnotmatch">Password Should be matched</string>
+    <string name="enter_your_full_name">Enter Your Full Name</string>
+    <string name="v_validemail">Please Enter Valid Email</string>
+    <string name="v_validname">Please Enter Your Name</string>
+    <string name="v_validphone">Please Enter Phone Number</string>
+    <string name="v_validpassword">Please Enter Valid Password</string>
+    <string name="v_validtestfield">Please Enter Your Query In Text Field</string>
+    <string name="valid_code">Please Enter Valid OTP</string>
+
+
+    <string name="enter_the_email_associated_with_your_account_and_we_ll_send_an_email_with_6_digit_code_to_reset_your_password">Enter the email associated with your account and we\'ll send an email with <font color='#F6265F'>4-digit code </font>to reset your password.</string>
+    <string name="please_enter_the_6_digit_code_receive_by_email">Please enter the <font color='#F6265F'>4-digit code </font> receive by Email.</string>
+    <string name="password_guild_line">Your password can be any combination of letters, numbers, and symbols . Accents and accented characters aren\'t supported.</string>
+    <string name="long_des">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry type and scrambled it to make a type specimen book.</string>
+
+    <string name="submit">Submit</string>
+    <string name="enter_code">Enter Code</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="create_password">Create Password</string>
+    <string name="enter_your_code">Enter your Code</string>
+    <string name="create_new_password">Create New Password</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="recent_attendance">Recent Attendance</string>
+    <string name="view_more">View More</string>
+    <string name="sort_by">Sort By</string>
+    <string name="filter">Filter</string>
+    <string name="last_7_days">Last 7 Days</string>
+    <string name="last_30_days">Last 30 Days</string>
+    <string name="custom">Custom</string>
+    <string name="update">Update</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="extra_long_des">What is Lorem Ipsum?
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here content here making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy Various versions have evolved over the years sometimes by accident sometimes on purpose injected humour and the like
+
+
+Where does it come from?
+Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</string>
+</resources>

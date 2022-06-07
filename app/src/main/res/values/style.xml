@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="regularfont">
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="mediumfont">
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="semiboldfont">
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+    <style name="boldfont">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@color/black_1</item>
+    </style>
+
+
+    <style name="mainbutton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:background">@drawable/color_round</item>
+        <item name="singleLine">true</item>
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+
+    <style name="mainbutton2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_35sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:background">@drawable/color_round2</item>
+        <item name="singleLine">true</item>
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+
+    <style name="checkin">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="singleLine">true</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+    </style>
+
+
+    <style name="materialStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/black_1</item>
+        <item name="errorTextColor">@color/black_1</item>
+        <item name="boxStrokeErrorColor">@color/red</item>
+        <item name="hintAnimationEnabled">false</item>
+        <item name="hintEnabled">false</item>
+        <item name="errorEnabled">true</item>
+        <item name="boxStrokeWidth">@dimen/_1sdp</item>
+        <item name="boxStrokeWidthFocused">@dimen/_1sdp</item>
+        <item name="boxStrokeColor">@color/black_1</item>
+        <item name="boxCornerRadiusTopStart">@dimen/_5sdp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/_5sdp</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/_5sdp</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/_5sdp</item>
+
+    </style>
+
+
+    <style name="edittextlogintitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+        <item name="android:textColorHint">@color/black_hint</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/black_1</item>
+        <item name="android:padding">@dimen/_13sdp</item>
+        <item name="android:textSize">@dimen/_10sdp</item>
+    </style>
+
+
+</resources>
