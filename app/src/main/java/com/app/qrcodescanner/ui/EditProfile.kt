@@ -25,8 +25,8 @@ class EditProfile : KotlinBaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile)
         viewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
         viewmodel.setBinder(binding, this)
-
         extraClick()
+
     }
 
     private fun extraClick() {
