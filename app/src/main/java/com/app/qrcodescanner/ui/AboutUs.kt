@@ -1,13 +1,11 @@
 package com.app.qrcodescanner.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityAboutUsBinding
 import com.app.qrcodescanner.extension.gone
-import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.activity_login.view.tvtitle
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 
