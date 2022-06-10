@@ -15,7 +15,6 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         tools:context=".ui.HomeScreenActivity">
 
         <androidx.drawerlayout.widget.DrawerLayout
@@ -242,7 +241,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardCornerRadius="@dimen/_10sdp"
-                                app:cardElevation="@dimen/_1sdp"
+                                app:cardElevation="@dimen/_5sdp"
                                 app:cardPreventCornerOverlap="true"
                                 app:cardUseCompatPadding="true"
                                 app:layout_constraintTop_toBottomOf="@+id/tvannocument">

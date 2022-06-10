@@ -3,10 +3,13 @@ package com.app.qrcodescanner.utils
 import android.R
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AutoCompleteTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.qrcodescanner.base.KotlinBaseActivity
@@ -20,6 +23,12 @@ object Utils {
     var RABBLESOFT_LAT = "30.8934667"
     var RABBLESOFT_LNG = "75.8290889"
 
+
+    fun hideKeyBoard(c: Context, v: View) {
+        val imm = c
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.windowToken, 0)
+    }
 
     fun setDialogAttributes(dialog: Dialog, height: Int) {
         val window = dialog.window ?: return

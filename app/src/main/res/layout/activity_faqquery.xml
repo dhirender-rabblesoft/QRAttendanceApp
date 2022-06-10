@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.app.qrcodescanner.viewmodel.FAQQueryViewModel" />
+    </data>
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".ui.Login">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbarSize="@dimen/_3sdp"
+            android:scrollbarThumbVertical="@color/primary_varient"
+            android:scrollbars="vertical">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llsignupcontainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <include layout="@layout/common_toolbar"
+                    android:id="@+id/toolbar"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvfaqTitle"
+                    style="@style/semiboldfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:text="Frequently Asked Question"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_22sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/namelayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etusername"
+                        style="@style/edittextlogintitle"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:hint="@string/full_name" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/emaillayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/etemail"
+                        style="@style/edittextlogintitle"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:hint="@string/enter_email" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textarealayout"
+                    style="@style/materialStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintEnabled="true"
+                    app:layout_goneMarginEnd="@dimen/_32sdp"
+                    app:layout_goneMarginStart="@dimen/_32sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/ettextarea"
+                        style="@style/edittextlogintitle"
+                        android:layout_height="@dimen/_120sdp"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:gravity="start"
+                        android:hint="Enter Your Query"
+
+                        android:singleLine="false" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/loginbutton"
+                    style="@style/mainbutton3"
+                    android:singleLine="false"
+                    android:text="@string/contact_us"
+                    android:textAllCaps="false" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

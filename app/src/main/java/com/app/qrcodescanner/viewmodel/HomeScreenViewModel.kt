@@ -48,6 +48,12 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         binder.showDrawer.tvside_aboutus.setOnClickListener {
             baseActivity.openA(AboutUs::class)
         }
+        binder.showDrawer.llinvoicecontainer.setOnClickListener {
+            baseActivity.openA(InvoiceActivity::class)
+        }
+        binder.showDrawer.llfaqcontainer.setOnClickListener {
+            baseActivity.openA(FAQActivity::class)
+        }
     }
 
     private fun settoolbar() {

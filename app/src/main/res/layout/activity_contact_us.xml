@@ -79,8 +79,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/loginbutton"
-                style="@style/mainbutton"
-                android:layout_marginTop="@dimen/_20sdp"
+                style="@style/mainbutton3"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:singleLine="false"
                 android:text="@string/contact_us"
                 android:textAllCaps="false" />
