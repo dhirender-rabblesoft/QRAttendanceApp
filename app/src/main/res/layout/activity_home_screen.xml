@@ -15,6 +15,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white2"
         tools:context=".ui.HomeScreenActivity">
 
         <androidx.drawerlayout.widget.DrawerLayout
@@ -180,13 +181,13 @@
                                         android:id="@+id/checkin"
                                         style="@style/checkin"
                                         android:layout_width="wrap_content"
+                                        android:layout_gravity="center"
                                         android:layout_marginEnd="@dimen/_10sdp"
                                         android:drawableStart="@drawable/checkin_image_holder_big"
                                         android:drawablePadding="@dimen/_10sdp"
                                         android:drawableTint="@color/white"
-                                        android:padding="@dimen/_10sdp"
 
-                                        android:layout_gravity="center"
+                                        android:padding="@dimen/_10sdp"
 
                                         android:text="CheckIn"
                                         android:textAllCaps="false"
@@ -207,8 +208,8 @@
                                         android:id="@+id/checkout"
                                         style="@style/checkin"
                                         android:layout_width="wrap_content"
-                                        android:layout_weight="1"
                                         android:layout_gravity="center"
+                                        android:layout_weight="1"
                                         android:drawableStart="@drawable/checkout_image_holder_big"
                                         android:drawablePadding="@dimen/_10sdp"
                                         android:drawableTint="@color/white"

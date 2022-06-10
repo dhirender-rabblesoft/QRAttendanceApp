@@ -32,7 +32,6 @@ class EditProfile : KotlinBaseActivity() {
     private fun extraClick() {
         binding.profileEdit.setOnClickListener {
             startCrop()
-
         }
     }
 
