@@ -10,10 +10,12 @@ import com.app.qrcodescanner.databinding.ActivityOtpverifyBinding
 import com.app.qrcodescanner.viewmodel.OTPVerifyViewModel
 import kotlinx.android.synthetic.main.activity_otpverify.*
 
-class OTPVerify : KotlinBaseActivity() {
+class OTPVerify : KotlinBaseActivity()
+{
     lateinit var binding:ActivityOtpverifyBinding
     lateinit var viewmodel :OTPVerifyViewModel
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_otpverify)
         viewmodel = ViewModelProvider(this).get(OTPVerifyViewModel::class.java)

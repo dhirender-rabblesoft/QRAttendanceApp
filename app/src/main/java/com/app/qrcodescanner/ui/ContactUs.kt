@@ -24,7 +24,8 @@ class ContactUs : KotlinBaseActivity() {
         setclicks()
     }
 
-    private fun settoolbar() {
+    private fun settoolbar()
+    {
         binding.toolbar.ivdot.gone()
         binding.toolbar.tvtitle.setText("Contact Us")
         binding.toolbar.setOnClickListener {
@@ -32,16 +33,17 @@ class ContactUs : KotlinBaseActivity() {
         }
     }
 
-    private fun setclicks() {
+    private fun setclicks()
+    {
         binding.loginbutton.setOnClickListener {
             if (isValidation()) {
                 showtoast("Button is Clicked")
             }
-
         }
     }
 
-    private fun isValidation(): Boolean {
+    private fun isValidation(): Boolean
+    {
         binding.emaillayout.error = null
         binding.namelayout.error = null
         binding.textarealayout.error = null

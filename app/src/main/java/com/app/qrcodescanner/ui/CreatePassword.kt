@@ -19,5 +19,4 @@ class CreatePassword : KotlinBaseActivity() {
         viewmodel.setBinder(binding, this)
     }
 
-
 }

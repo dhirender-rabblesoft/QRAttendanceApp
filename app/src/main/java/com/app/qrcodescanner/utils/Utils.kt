@@ -13,26 +13,24 @@ import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.capitalizesLetters
 import java.util.*
 
-object Utils {
+object Utils
+{
 
     //    const val RABBLESOFT_LAT = "30.8934659"
 //    const val RABBLESOFT_LNG = "75.8290866"
     var RABBLESOFT_LAT = "30.8934667"
     var RABBLESOFT_LNG = "75.8290889"
-
-
-    fun setDialogAttributes(dialog: Dialog, height: Int) {
+    fun setDialogAttributes(dialog: Dialog, height: Int)
+    {
         val window = dialog.window ?: return
         window.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, height)
         window.setGravity(Gravity.CENTER)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
-
     fun shoedatepicker(
         baseActivity: KotlinBaseActivity,
         lblDate: AutoCompleteTextView,
-        onConfirmed: () -> Unit = {}
-    ) {
+        onConfirmed: () -> Unit = {}) {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
@@ -58,8 +56,7 @@ object Utils {
                     // Do Stuff
                     onConfirmed.invoke()
                 }
-            })
-
+        })
         dpd.show()
     }
 }

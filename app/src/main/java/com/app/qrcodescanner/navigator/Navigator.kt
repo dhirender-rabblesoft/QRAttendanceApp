@@ -5,11 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlin.reflect.KClass
 
-class Navigator(private val activity: AppCompatActivity, private val container: Int) {
+class Navigator(private val activity: AppCompatActivity, private val container: Int)
+{
 
-
-
-    fun openA(kClass: KClass<out AppCompatActivity>, bundle: Bundle? = Bundle()) {
+    fun openA(kClass: KClass<out AppCompatActivity>, bundle: Bundle? = Bundle())
+    {
         val intent = Intent(activity, kClass.java)
         intent.putExtras(bundle ?: Bundle())
         activity.startActivity(intent)

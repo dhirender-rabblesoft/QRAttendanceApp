@@ -9,18 +9,21 @@ import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityOtpverifyBinding
 import com.app.qrcodescanner.ui.CreatePassword
 
-class OTPVerifyViewModel(application: Application) : AppViewModel(application) {
+class OTPVerifyViewModel(application: Application) : AppViewModel(application)
+{
     lateinit var binder: ActivityOtpverifyBinding
     lateinit var mContext: Context
     lateinit var baseActivity: KotlinBaseActivity
-    fun setBinder(binding: ActivityOtpverifyBinding, baseActivity: KotlinBaseActivity) {
+    fun setBinder(binding: ActivityOtpverifyBinding, baseActivity: KotlinBaseActivity)
+    {
         this.baseActivity = baseActivity
         this.binder = binding
         this.mContext = binding.root.context
         setClick()
     }
 
-    private fun setClick() {
+    private fun setClick()
+    {
         binder.loginbutton.setOnClickListener {
             if (validation()) {
                 baseActivity.openA(CreatePassword::class)

@@ -11,16 +11,18 @@ import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.activity_login.view.tvtitle
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 
-class AboutUs : KotlinBaseActivity() {
+class AboutUs : KotlinBaseActivity()
+{
     lateinit var binding: ActivityAboutUsBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_about_us)
         settoolbar()
-
     }
 
-    private fun settoolbar() {
+    private fun settoolbar()
+    {
         binding.toolbar.tvtitle.setText("About Us")
         binding.toolbar.ivdot.gone()
         binding.toolbar.ivback.setOnClickListener {

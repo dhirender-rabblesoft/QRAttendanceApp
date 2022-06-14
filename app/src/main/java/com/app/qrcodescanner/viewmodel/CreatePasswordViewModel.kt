@@ -9,19 +9,22 @@ import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityCreatePasswordBinding
 import com.app.qrcodescanner.ui.LoginActivity
 
-class CreatePasswordViewModel(application: Application) : AppViewModel(application) {
-
+class CreatePasswordViewModel(application: Application) : AppViewModel(application)
+{
     private lateinit var binder: ActivityCreatePasswordBinding
     private lateinit var mContext: Context
     lateinit var baseActivity: KotlinBaseActivity
-    fun setBinder(binding: ActivityCreatePasswordBinding, baseActivity: KotlinBaseActivity) {
+
+   fun setBinder(binding: ActivityCreatePasswordBinding, baseActivity: KotlinBaseActivity)
+    {
         this.binder = binding
         this.mContext = binding.root.context
         this.baseActivity = baseActivity
         setClicks()
     }
 
-    private fun setClicks() {
+    private fun setClicks()
+    {
         binder.loginbutton.setOnClickListener {
             if (validation()) {
                 baseActivity.openA(LoginActivity::class)
@@ -32,17 +35,18 @@ class CreatePasswordViewModel(application: Application) : AppViewModel(applicati
     }
 
 
-    private fun validation(): Boolean {
+    private fun validation(): Boolean
+    {
 
         binder.passwordlayout.error = null
         binder.confirmpasswordlayout.error = null
-        if (binder.etpassword.text.toString().trim().isEmpty()) {
+        if (binder.etpassword.text.toString().trim().isEmpty())
+        {
             binder.passwordlayout.error = mContext.getString(R.string.v_validpassword)
             return false
         }
         if (binder.etconfirmpassword.text.toString().trim().isEmpty()) {
             binder.confirmpasswordlayout.error = mContext.getString(R.string.v_comfirmpassword)
-
             return false
         }
         if (!binder.etconfirmpassword.text.toString().trim()

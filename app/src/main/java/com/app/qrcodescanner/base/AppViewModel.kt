@@ -8,6 +8,4 @@ open class AppViewModel:AndroidViewModel {
     constructor(application: Application) : super(application) {
 
     }
-
-
 }

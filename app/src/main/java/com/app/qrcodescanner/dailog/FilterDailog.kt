@@ -33,15 +33,15 @@ class FilterDailog(
     var isDateShow = true
     var spinner_value = ""
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
 
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_filter_dailog, container, false)
@@ -50,27 +50,20 @@ class FilterDailog(
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
         setClicks()
         setspinner()
-
     }
-
-
-    private fun setspinner() {
-        val adapter = ArrayAdapter(
-            baseActivity,
-            android.R.layout.simple_spinner_dropdown_item, sortbylist
-        )
+    private fun setspinner()
+    {
+        val adapter = ArrayAdapter(baseActivity, android.R.layout.simple_spinner_dropdown_item, sortbylist)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         //Setting the ArrayAdapter data on the Spinner
         //Setting the ArrayAdapter data on the Spinner
         binding.sortbySpinner.setAdapter(adapter)
     }
 
-    private fun setClicks() {
-
-
+    private fun setClicks()
+    {
         binding.sortbySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,
@@ -93,11 +86,11 @@ class FilterDailog(
             when (checkId) {
                 R.id.last7days -> {
                     binding.datecontainer.gone()
-                    Log.e("uhsdjkfhjkfh", "last 7 days selected")
+
                 }
                 R.id.last30days -> {
                     binding.datecontainer.gone()
-                    Log.e("uhsdjkfhjkfh", "last 30 days selected")
+
                 }
                 R.id.custom -> {
                     binding.datecontainer.visible()
@@ -130,13 +123,7 @@ class FilterDailog(
         }
 
         binding.btfilter.setOnClickListener {
-            Log.e(
-                "onfilterClickDATE: ",
-                "start date: " + binding.startdate.text.toString()
-                    .trim() + "  - end DATE: " + binding.enddate.text.toString().trim()
-            )
-            Log.e("onfilterClickSPINNER: ", "spinner value : " + spinner_value.toString())
-            dismiss()
+                     dismiss()
 
         }
 
