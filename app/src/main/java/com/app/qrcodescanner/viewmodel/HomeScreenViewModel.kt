@@ -3,49 +3,29 @@ package com.app.qrcodescanner.viewmodel
 import android.Manifest
 import android.app.Application
 import android.content.Context
-import android.content.pm.PackageManager
-import android.location.Location
 import android.util.Log
-import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.adapter.AttendanceHomeListingAdapter
-import com.app.qrcodescanner.adapter.AttendanceListingAdapter
 import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityHomeScreenBinding
 import com.app.qrcodescanner.extension.gone
-import com.app.qrcodescanner.extension.isNotNull
-import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.ui.*
-import com.app.qrcodescanner.utils.Utils
-import com.bumptech.glide.util.Util
-import com.example.easywaylocation.EasyWayLocation
-import com.example.easywaylocation.Listener
-import com.google.android.gms.maps.model.LatLng
-import com.google.maps.android.SphericalUtil
 import com.permissionx.guolindev.PermissionX
-import kotlinx.android.synthetic.main.activity_contact_us.view.*
 import kotlinx.android.synthetic.main.common_toolbar.view.*
-import kotlinx.android.synthetic.main.fragment_filter_dailog.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
-import kotlin.jvm.internal.SpreadBuilder
 
 class HomeScreenViewModel(application: Application) : AppViewModel(application) {
     private val CAMERA_PERMISSION_CODE = 100
     private lateinit var binder: ActivityHomeScreenBinding
     private lateinit var baseActivity: KotlinBaseActivity
     lateinit var mContext: Context
-
     var ischeckin = false
-
     fun setBinder(binding: ActivityHomeScreenBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
         this.baseActivity = baseActivity
         this.mContext = binding.root.context
-
         setRecentListAdapter()
         setClick()
         settoolbar()
@@ -68,7 +48,6 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         binder.showDrawer.tvside_aboutus.setOnClickListener {
             baseActivity.openA(AboutUs::class)
         }
-
     }
 
     private fun settoolbar() {
@@ -84,7 +63,6 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         }
         binder.rvRecentListAdapter.adapter = recentListAdapter
     }
-
 
     private fun setClick() {
         binder.checkin.setOnClickListener {
@@ -139,19 +117,14 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
                     baseActivity.openA(Scanner::class)
-
-
 //                    checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
 //                    baseActivity.openA(Scanner::class)
 //                    ischeckin = true
-
                     Log.e("permisssion granted", "permission granted")
                 }
 
             }
     }
-
-
 
 
     //self checking permission

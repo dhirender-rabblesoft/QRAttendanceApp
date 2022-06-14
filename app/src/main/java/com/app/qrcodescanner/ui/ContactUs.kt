@@ -1,16 +1,12 @@
 package com.app.qrcodescanner.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityContactUsBinding
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isEmailValid
-import com.app.qrcodescanner.extension.isNotNull
-import kotlinx.android.synthetic.main.activity_login.view.*
 import kotlinx.android.synthetic.main.activity_login.view.tvtitle
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 

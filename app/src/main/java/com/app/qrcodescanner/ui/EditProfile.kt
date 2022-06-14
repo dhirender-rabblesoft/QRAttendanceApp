@@ -1,7 +1,6 @@
 package com.app.qrcodescanner.ui
 
 import android.graphics.Bitmap
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -26,8 +25,8 @@ class EditProfile : KotlinBaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile)
         viewmodel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
         viewmodel.setBinder(binding, this)
-
         extraClick()
+
     }
 
     private fun extraClick() {

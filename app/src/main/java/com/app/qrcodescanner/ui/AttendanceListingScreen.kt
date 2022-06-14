@@ -1,14 +1,12 @@
 package com.app.qrcodescanner.ui
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityAttendanceListingScreenBinding
 import com.app.qrcodescanner.viewmodel.AttendanceListingViewModel
-import kotlinx.android.synthetic.main.activity_otpverify.*
 
 class AttendanceListingScreen : KotlinBaseActivity() {
     lateinit var binding: ActivityAttendanceListingScreenBinding
