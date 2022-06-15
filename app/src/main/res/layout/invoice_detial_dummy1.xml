@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="com.app.qrcodescanner.viewmodel.InvoiceDetailFragmentViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clipChildren="false"
+        tools:context=".fragement.InvoiceDetailFragement">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/llconatiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_grey"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinvoiceId"
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerVertical="true"
+                    android:text="Invoice ID : 2200658254511"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinvoicestatus"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_25sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/green_rectangle_round_background"
+                    android:gravity="center"
+                    android:text="Paid"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_11sdp" />
+
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/conatiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@+id/llconatiner">
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvcompanynamelabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Company Name :"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvcompanyname"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="XYZ Ptv. Ltd."
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvcompanynamelabel"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvcompanyaddresslabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Company Address :"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvcompanyname" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvcompanyaddress"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="abc area, st no. 154 London US."
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvcompanyaddresslabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvcompanyname" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvphonelabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Company Phone No :"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvcompanyaddress" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvphone"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="+91-6248758578"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvphonelabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvcompanyaddress" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvduedatelabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Due Date :"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvphone" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvduedate"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="20-06-2043 "
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvduedatelabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvphone" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinvoiceamountlabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Generated Date  :"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvduedate" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinvoiceamount"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="20-06-2022"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvinvoiceamountlabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvduedate" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvpaymentidlabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Payment ID : "
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvinvoiceamount" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvpayment"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="11322LBDi05fFe5213201"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvpaymentidlabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvinvoiceamount" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvmodelabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Mode Of Payment : "
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvpayment" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvmode"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="NFT"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvmodelabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvpayment" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvamountlabel"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Invoice Amount : "
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvmode" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvamount"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="$888"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@+id/tvamountlabel"
+                    app:layout_constraintTop_toBottomOf="@+id/tvmode" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinwords"
+                    style="@style/mediumfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Eight Thunder Eighty Eight Dollars Only"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvamount" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/loginbutton"
+                    style="@style/mainbutton"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="Download Invoice"
+                    android:textAllCaps="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvinwords" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

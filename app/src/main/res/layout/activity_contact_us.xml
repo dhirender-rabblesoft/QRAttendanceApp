@@ -10,7 +10,9 @@
         android:background="@color/white_grey"
         android:orientation="vertical"
         tools:context=".ui.ContactUs"
-        android:padding="@dimen/_20sdp">
+        android:paddingBottom="@dimen/_15sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_15sdp">
 
         <include
             android:id="@+id/toolbar"
@@ -79,8 +81,8 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/loginbutton"
-                style="@style/mainbutton"
-                android:layout_marginTop="@dimen/_20sdp"
+                style="@style/mainbutton3"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:singleLine="false"
                 android:text="@string/contact_us"
                 android:textAllCaps="false" />

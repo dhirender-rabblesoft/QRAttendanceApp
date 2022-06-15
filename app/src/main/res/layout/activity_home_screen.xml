@@ -3,19 +3,17 @@
 <layout>
 
     <data>
-
         <variable
             name="viewmodel"
             type="com.app.qrcodescanner.viewmodel.HomeScreenViewModel" />
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:background="@color/white2"
         tools:context=".ui.HomeScreenActivity">
 
         <androidx.drawerlayout.widget.DrawerLayout
@@ -26,7 +24,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="@dimen/_15sdp">
+                android:paddingStart="@dimen/_15sdp"
+                android:paddingEnd="@dimen/_15sdp"
+                android:paddingBottom="@dimen/_15sdp">
 
 
                 <include
@@ -181,13 +181,13 @@
                                         android:id="@+id/checkin"
                                         style="@style/checkin"
                                         android:layout_width="wrap_content"
+                                        android:layout_gravity="center"
                                         android:layout_marginEnd="@dimen/_10sdp"
                                         android:drawableStart="@drawable/checkin_image_holder_big"
                                         android:drawablePadding="@dimen/_10sdp"
                                         android:drawableTint="@color/white"
-                                        android:padding="@dimen/_10sdp"
 
-                                        android:layout_gravity="center"
+                                        android:padding="@dimen/_10sdp"
 
                                         android:text="CheckIn"
                                         android:textAllCaps="false"
@@ -208,8 +208,8 @@
                                         android:id="@+id/checkout"
                                         style="@style/checkin"
                                         android:layout_width="wrap_content"
-                                        android:layout_weight="1"
                                         android:layout_gravity="center"
+                                        android:layout_weight="1"
                                         android:drawableStart="@drawable/checkout_image_holder_big"
                                         android:drawablePadding="@dimen/_10sdp"
                                         android:drawableTint="@color/white"
@@ -242,7 +242,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 app:cardCornerRadius="@dimen/_10sdp"
-                                app:cardElevation="@dimen/_1sdp"
+                                app:cardElevation="@dimen/_5sdp"
                                 app:cardPreventCornerOverlap="true"
                                 app:cardUseCompatPadding="true"
                                 app:layout_constraintTop_toBottomOf="@+id/tvannocument">

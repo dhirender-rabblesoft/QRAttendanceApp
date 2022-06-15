@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clickable="true"
     android:background="@color/white"
+    android:clickable="true"
     android:padding="@dimen/_20sdp">
 
 
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/llattendancecontainer" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llcontactuscontainer"
+        android:id="@+id/llinvoicecontainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
@@ -155,6 +155,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view3">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/side_iv_invoice"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/invoice" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvside_invoice"
+            style="@style/semiboldfont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_10sdp"
+            android:text="Invoice"
+            android:textSize="@dimen/_12sdp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@color/white_grey"
+        app:layout_constraintTop_toBottomOf="@+id/llinvoicecontainer" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llcontactuscontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view4">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/side_iv_contactus"
@@ -174,12 +210,13 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <View
-        android:id="@+id/view4"
+        android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:background="@color/white_grey"
         app:layout_constraintTop_toBottomOf="@+id/llcontactuscontainer" />
+
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/llaboutuoscontainer"
@@ -189,7 +226,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view4">
+        app:layout_constraintTop_toBottomOf="@+id/view5">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/side_iv_aboutus"
@@ -208,9 +245,46 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
+    <View
+        android:id="@+id/view6"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_1sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@color/white_grey"
+        app:layout_constraintTop_toBottomOf="@+id/llaboutuoscontainer" />
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/llfaqcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view6">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/side_iv_faq"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:src="@drawable/faq" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvside_faq"
+            style="@style/semiboldfont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="@dimen/_10sdp"
+            android:text="FAQ"
+            android:textSize="@dimen/_12sdp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     <View
-        android:id="@+id/view5"
+        android:id="@+id/view7"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_1sdp"
         android:layout_marginTop="@dimen/_10sdp"

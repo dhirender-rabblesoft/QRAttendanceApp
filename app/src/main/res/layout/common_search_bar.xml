@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <AutoCompleteTextView
+        android:id="@+id/edsearchtext"
+        android:layout_width="match_parent"
+        style="@style/mediumfont"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_5sdp"
+        android:drawableStart="@drawable/ic_outline_search_24"
+        android:drawablePadding="@dimen/_10sdp"
+        android:background="@drawable/rectangle_grey"
+        android:hint="Searh FAQ..."
+        android:textSize="@dimen/_10sdp"
+        android:textColor="@color/black_1"
+        android:padding="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

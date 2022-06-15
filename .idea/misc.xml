@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/asus/.gradle/caches/transforms-3/3eea16b4f8a9fe563231f5ae5eb9948c/transformed/material-1.6.1/res/drawable/mtrl_ic_arrow_drop_down.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable-v24/checkout_image_holder.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable-v24/ic_calendar_line_small.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/background_blur.xml" value="0.282" />
@@ -12,14 +13,18 @@
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/checkout_image_holder_big.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/color_round.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/color_round2.xml" value="0.282" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/green_rectangle_round_background.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/ic_baseline_arrow_forward_ios_24.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/ic_baseline_keyboard_arrow_down_24.xml" value="0.2075" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/ic_calendar_line_small.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/image_holder.xml" value="0.282" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/invoice_image_holder.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/rectangle_boder.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/rectangle_gradle.xml" value="0.282" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/rectangle_grey.xml" value="0.2435" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/red_round_background.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/round_color3.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/round_gradle.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable/round_rectangle.xml" value="0.282" />
@@ -32,9 +37,12 @@
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_contact_us.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_create_password.xml" value="0.31302083333333336" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_edit_profile.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_faqactivity.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_faqquery.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_forgot_password.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_fragment.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_home_screen.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_invoice.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_login.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_main.xml" value="0.3" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_otpverify.xml" value="0.3171875" />
@@ -42,13 +50,19 @@
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_scanner.xml" value="0.29739583333333336" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_signup.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/activity_splash_screen.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/common_search_bar.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/common_toolbar.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/fragment_comfirm_dailog.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/fragment_filter_dailog.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/fragment_fragement_a.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/fragment_fragement_b.xml" value="0.3171875" />
-        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_checkin_out_list.xml" value="0.9407407407407408" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/fragment_invoice_detail_fragement.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/invoice_detial_dummy1.xml" value="0.46882217090069284" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_checkin_out_list.xml" value="0.5004926108374385" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_faq.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_filter.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_invoice.xml" value="0.3171875" />
+        <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_invoice_tasklisting.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/item_recent_checkin_out_list.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/layout/side_menu_bar.xml" value="0.3171875" />
         <entry key="..\:/Users/asus/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_dropdown_item.xml" value="0.3171875" />

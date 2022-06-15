@@ -3,34 +3,45 @@ package com.app.qrcodescanner.utils
 import android.R
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.AutoCompleteTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.capitalizesLetters
 import java.util.*
 
-object Utils
-{
+object Utils {
 
     //    const val RABBLESOFT_LAT = "30.8934659"
 //    const val RABBLESOFT_LNG = "75.8290866"
     var RABBLESOFT_LAT = "30.8934667"
     var RABBLESOFT_LNG = "75.8290889"
-    fun setDialogAttributes(dialog: Dialog, height: Int)
-    {
+
+
+    fun hideKeyBoard(c: Context, v: View) {
+        val imm = c
+            .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+
+    fun setDialogAttributes(dialog: Dialog, height: Int) {
         val window = dialog.window ?: return
         window.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, height)
         window.setGravity(Gravity.CENTER)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     }
+
     fun shoedatepicker(
         baseActivity: KotlinBaseActivity,
         lblDate: AutoCompleteTextView,
-        onConfirmed: () -> Unit = {}) {
+        onConfirmed: () -> Unit = {}
+    ) {
         val c = Calendar.getInstance()
         val year = c.get(Calendar.YEAR)
         var month = c.get(Calendar.MONTH)
@@ -56,7 +67,8 @@ object Utils
                     // Do Stuff
                     onConfirmed.invoke()
                 }
-        })
+            })
+
         dpd.show()
     }
 }
