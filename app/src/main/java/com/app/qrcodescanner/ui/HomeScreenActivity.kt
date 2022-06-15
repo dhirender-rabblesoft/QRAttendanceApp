@@ -1,6 +1,7 @@
 package com.app.qrcodescanner.ui
 
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.app.qrcodescanner.R
@@ -14,9 +15,14 @@ class HomeScreenActivity : KotlinBaseActivity() {
     lateinit var viewModel: HomeScreenViewModel
     lateinit var location: EasyWayLocation
     override fun onCreate(savedInstanceState: Bundle?) {
+        getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home_screen)
         viewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
+
         viewModel.setBinder(binding, this)
     }
 

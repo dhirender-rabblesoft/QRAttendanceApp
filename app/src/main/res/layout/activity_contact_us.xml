@@ -10,7 +10,9 @@
         android:background="@color/white_grey"
         android:orientation="vertical"
         tools:context=".ui.ContactUs"
-        android:padding="@dimen/_20sdp">
+        android:paddingBottom="@dimen/_15sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_15sdp">
 
         <include
             android:id="@+id/toolbar"
