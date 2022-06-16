@@ -1,5 +1,6 @@
 package com.app.qrcodescanner.extension
 
+import android.app.Activity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,6 +30,9 @@ fun String.capitalizesLetters(): String {
 }
 fun <T> T.isNotNull(): Boolean {
     return this != null
+}
+fun Activity.getDecorView(): View {
+    return window.decorView
 }
 
 

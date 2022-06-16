@@ -39,13 +39,14 @@
                     android:id="@+id/etusername"
                     style="@style/edittextlogintitle"
                     android:drawablePadding="@dimen/_10sdp"
-                    android:hint="@string/full_name" />
+                    android:hint="Subject" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/emaillayout"
                 style="@style/materialStyle"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                  app:hintEnabled="true"

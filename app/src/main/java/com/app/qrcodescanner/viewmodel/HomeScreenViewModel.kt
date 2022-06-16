@@ -11,7 +11,12 @@ import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityHomeScreenBinding
 import com.app.qrcodescanner.extension.gone
+import com.app.qrcodescanner.extension.isNotNull
 import com.app.qrcodescanner.ui.*
+import com.app.qrcodescanner.utils.Keys
+import com.app.qrcodescanner.utils.SharedPreferenceManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
@@ -30,6 +35,21 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         setClick()
         settoolbar()
         sidemenuClick()
+        setdata()
+    }
+    private  fun setdata()
+    {
+        if (HomeScreenActivity.userdata?.data?.user?.image.isNotNull())
+        {
+            Glide.with(baseActivity).load(HomeScreenActivity.userdata?.data?.user?.image).diskCacheStrategy(
+                DiskCacheStrategy.NONE)
+                .skipMemoryCache(true).into(binder.imageView1)
+
+        }
+        binder.tvusername.text=HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
+        binder.tvuserdesignation.text=HomeScreenActivity.userdata?.data?.user?.role
+        binder.showDrawer.side_user_name.text=HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
+        binder.showDrawer.side_email.text=HomeScreenActivity.userdata?.data?.user?.email
     }
 
     private fun sidemenuClick() {
@@ -48,11 +68,14 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         binder.showDrawer.tvside_aboutus.setOnClickListener {
             baseActivity.openA(AboutUs::class)
         }
-        binder.showDrawer.llinvoicecontainer.setOnClickListener {
+        binder.showDrawer.tvside_invoice.setOnClickListener {
             baseActivity.openA(InvoiceActivity::class)
         }
-        binder.showDrawer.llfaqcontainer.setOnClickListener {
+        binder.showDrawer.tvside_faq.setOnClickListener {
             baseActivity.openA(FAQActivity::class)
+        }
+        binder.showDrawer.tvchangepassword.setOnClickListener {
+            baseActivity.openA(ChangePassWord::class)
         }
     }
 
@@ -92,6 +115,9 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             binder.drawerLayout.openDrawer(GravityCompat.START)
         }
         binder.showDrawer.lllogoutcontainer.setOnClickListener {
+            HomeScreenActivity.token=""
+            SharedPreferenceManager(baseActivity).saveString(Keys.USERDATA,"")
+            SharedPreferenceManager(baseActivity).saveString(Keys.USERID,"")
             baseActivity.openA(LoginActivity::class)
             baseActivity.finishAffinity()
         }

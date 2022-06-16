@@ -5,9 +5,7 @@
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/_8sdp"
     android:paddingBottom="@dimen/_8sdp"
-    android:paddingStart="@dimen/_3sdp"
-    android:paddingEnd="@dimen/_3sdp"
-    >
+     >
 
 
     <androidx.appcompat.widget.AppCompatImageView

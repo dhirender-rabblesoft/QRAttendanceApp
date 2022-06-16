@@ -137,7 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:hint="User Name"
+                        android:hint="First Name"
                         app:hintEnabled="true"
                         app:hintTextColor="@color/black_1"
                         app:layout_goneMarginEnd="@dimen/_32sdp"
@@ -145,6 +145,25 @@
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/etusername"
+                            style="@style/edittextlogintitle"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:text="Alex Shaw" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/lastnamenamelayout"
+                        style="@style/materialStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:hint="Last Name"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/black_1"
+                        app:layout_goneMarginEnd="@dimen/_32sdp"
+                        app:layout_goneMarginStart="@dimen/_32sdp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etlastname"
                             style="@style/edittextlogintitle"
                             android:drawablePadding="@dimen/_10sdp"
                             android:text="Alex Shaw" />
@@ -186,7 +205,7 @@
                             android:gravity="start"
                             android:hint="@string/enter_phone_number"
                             android:inputType="number"
-                            android:text="+91-98765-43210" />
+                             />
                     </com.google.android.material.textfield.TextInputLayout>
 
 

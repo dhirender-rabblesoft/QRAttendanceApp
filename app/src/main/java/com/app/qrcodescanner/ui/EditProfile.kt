@@ -1,7 +1,9 @@
 package com.app.qrcodescanner.ui
 
+import android.Manifest
 import android.graphics.Bitmap
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -13,6 +15,7 @@ import com.app.qrcodescanner.viewmodel.EditProfileViewModel
 import com.canhub.cropper.CropImageContract
 import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
+import com.permissionx.guolindev.PermissionX
 import id.zelory.compressor.Compressor
 import kotlinx.coroutines.async
 import java.io.File
@@ -31,7 +34,41 @@ class EditProfile : KotlinBaseActivity() {
 
     private fun extraClick() {
         binding.profileEdit.setOnClickListener {
-            startCrop()
+            val permissonList = ArrayList<String>()
+            permissonList.add(Manifest.permission.ACCESS_FINE_LOCATION)
+            permissonList.add(Manifest.permission.ACCESS_COARSE_LOCATION)
+            permissonList.add(Manifest.permission.CAMERA)
+            PermissionX.init(this)
+                .permissions(permissonList)
+                .onExplainRequestReason { scope, deniedList ->
+                    scope.showRequestReasonDialog(
+                        deniedList,
+                        getString(R.string.permisionmsgfirst),
+                        getString(R.string.ok),
+                        getString(R.string.cancel)
+                    )
+                }
+                .onForwardToSettings { scope, deniedList ->
+                    scope.showForwardToSettingsDialog(
+                        deniedList,
+                        getString(R.string.manualpermission),
+                        getString(R.string.ok),
+                        getString(R.string.cancel)
+                    )
+                }
+                .request { allGranted, grantedList, deniedList ->
+                    if (allGranted) {
+                        startCrop()
+ //                    checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
+//                    baseActivity.openA(Scanner::class)
+//                    ischeckin = true
+                        Log.e("permisssion granted", "permission granted")
+                    }
+
+                }
+
+
+
         }
     }
 

@@ -14,6 +14,8 @@ import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityFaqactivityBinding
 import com.app.qrcodescanner.extension.invisible
+import com.app.qrcodescanner.model.FaqJson
+import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.FAQQueryActivity
 import com.app.qrcodescanner.utils.Utils
 import kotlinx.android.synthetic.main.activity_faqactivity.view.*
@@ -26,7 +28,8 @@ class FAQViewModel(application: Application) : AppViewModel(application) {
     private lateinit var binder: ActivityFaqactivityBinding
     private lateinit var mContext: Context
     private lateinit var baseActivity: KotlinBaseActivity
-    lateinit var list: ArrayList<String>
+    val  commonRepository=CommonRepository(application)
+      var list= ArrayList<FaqJson.Data>()
     lateinit var faqadapter: FAQAdapter
     fun setBinder(binding: ActivityFaqactivityBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
@@ -36,6 +39,7 @@ class FAQViewModel(application: Application) : AppViewModel(application) {
         setFaqAdapter()
         setClick()
         searchbar()
+        getfaq()
     }
 
     private fun settoolbar() {
@@ -45,27 +49,16 @@ class FAQViewModel(application: Application) : AppViewModel(application) {
             baseActivity.onBackPressed()
         }
     }
+    private  fun getfaq()
+    {
+        commonRepository.faq(baseActivity,"faqs"){
+            list.addAll(it.data)
+            setFaqAdapter()
+        }
+    }
 
     private fun setFaqAdapter() {
-        list = ArrayList<String>()
-        list.add("How to become a billinor and how to get your money back after three days before of the month")
-        list.add("How to become a billinor and how to get your money back after three days before of the month")
-        list.add("Who become a billinor and how to get your money back after three days before of the month")
-        list.add("Who become a billinor and how to get your money back after three days before of the month")
-        list.add("We become a billinor and how to get your money back after three days before of the month")
-        list.add("We become a billinor and how to get your money back after three days before of the month")
-        list.add("We become a billinor and how to get your money back after three days before of the month")
-        list.add("We become a billinor and how to get your money back after three days before of the month")
-        list.add("We become a billinor and how to get your money back after three days before of the month")
-        list.add("We become a billinor and how to get your money back after three days before of the month")
-        list.add("She become a billinor and how to get your money back after three days before of the month")
-        list.add("She become a billinor and how to get your money back after three days before of the month")
-        list.add("She become a billinor and how to get your money back after three days before of the month")
-        list.add("She become a billinor and how to get your money back after three days before of the month")
-        list.add("She become a billinor and how to get your money back after three days before of the month")
-        list.add("HE become a billinor and how to get your money back after three days before of the month")
-        list.add("HE become a billinor and how to get your money back after three days before of the month")
-        list.add("HE become a billinor and how to get your money back after three days before of the month")
+
         val linearLayoutManager =
             LinearLayoutManager(baseActivity, LinearLayoutManager.VERTICAL, false)
         binder.rvFAq.layoutManager = linearLayoutManager
@@ -81,9 +74,9 @@ class FAQViewModel(application: Application) : AppViewModel(application) {
             var keyword = it.toString()
             Log.e("3324234324edd", keyword.toString())
 
-            var templist = ArrayList<String>()
+            var templist = ArrayList<FaqJson.Data>()
             list.forEach {
-                if (it.lowercase().contains(keyword.lowercase())) {
+                if (it.question.lowercase().contains(keyword.lowercase())) {
                     templist.clear()
                     //     list.add(it)
                     templist.add(it)

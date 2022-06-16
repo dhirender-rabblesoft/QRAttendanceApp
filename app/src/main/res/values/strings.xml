@@ -10,6 +10,8 @@
     <string name="full_name">Full Name</string>
     <string name="enter_phone_number">Enter Phone Number</string>
     <string name="comfirm_password">Comfirm Password</string>
+    <string name="nointernet">Internet Connection is not available</string>
+    <string name="somthingwentwrong">Something Went Wrong</string>
 
     //validation
     <string name="v_emailvalidation">Please Enter Email</string>
@@ -64,4 +66,5 @@ Where does it come from?
 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</string>
     <string name="invoice">Invoice</string>
     <string name="submit_your_question">Submit Your Question</string>
+    <string name="current_password">Current Password</string>
 </resources>

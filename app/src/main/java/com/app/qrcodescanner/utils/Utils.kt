@@ -14,6 +14,10 @@ import android.widget.AutoCompleteTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.capitalizesLetters
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 import java.util.*
 
 object Utils {
@@ -22,6 +26,7 @@ object Utils {
 //    const val RABBLESOFT_LNG = "75.8290866"
     var RABBLESOFT_LAT = "30.8934667"
     var RABBLESOFT_LNG = "75.8290889"
+    var WEBURL = "75.8290889"
 
 
     fun hideKeyBoard(c: Context, v: View) {
@@ -35,6 +40,19 @@ object Utils {
         window.setLayout(ConstraintLayout.LayoutParams.MATCH_PARENT, height)
         window.setGravity(Gravity.CENTER)
         window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    }
+    fun getMultiPart(key: String?, file: String?): MultipartBody.Part?
+    {
+        return MultipartBody.Part.createFormData(key!!, file!!)
+    }
+    fun getMultiPart(key: String?, file: Any?): MultipartBody.Part?
+    {
+        return MultipartBody.Part.createFormData(key!!, file!!.toString())
+    }
+    fun getMultiPart(key: String?, file: File): MultipartBody.Part?
+    {
+        val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
+        return MultipartBody.Part.createFormData(key!!, file.name, requestFile)
     }
 
     fun shoedatepicker(

@@ -7,22 +7,34 @@ import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityEditProfileBinding
+import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.reposiory.CommonRepository
+import com.app.qrcodescanner.ui.HomeScreenActivity
+import com.app.qrcodescanner.utils.Keys
+import com.app.qrcodescanner.utils.SharedPreferenceManager
+import com.app.qrcodescanner.utils.Utils.getMultiPart
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.side_menu_bar.view.*
+import okhttp3.MultipartBody
 import java.io.File
+import java.util.ArrayList
 
 class EditProfileViewModel(application: Application) : AppViewModel(application) {
     private lateinit var binder: ActivityEditProfileBinding
     private lateinit var mContext: Context
     private lateinit var baseActivity: KotlinBaseActivity
+    val  commonRepository=CommonRepository(application)
     var file: File? = null
     fun setBinder(binding: ActivityEditProfileBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
         this.mContext = binding.root.context
         this.baseActivity = baseActivity
         setClick()
+        setdata()
     }
 
     private fun setClick() {
@@ -31,10 +43,31 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
         }
         binder.loginbutton.setOnClickListener {
             if (validation()) {
-                baseActivity.showtoast("Button is Clicked")
-            }
+                editprofile()
+             }
         }
 
+    }
+    private  fun  setdata()
+    {
+        binder.tvusername.text=
+            HomeScreenActivity.userdata?.data?.user?.first_name+" "+ HomeScreenActivity.userdata?.data?.user?.last_name
+        binder.etusername.setText(
+            HomeScreenActivity.userdata?.data?.user?.first_name)
+        binder.tvuserdesignation.text= HomeScreenActivity.userdata?.data?.user?.email
+        binder.etemail.setText( HomeScreenActivity.userdata?.data?.user?.email  )
+        binder.etlastname.setText( HomeScreenActivity.userdata?.data?.user?.last_name  )
+        if (HomeScreenActivity.userdata?.data?.user?.phone_number.isNotNull())
+        {
+            binder.etphonenumber.setText( HomeScreenActivity.userdata?.data?.user?.phone_number.toString()  )
+
+        }
+        if (HomeScreenActivity.userdata?.data?.user?.image.isNotNull())
+        {
+            Glide.with(baseActivity).load(HomeScreenActivity.userdata?.data?.user?.image).diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true).into(binder.imageView1)
+
+        }
     }
 
 
@@ -43,15 +76,37 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
         binder.phonenumberwrap.error = null
         if (binder.etusername.text?.trim().toString().isEmpty()) {
             binder.namelayout.error = baseActivity.getString(R.string.v_validname)
-            baseActivity.showtoast(baseActivity.getString(R.string.v_validname))
-            return false
+             return false
+        }
+        if (binder.etlastname.text?.trim().toString().isEmpty()) {
+            binder.namelayout.error ="Please enter last name"
+             return false
         }
         if (binder.etphonenumber.text?.trim().toString().isEmpty()) {
             binder.phonenumberwrap.error = baseActivity.getString(R.string.v_validphone)
-            baseActivity.showtoast(binder.etphonenumber.text?.trim().toString())
-            return false
+             return false
         }
         return true
+    }
+    private  fun editprofile()
+    {
+        val fields = ArrayList<MultipartBody.Part>()
+        getMultiPart(Keys.first_name, binder.etusername.text.toString())?.let { fields.add(it) }
+        getMultiPart(Keys.id,HomeScreenActivity.userdata!!.data.user.id.toString())?.let { fields.add(it) }
+        getMultiPart(Keys.last_name, binder.etlastname.text.toString())?.let { fields.add(it) }
+    //    getMultiPart(Keys.email, binder.etemail.text.toString())?.let { fields.add(it) }
+        getMultiPart(Keys.phone_number, binder.etphonenumber.text.toString())?.let { fields.add(it) }
+        if (file != null) {
+            getMultiPart("file", file!!)?.let { fields.add(it) }
+
+        }
+        commonRepository.updateprofile(baseActivity,fields){
+            val gson = Gson()
+            val json = gson.toJson(it)
+            SharedPreferenceManager(baseActivity).saveString(Keys.USERDATA,json)
+            baseActivity.onBackPressed()
+         }
+
     }
 
     fun setfile(file: File) {
