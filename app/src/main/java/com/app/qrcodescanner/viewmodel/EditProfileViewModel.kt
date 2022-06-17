@@ -6,6 +6,7 @@ import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityEditProfileBinding
+import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isNotNull
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
@@ -17,6 +18,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
 import com.google.gson.Gson
+import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
 import okhttp3.MultipartBody
 import java.io.File
@@ -36,9 +38,10 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
     }
 
     private fun setClick() {
-        binder.ivBack.setOnClickListener {
+        binder.toolbar.ivback.setOnClickListener {
             baseActivity.onBackPressed()
         }
+
         binder.loginbutton.setOnClickListener {
             if (validation()) {
                 editprofile()
@@ -48,6 +51,8 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
     }
     private  fun  setdata()
     {
+        binder.toolbar.tvtitle.text="Edit Profile"
+        binder.toolbar.ivdot.gone()
         binder.tvusername.text=
             HomeScreenActivity.userdata?.data?.user?.first_name+" "+ HomeScreenActivity.userdata?.data?.user?.last_name
         binder.etusername.setText(

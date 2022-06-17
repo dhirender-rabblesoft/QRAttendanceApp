@@ -18,6 +18,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
+import java.text.SimpleDateFormat
 import java.util.*
 
 object Utils {
@@ -27,12 +28,30 @@ object Utils {
     var RABBLESOFT_LAT = "30.8934667"
     var RABBLESOFT_LNG = "75.8290889"
     var WEBURL = "75.8290889"
+    const val DATEFORMAT2="yyyy-MM-dd"
+    const val TIMEFORMAT2="hh:mm:ss"
+
+
 
 
     fun hideKeyBoard(c: Context, v: View) {
         val imm = c
             .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(v.windowToken, 0)
+    }
+    fun getcurrentdate():String
+    {
+        val c = Calendar.getInstance()
+        val sdf = SimpleDateFormat(DATEFORMAT2)
+        val strDate = sdf.format(c.time)
+        return strDate
+    }
+    fun getcurrenttime():String
+    {
+        val c = Calendar.getInstance()
+        val sdf = SimpleDateFormat(TIMEFORMAT2)
+        val strDate = sdf.format(c.time)
+        return strDate
     }
 
     fun setDialogAttributes(dialog: Dialog, height: Int) {

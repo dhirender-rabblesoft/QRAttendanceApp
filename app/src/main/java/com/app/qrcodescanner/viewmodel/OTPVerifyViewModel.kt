@@ -21,7 +21,6 @@ class OTPVerifyViewModel(application: Application) : AppViewModel(application)
     lateinit var binder: ActivityOtpverifyBinding
     lateinit var mContext: Context
     var  commonRepository=CommonRepository(application)
-
     lateinit var baseActivity: KotlinBaseActivity
     var bundle= Bundle()
     fun setBinder(binding: ActivityOtpverifyBinding, baseActivity: KotlinBaseActivity)

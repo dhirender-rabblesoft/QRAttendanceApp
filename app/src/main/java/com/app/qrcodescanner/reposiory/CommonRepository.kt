@@ -168,7 +168,7 @@ class CommonRepository(private val baseActivity: Application) {
                 ) {
                     baseActivity.stopProgressDialog()
                     when (response.code()) {
-                        Keys.RESPONSE_SUCESS -> {
+                        in 200..201 -> {
                             response.body()?.let { itemClick(it) }
                         }
                         Keys.ERRORCODE -> {

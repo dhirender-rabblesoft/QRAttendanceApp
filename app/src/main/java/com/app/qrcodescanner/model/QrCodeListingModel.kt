@@ -28,9 +28,13 @@ data class QrCodeListingModel(
             val longitude: String,
             val qrcode: String,
             val status: Int,
+            val cilent: Client,
             val title: String,
             val updated_at: String
         )
+        {
+            data class Client(var  id:Int,var name:String,var address:String,var post_code:String)
+        }
 
         data class Link(
             val active: Boolean,

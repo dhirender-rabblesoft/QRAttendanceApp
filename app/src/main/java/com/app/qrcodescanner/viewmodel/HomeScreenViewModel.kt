@@ -3,6 +3,7 @@ package com.app.qrcodescanner.viewmodel
 import android.Manifest
 import android.app.Application
 import android.content.Context
+import android.os.Bundle
 import android.util.Log
 import androidx.core.view.GravityCompat
 import com.app.qrcodescanner.R
@@ -95,11 +96,11 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
 
     private fun setClick() {
         binder.checkin.setOnClickListener {
-            locationPermission()
+            locationPermission("1")
 
         }
         binder.checkout.setOnClickListener {
-            locationPermission()
+            locationPermission("2")
         }
 
         binder.tvviewmore.setOnClickListener {
@@ -121,7 +122,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         }
     }
 
-    private fun locationPermission() {
+    private fun locationPermission(type:String) {
         val permissonList = ArrayList<String>()
         permissonList.add(Manifest.permission.ACCESS_FINE_LOCATION)
         permissonList.add(Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -146,7 +147,9 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             }
             .request { allGranted, grantedList, deniedList ->
                 if (allGranted) {
-                    baseActivity.openA(Scanner::class)
+                    val  bundle=Bundle()
+                    bundle.putString(Keys.USER_TYPE,type)
+                    baseActivity.openA(Scanner::class,bundle)
 //                    checkPermission(Manifest.permission.CAMERA, CAMERA_PERMISSION_CODE)
 //                    baseActivity.openA(Scanner::class)
 //                    ischeckin = true

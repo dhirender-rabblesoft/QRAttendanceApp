@@ -48,8 +48,7 @@ class ComfirmDailogue(
 
     private fun setClick() {
         binding.btcomfirm.setOnClickListener {
-            baseActivity.openA(HomeScreenActivity::class)
-            dismiss()
+            itemClick(1)
         }
         binding.btcancel.setOnClickListener {
             baseActivity.openA(HomeScreenActivity::class)

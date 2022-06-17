@@ -3,12 +3,15 @@ package com.app.qrcodescanner.ui
 import android.Manifest
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.adapter.QrCodeListingAdapter
 import com.app.qrcodescanner.applications.QrApplication
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.model.LoginJson
 import com.app.qrcodescanner.model.QrCodeListingModel
 import com.app.qrcodescanner.reposiory.CommonRepository
@@ -25,25 +28,72 @@ import kotlinx.android.synthetic.main.side_menu_bar.view.*
 class GenrateQrCode : KotlinBaseActivity() {
     var qrCodeListing = ArrayList<QrCodeListingModel.Data.Data>()
     var commonRepository = CommonRepository(QrApplication.myApp!!)
+    private var loading = true
+    private var currentPage = 1
+    private var totalpage = 0
+    private var isLoadMore = false
+    private val recordPerPage = 10
+    lateinit var mLayoutManger: LinearLayoutManager
+    private var firstVisibleItemPosition: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_genrate_qr_code)
         parsedata()
         setToolbar()
         setQrCodeListingApi()
+        setscrolllistner()
+
+    }
+    private  fun setscrolllistner()
+    {
+        isswipe.setOnRefreshListener {
+            isswipe.isRefreshing=false
+        }
+        rvRecentListAdapter.addOnScrollListener(object : RecyclerView.OnScrollListener()
+        {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy > 0) { //check for scroll down
+
+                    val layoutManager = recyclerView.layoutManager as LinearLayoutManager?
+                    val total = layoutManager!!.itemCount
+                    val currentLastItem: Int = layoutManager.findLastVisibleItemPosition()
+                    if (currentLastItem == total - 1) {
+                        if (loading)
+                        {
+                            loading=false
+                            if (currentPage<totalpage)
+                            {
+                                idPBLoading.visible()
+                                currentPage++
+
+                            }
+                        }
+                    }
+
+                }
+            }
+        })
+
+
+
 
     }
 
     private fun setToolbar() {
         ivback.gone()
         tvtitle.setText("Welcome Admin")
-        ivback.setImageResource(R.drawable.logout)
+        ivdot.setImageResource(R.drawable.logout)
         ivdot.setOnClickListener {
             token=""
             SharedPreferenceManager(this).saveString(Keys.USERDATA,"")
             SharedPreferenceManager(this).saveString(Keys.USERID,"")
              openA(LoginActivity::class)
             finishAffinity()
+         }
+        addlist.setOnClickListener {
+
+             openA(AddArCode::class)
+
          }
     }
 
@@ -88,6 +138,10 @@ class GenrateQrCode : KotlinBaseActivity() {
 
     private fun setQrCodeListingApi() {
         commonRepository.qrCodeListing(this, token, Keys.QR_CLIENT_LISTING_END_POINT) {
+            if (totalpage==0)
+            {
+                totalpage=it.data.last_page
+            }
             qrCodeListing.addAll(it.data.data)
             setQrCodeListingAdapter()
         }

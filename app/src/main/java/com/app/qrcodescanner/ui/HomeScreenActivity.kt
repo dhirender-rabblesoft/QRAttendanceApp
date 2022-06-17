@@ -21,9 +21,9 @@ class HomeScreenActivity : KotlinBaseActivity() {
     lateinit var location: EasyWayLocation
     var  isfirstime=false
     override fun onCreate(savedInstanceState: Bundle?) {
-        getWindow().setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home_screen)

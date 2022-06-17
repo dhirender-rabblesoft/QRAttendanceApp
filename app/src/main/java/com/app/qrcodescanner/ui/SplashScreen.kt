@@ -17,10 +17,10 @@ class SplashScreen : KotlinBaseActivity() {
 
         val userid=SharedPreferenceManager(this).getString(Keys.USERID)
 
-        Log.e("userIdchecker",userid.toString())
 
         Handler(Looper.getMainLooper()).postDelayed({
-            if (userid == null)
+            Log.e("useriddddd",userid.toString())
+            if (userid == null || userid.toString().isEmpty())
             {
 
                 openA(LoginActivity::class)
@@ -28,12 +28,10 @@ class SplashScreen : KotlinBaseActivity() {
             else{
                 if (SharedPreferenceManager(this).getString(Keys.USER_TYPE).equals("super_admin"))
                 {
-                    Log.e("1111111111111111111","0000000000")
-                    openA(GenrateQrCode::class)
+                     openA(GenrateQrCode::class)
 
                 }else{
-                    Log.e("1111122222222222222","6666666666666")
-                    openA(HomeScreenActivity::class)
+                     openA(HomeScreenActivity::class)
 
                 }
             }

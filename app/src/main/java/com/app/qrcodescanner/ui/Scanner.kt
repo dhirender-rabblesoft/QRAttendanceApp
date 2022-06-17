@@ -7,6 +7,7 @@ import android.widget.Toast
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.Utils
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
@@ -25,11 +26,16 @@ class Scanner : KotlinBaseActivity(), Listener {
     lateinit var location: EasyWayLocation
     var lat = ""
     var lng = ""
+    var l1=""
+    var lon2=""
+    var bundle=Bundle()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         location = EasyWayLocation(this, false, false, this)
         setContentView(R.layout.activity_scanner)
         codeScanner = CodeScanner(this, scanner_view)
+        bundle= intent.extras!!
         barcodescanner()
     }
 
@@ -63,24 +69,47 @@ class Scanner : KotlinBaseActivity(), Listener {
 //                Utils.RABBLESOFT_LNG = companylong.toString()
 
 
-                Log.e("fwerewrfewfefewf", it.text.toString())
+               // Log.e("fwerewrfewfefewf", it.text.toString())
+                if (it.text.toString().startsWith("lat"))
+                {
 
-                Toast.makeText(this, "Scan result: ${it.text}", Toast.LENGTH_LONG).show()
+                    var res=it.text.split(",")
+                    var templat=res[0]
+                    var templng=res[1]
+                    var actual_lat=templat.split("=")
+                    var actual_lng=templng.split("=")
+                    if (actual_lat.size==2)
+                    {
+                        l1=actual_lat[1]
+                        lon2=actual_lng[1]
+                    }
+                    Log.e("actual_lat", l1+","+lon2)
+                    if (calculateDistance().isNotNull()) {
 
-                if (calculateDistance().isNotNull()) {
+                        if (calculateDistance() <= 200) {
 
-                    if (calculateDistance() <= 30) {
-                        openA(QRAttendanceDetails::class)
-                        finishAffinity()
-                        Log.e("878788878778", "98965656566565")
-                    } else {
-                        openA(HomeScreenActivity::class)
-                        showtoast("Attendance can be marked between 100 meters of distance")
-                        return@runOnUiThread
+                            val  bundle1=Bundle()
+                            bundle1.putString(Keys.LAT,l1)
+                            bundle1.putString(Keys.LNG,lon2)
+                            Log.e("calculateDistance",bundle.getString(Keys.USER_TYPE).toString())
+                            bundle1.putString(Keys.USER_TYPE,bundle.getString(Keys.USER_TYPE))
+                            openA(QRAttendanceDetails::class,bundle1)
+                            finishAffinity()
+                         } else {
+                            openA(HomeScreenActivity::class)
+                            showtoast("Attendance can be marked between 200 meters of distance")
+                            return@runOnUiThread
+
+                        }
 
                     }
 
                 }
+                else{
+                    showtoast("Invalid QrCode")
+                }
+
+
 
             }
         }
@@ -101,7 +130,7 @@ class Scanner : KotlinBaseActivity(), Listener {
 
     private fun calculateDistance(): Int {
         val userLatLng = LatLng(lat.toDouble(), lng.toDouble())
-        val companyLatLng = LatLng(Utils.RABBLESOFT_LAT.toDouble(), Utils.RABBLESOFT_LNG.toDouble())
+        val companyLatLng = LatLng(l1.toDouble(), lon2.toDouble())
         val distance = SphericalUtil.computeDistanceBetween(userLatLng, companyLatLng)
         Log.e("userlatlng15478", userLatLng.toString())
         Log.e("conpmaylatlng15478", companyLatLng.toString())
@@ -131,8 +160,7 @@ class Scanner : KotlinBaseActivity(), Listener {
             lng = location?.longitude.toString()
             Log.e("latitude_location1542 ", location?.latitude.toString())
             Log.e("logitue location ", location?.latitude.toString())
-            calculateDistance()
-        }
+         }
 
     }
 
