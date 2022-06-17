@@ -1,5 +1,4 @@
 package com.app.qrcodescanner.viewmodel
-
 import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
@@ -22,7 +21,6 @@ import kotlinx.android.synthetic.main.side_menu_bar.view.*
 import okhttp3.MultipartBody
 import java.io.File
 import java.util.ArrayList
-
 class EditProfileViewModel(application: Application) : AppViewModel(application) {
     private lateinit var binder: ActivityEditProfileBinding
     private lateinit var mContext: Context

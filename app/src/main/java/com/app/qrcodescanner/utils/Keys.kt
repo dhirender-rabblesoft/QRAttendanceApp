@@ -1,7 +1,7 @@
 package com.app.qrcodescanner.utils
 
 object Keys {
-    const val  BASE_URL="https://5630-2405-201-5007-b08b-4f8f-33e3-1ae6-8ded.in.ngrok.io/hrms-backend/public/api/"
+    const val  BASE_URL="https://0a5e-2405-201-5007-b08b-f0-5e93-a480-682d.ngrok.io/hrms-app/public/api/"
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
