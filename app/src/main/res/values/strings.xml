@@ -12,6 +12,23 @@
     <string name="comfirm_password">Comfirm Password</string>
     <string name="nointernet">Internet Connection is not available</string>
     <string name="somthingwentwrong">Something Went Wrong</string>
+    <string-array name="food_time_array">
+        <item>Less Then 10 Min</item>
+        <item>Less Then 20 Min</item>
+        <item>Less Then 30 Min</item>
+        <item>Less Then 40 Min</item>
+        <item>Less Then 50 Min</item>
+        <item>Less Then 1 Hours</item>
+        <item>Less Then 2 Hours</item>
+        <item>Less Then 3 Hours</item>
+        <item>Less Then 4 Hours</item>
+        <item>Less Then 5 Hours</item>
+        <item>Less Then 6 Hours</item>
+        <item>Less Then 7 Hours</item>
+        <item>Less Then 8 Hours</item>
+        <item>Less Then 9 Hours</item>
+        <item>Less Then 10 Hours</item>
+    </string-array>
 
     //validation
     <string name="v_emailvalidation">Please Enter Email</string>

@@ -79,17 +79,20 @@ class LoginViewModel(application: Application) : AppViewModel(application)
         commonRepository.getlogin(baseActivity,Keys.LOGIN,jsonobj,true){
             if (it.data.isNotNull())
             {
+                val gson = Gson()
+                val json = gson.toJson(it)
+                SharedPreferenceManager(baseActivity).saveString(Keys.USERDATA,json)
+                SharedPreferenceManager(baseActivity).saveString(Keys.TOKEN,it.data.token.toString())
+
                 if (!it.data.user.role.equals("super_admin"))
                 {
-                    val gson = Gson()
-                    val json = gson.toJson(it)
-                    SharedPreferenceManager(baseActivity).saveString(Keys.USERDATA,json)
                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
-                    SharedPreferenceManager(baseActivity).saveString(Keys.TOKEN,it.data.token.toString())
                     baseActivity.openA(HomeScreenActivity::class)
                 }
                 else{
-                    baseActivity.customSnackBar("Only employee can login",false)
+                    SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
+                    baseActivity.openA(GenrateQrCode::class)
+                    //baseActivity.customSnackBar("Only employee can login",false)
                 }
 
             }
