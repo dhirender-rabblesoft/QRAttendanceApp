@@ -65,7 +65,7 @@ class EditProfile : KotlinBaseActivity() {
                         Log.e("permisssion granted", "permission granted")
                     }
 
-                }
+                }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
 
 
 
