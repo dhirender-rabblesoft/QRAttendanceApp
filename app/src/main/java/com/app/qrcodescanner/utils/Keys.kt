@@ -5,6 +5,8 @@ object Keys {
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
+    const val USER_TYPE = "user_type"
+
 
 
     /*RESPONSE CODE*/
@@ -30,4 +32,9 @@ object Keys {
     const val confirm_password="confirm_password"
     const val old_password="old_password"
     const val new_password="new_password"
+
+
+    //Api End Points
+    const val CLIENT_LISTING_END_POINT = "clients"
+    const val QR_CLIENT_LISTING_END_POINT = "qr-code-listing"
 }
