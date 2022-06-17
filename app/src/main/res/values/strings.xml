@@ -32,6 +32,8 @@
 
     //validation
     <string name="v_emailvalidation">Please Enter Email</string>
+    <string name="v_addressvalidation">Please Enter Address</string>
+    <string name="v_clentvalidation">Please Select Client</string>
     <string name="v_comfirmpassword">Comfirm Password should not be null</string>
     <string name="phonelength">Phone Number should be 10 characters</string>
     <string name="passwordnotmatch">Password Should be matched</string>

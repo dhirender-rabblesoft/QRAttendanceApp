@@ -2,6 +2,7 @@ package com.app.qrcodescanner.viewmodel
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
@@ -83,13 +84,16 @@ class LoginViewModel(application: Application) : AppViewModel(application)
                 val json = gson.toJson(it)
                 SharedPreferenceManager(baseActivity).saveString(Keys.USERDATA,json)
                 SharedPreferenceManager(baseActivity).saveString(Keys.TOKEN,it.data.token.toString())
+                SharedPreferenceManager(baseActivity).saveString(Keys.USER_TYPE,it.data.user.role.toString())
 
                 if (!it.data.user.role.equals("super_admin"))
                 {
+                    Log.e("1111111111111111111","0000000000")
                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
                     baseActivity.openA(HomeScreenActivity::class)
                 }
                 else{
+                    Log.e("234234234","0000000000")
                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
                     baseActivity.openA(GenrateQrCode::class)
                     //baseActivity.customSnackBar("Only employee can login",false)

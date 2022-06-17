@@ -2,11 +2,6 @@
 
 <layout>
 
-    <data>
-        <variable
-            name="viewmodel"
-            type="com.app.qrcodescanner.viewmodel.HomeScreenViewModel" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -123,6 +118,7 @@
                                 android:id="@+id/profile_edit"
                                 android:layout_width="@dimen/_20sdp"
                                 android:layout_height="@dimen/_20sdp"
+                                android:visibility="gone"
                                 android:elevation="@dimen/_10sdp"
                                 android:src="@drawable/editing"
                                 app:layout_constraintBottom_toBottomOf="@+id/tvusername"
@@ -158,13 +154,6 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
-
-
-
-
-
-
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/tv_recent"
                                 style="@style/semiboldfont"
@@ -176,7 +165,7 @@
                                 android:textColor="@color/black_1"
                                 android:textSize="@dimen/_16sdp"
                                 app:layout_constraintStart_toStartOf="parent"
-                                />
+                                app:layout_constraintTop_toBottomOf="@+id/view1" />
 
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:id="@+id/tvviewmore"
@@ -209,10 +198,17 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.core.widget.NestedScrollView>
 
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/addlist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_20sdp"
+                    android:src="@drawable/location_icon"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:tint="#EEE" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
         </androidx.drawerlayout.widget.DrawerLayout>

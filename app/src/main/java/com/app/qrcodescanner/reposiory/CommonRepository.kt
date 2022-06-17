@@ -5,9 +5,7 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
-import com.app.qrcodescanner.model.FaqJson
-import com.app.qrcodescanner.model.ForgotpasswordJson
-import com.app.qrcodescanner.model.LoginJson
+import com.app.qrcodescanner.model.*
 
 import com.app.qrcodescanner.network.APIInterface
 import com.app.qrcodescanner.network.RetrofitClient
@@ -162,7 +160,7 @@ class CommonRepository(private val baseActivity: Application) {
                 APIInterface::class.java
             )
             retrofitClient?.changepassword(
-               token, Keys.BASE_URL + url, jsonObject
+                token, Keys.BASE_URL + url, jsonObject
             )!!.enqueue(object : Callback<ResponseBody?> {
                 override fun onResponse(
                     call: Call<ResponseBody?>,
@@ -196,6 +194,59 @@ class CommonRepository(private val baseActivity: Application) {
         }
 
     }
+
+    fun qrCodeListing(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (QrCodeListingModel) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+            baseActivity.startProgressDialog()
+            retrofitClient =
+                RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
+            retrofitClient?.qrCodeListing(Keys.BASE_URL + url, token)!!
+                .enqueue(object : Callback<QrCodeListingModel> {
+                    override fun onResponse(
+                        call: Call<QrCodeListingModel>,
+                        response: Response<QrCodeListingModel>
+                    ) {
+                        baseActivity.stopProgressDialog()
+                        when(response.code()){
+                            Keys.RESPONSE_SUCESS ->{
+                                response.body()?.let {
+                                    itemClick(it)
+                                }
+                            }
+                            Keys.ERRORCODE ->{
+                                response.errorBody()?.let {
+                                    baseActivity.parseError(response)
+                                }
+                            }
+                            Keys.UNAUTHoRISE -> {
+                                // faqmutableLiveData.setValue(response.body())
+                            }
+                            in 500..512 -> {
+                                baseActivity.customSnackBar(
+                                    baseActivity.getString(R.string.somthingwentwrong),
+                                    true
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<QrCodeListingModel>, t: Throwable) {
+                        baseActivity.stopProgressDialog()
+                    }
+
+                }
+                )
+        }
+    }
+
+
     fun faq(
         baseActivity: KotlinBaseActivity,
         url: String,
@@ -246,8 +297,12 @@ class CommonRepository(private val baseActivity: Application) {
         }
 
     }
-    fun updateprofile(baseActivity: KotlinBaseActivity, fields: ArrayList<MultipartBody.Part>, itemClick: (LoginJson) -> Unit)
-    {
+
+    fun updateprofile(
+        baseActivity: KotlinBaseActivity,
+        fields: ArrayList<MultipartBody.Part>,
+        itemClick: (LoginJson) -> Unit
+    ) {
         if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
             baseActivity.nointernershowToast()
         } else {
@@ -257,7 +312,7 @@ class CommonRepository(private val baseActivity: Application) {
                 APIInterface::class.java
             )
             retrofitClient?.updateuser(
-               Keys.BASE_URL + "update-user",  HomeScreenActivity.token, fields
+                Keys.BASE_URL + "update-user", HomeScreenActivity.token, fields
             )!!.enqueue(object : Callback<LoginJson?> {
                 override fun onResponse(
                     call: Call<LoginJson?>,
@@ -285,6 +340,109 @@ class CommonRepository(private val baseActivity: Application) {
                 }
 
                 override fun onFailure(call: Call<LoginJson?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+
+    }
+
+    fun clientListing(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (CilentListingModel) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.clientListing(
+                token,
+                Keys.BASE_URL + url
+            )!!.enqueue(object : Callback<CilentListingModel?> {
+                override fun onResponse(
+                    call: Call<CilentListingModel?>,
+                    response: Response<CilentListingModel?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            // faqmutableLiveData.setValue(response.body())
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<CilentListingModel?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+    }
+
+
+    fun qrCodeGenerate(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        jsonObject: JsonObject,
+        itemClick: (QrCodeGenerateModel) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.qrCodeGenerate(
+                Keys.BASE_URL + "qr-code", token, jsonObject
+            )!!.enqueue(object : Callback<QrCodeGenerateModel?> {
+                override fun onResponse(
+                    call: Call<QrCodeGenerateModel?>,
+                    response: Response<QrCodeGenerateModel?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            // faqmutableLiveData.setValue(response.body())
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<QrCodeGenerateModel?>, t: Throwable) {
                     baseActivity.stopProgressDialog()
                 }
             })

@@ -100,8 +100,6 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         }
         binder.checkout.setOnClickListener {
             locationPermission()
-
-
         }
 
         binder.tvviewmore.setOnClickListener {

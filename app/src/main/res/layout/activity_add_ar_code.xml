@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,8 +18,6 @@
                 android:layout_height="match_parent">
 
 
-
-
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -32,14 +29,17 @@
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/iv_back">
-                  <include layout="@layout/common_toolbar"/>
+
+                    <include layout="@layout/common_toolbar" />
+
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/timelayout"
-                        android:layout_marginTop="@dimen/_15sdp"
+                        android:id="@+id/clientLayout"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_15sdp"
                         android:hint="Select client"
+                        app:errorEnabled="true"
                         app:hintEnabled="true"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
@@ -56,23 +56,22 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/namelayout"
+                        android:id="@+id/addresslayout"
                         style="@style/materialStyle"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:hint="Address"
+                        app:errorEnabled="true"
                         app:hintEnabled="true"
                         app:hintTextColor="@color/black_1"
                         app:layout_goneMarginEnd="@dimen/_32sdp"
                         app:layout_goneMarginStart="@dimen/_32sdp">
 
                         <androidx.appcompat.widget.AppCompatEditText
-                            android:id="@+id/etusername"
+                            android:id="@+id/etaddress"
                             style="@style/edittextlogintitle"
-                            android:drawablePadding="@dimen/_10sdp"
-                            />
+                            android:drawablePadding="@dimen/_10sdp" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -82,8 +81,8 @@
                         style="@style/mainbutton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:padding="@dimen/_8sdp">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -107,7 +106,6 @@
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 
             </androidx.appcompat.widget.LinearLayoutCompat>
