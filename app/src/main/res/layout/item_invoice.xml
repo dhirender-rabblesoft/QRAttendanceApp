@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/_10sdp"
-        app:cardMaxElevation="@dimen/_5sdp"
 
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,8 +48,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
-                    android:text="Invoice ID : 2200658254511"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
 
             </RelativeLayout>
@@ -66,7 +64,7 @@
                     style="@style/regularfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Due Date :"
+                    android:text="Date :"
                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -78,8 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_5sdp"
-                    android:text="20-06-2043 "
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintStart_toEndOf="@+id/tvdatelabel"
                     app:layout_constraintTop_toTopOf="parent" />

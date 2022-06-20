@@ -30,8 +30,7 @@
                 android:drawableStart="@drawable/ic_calendar_line_small"
                 android:drawablePadding="@dimen/_10sdp"
                 android:paddingStart="@dimen/_10sdp"
-                android:text="15-05-2022"
-                android:textColor="@color/black_1"
+                 android:textColor="@color/black_1"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -75,8 +74,7 @@
                 android:drawablePadding="@dimen/_5sdp"
                 android:paddingStart="@dimen/_10sdp"
 
-                android:text="02:00 PM "
-                android:textColor="@color/black_1"
+                 android:textColor="@color/black_1"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintStart_toEndOf="@+id/tvcheckintime"
                 app:layout_constraintTop_toBottomOf="@+id/tvdate" />

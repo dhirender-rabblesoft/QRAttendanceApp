@@ -5,6 +5,7 @@ import com.app.qrcodescanner.base.BaseAdapter
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.item_invoice.view.*
+import kotlinx.android.synthetic.main.item_invoice_tasklisting.view.*
 
 class InvoiceTaskListingAdapter(val baseActivity: KotlinBaseActivity, val itemClick: (Int) -> Unit) :
     BaseAdapter<String>(
@@ -12,11 +13,9 @@ class InvoiceTaskListingAdapter(val baseActivity: KotlinBaseActivity, val itemCl
     ) {
     override fun onBindViewHolder(holder: IViewHolder, position: Int) {
         holder.itemView.apply {
-
+            tvtaskname.text=list[position]
         }
     }
 
-    override fun getItemCount(): Int {
-        return 5
-    }
+
 }

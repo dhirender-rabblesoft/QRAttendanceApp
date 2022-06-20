@@ -30,6 +30,7 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
     var bundle= Bundle()
     var time=""
     var url=""
+    var type=""
     var dailog : ComfirmDailogue?=null
     fun setBinder(binding: ActivityQrattendanceDetailsBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
@@ -45,9 +46,11 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
         if (bundle.getString(Keys.USER_TYPE).equals("1"))
         {
             check="Check In."
+            type="1"
             url=Keys.CHECKIN
         }
         else{
+            type="2"
             check="Check Out."
             url=Keys.CHECKOUT
         }
@@ -85,7 +88,16 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
     private  fun checkinoutapi()
     {
         var jsonObject=JsonObject()
-        jsonObject.addProperty(Keys.punch_in,Utils.getcurrentdate()+" "+time)
+        if (type.equals("1"))
+        {
+
+            jsonObject.addProperty(Keys.punch_in,Utils.getcurrentdate()+" "+time)
+        }
+        else
+        {
+            jsonObject.addProperty(Keys.punch_out,Utils.getcurrentdate()+" "+time)
+
+        }
         jsonObject.addProperty(Keys.latitude,bundle.getString(Keys.LAT))
         jsonObject.addProperty(Keys.longitude,bundle.getString(Keys.LNG))
         commonRepository.changepassword(baseActivity,url,HomeScreenActivity.token,jsonObject,true){

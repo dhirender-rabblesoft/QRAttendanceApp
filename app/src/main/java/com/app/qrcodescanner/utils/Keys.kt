@@ -1,13 +1,13 @@
 package com.app.qrcodescanner.utils
 
-object Keys {
-    const val  BASE_URL="http://18.219.171.249/hrms-backend/public/api/"
+object Keys
+{
+    //const val  BASE_URL="http://18.219.171.249/hrms-backend/public/api/"
+    const val   BASE_URL="https://cac3-2405-201-5007-b08b-9848-8182-3c58-bb01.ngrok.io/hrms-app/public/api/"
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
-    const val USER_TYPE = "user_type"
-
-
+    const val   USER_TYPE = "user_type"
 
     /*RESPONSE CODE*/
     val RESPONSE_SUCESS = 200
@@ -18,6 +18,8 @@ object Keys {
     const val RESETPASSWORD="reset-possword"
     const val CHANGEPASSWORD="change-password"
     const val contactus="contactus"
+    const val ATTANDANCELISTING="attendance-listing"
+    const val INVOICELISTING="invoice-listing"
 
     const val email="email"
     const val code="code"
@@ -37,9 +39,9 @@ object Keys {
     const val old_password="old_password"
     const val new_password="new_password"
     const val punch_in="punch_in"
+    const val punch_out="punch_out"
     const val latitude="latitude"
     const val longitude="longitude"
-
 
     //Api End Points
     const val CLIENT_LISTING_END_POINT = "clients"

@@ -269,6 +269,7 @@
                             android:layout_alignParentTop="true"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:text="Price"
+                            android:visibility="invisible"
                             android:textColor="@color/black_3"
                             android:textSize="@dimen/_12sdp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -299,6 +300,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
+                            android:visibility="invisible"
                             android:layout_alignParentTop="true"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:text="Subtotal"
@@ -316,6 +318,8 @@
                             android:layout_alignParentEnd="true"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:text="$ 2300"
+                            android:visibility="invisible"
+
                             android:textColor="@color/black_1"
                             android:textSize="@dimen/_12sdp"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -328,6 +332,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:visibility="invisible"
+
                             android:layout_marginTop="@dimen/_10sdp"
                             android:text="Overtime"
                             android:textColor="@color/black_3"
@@ -342,6 +348,8 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentTop="true"
                             android:layout_alignParentEnd="true"
+                            android:visibility="invisible"
+
                             android:layout_marginTop="@dimen/_10sdp"
                             android:text="$ 100"
                             android:textColor="@color/black_1"
@@ -354,6 +362,8 @@
                             android:id="@+id/view3"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_1sdp"
+                            android:visibility="invisible"
+
                             android:layout_marginTop="@dimen/_10sdp"
                             android:background="@color/black_3"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -369,6 +379,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
                             android:layout_marginTop="@dimen/_10sdp"
+
                             android:text="Total Amount"
                             android:textColor="@color/black_3"
                             android:textSize="@dimen/_12sdp"

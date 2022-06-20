@@ -3,19 +3,33 @@ package com.app.qrcodescanner.adapter
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.BaseAdapter
 import com.app.qrcodescanner.base.KotlinBaseActivity
+import com.app.qrcodescanner.extension.gone
+import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.extension.visible
+import com.app.qrcodescanner.model.AttandanceListing
+import com.app.qrcodescanner.utils.Utils
+import kotlinx.android.synthetic.main.item_checkin_out_list.view.*
 import kotlinx.android.synthetic.main.item_faq.view.*
 
 class AttendanceListingAdapter(val baseActivity: KotlinBaseActivity, val itemClick: (Int) -> Unit) :
-    BaseAdapter<String>(R.layout.item_checkin_out_list) {
+    BaseAdapter<AttandanceListing.Data>(R.layout.item_checkin_out_list) {
     override fun onBindViewHolder(holder: IViewHolder, position: Int) {
 
         holder.itemView.apply {
+            tvdate.text=Utils.formateDateFromstring(Utils.DATETIMEFORMAT,Utils.DATEFORMAT,list[position].punch_in)
+            tvcheckintime.text=Utils.formateDateFromstring(Utils.DATETIMEFORMAT,Utils.TIMEFORMAT,list[position].punch_in)
+            if (list[position].punch_out.isNotNull())
+            {
+                tvcheckouttime.visible()
+                tvcheckouttime.text=Utils.formateDateFromstring(Utils.DATETIMEFORMAT,Utils.TIMEFORMAT,list[position].punch_out)
+            }
+            else{
+                tvcheckouttime.gone()
+
+            }
 
         }
     }
 
-    override fun getItemCount(): Int {
-        return 10
 
-    }
 }

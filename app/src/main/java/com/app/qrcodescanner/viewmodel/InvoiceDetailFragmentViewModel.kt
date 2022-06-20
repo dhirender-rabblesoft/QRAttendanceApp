@@ -20,20 +20,9 @@ class InvoiceDetailFragmentViewModel(application: Application) : AppViewModel(ap
         this.mContext = fragmentInvoiceDetailFragementBinding.root.context
         this.baseActivity = baseActivity
 //        donwloadInvoice()
-        setInvoiceTaskAdapter()
-    }
-
-    private fun setInvoiceTaskAdapter() {
-        val linearLayoutManager =
-            LinearLayoutManager(baseActivity, LinearLayoutManager.VERTICAL, false)
-        binder.rvinvoicelist.layoutManager = linearLayoutManager
-        val invoiceTaskListingAdapter = InvoiceTaskListingAdapter(baseActivity) {
-
-        }
-        binder.rvinvoicelist.adapter = invoiceTaskListingAdapter
+     }
 
 
-    }
 
 //    private fun donwloadInvoice() {
 //        binder.loginbutton.setOnClickListener {

@@ -40,9 +40,14 @@ class GenrateQrCode : KotlinBaseActivity() {
         setContentView(R.layout.activity_genrate_qr_code)
         parsedata()
         setToolbar()
-        setQrCodeListingApi()
+
         setscrolllistner()
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setQrCodeListingApi()
     }
     private  fun setscrolllistner()
     {

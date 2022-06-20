@@ -398,6 +398,106 @@ class CommonRepository(private val baseActivity: Application) {
         }
 
     }
+ fun attandancelisting(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (AttandanceListing) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.attandancelisting(
+                token,
+                Keys.BASE_URL + url
+            )!!.enqueue(object : Callback<AttandanceListing?> {
+                override fun onResponse(
+                    call: Call<AttandanceListing?>,
+                    response: Response<AttandanceListing?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            // faqmutableLiveData.setValue(response.body())
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<AttandanceListing?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+    }
+    fun invoicelisting(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (InvoiceListJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.invoicelisting(
+                token,
+                Keys.BASE_URL + url
+            )!!.enqueue(object : Callback<InvoiceListJson?> {
+                override fun onResponse(
+                    call: Call<InvoiceListJson?>,
+                    response: Response<InvoiceListJson?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            // faqmutableLiveData.setValue(response.body())
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<InvoiceListJson?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+    }
 
 
     fun qrCodeGenerate(

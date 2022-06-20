@@ -19,6 +19,18 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Url url: String
     ): Call<CilentListingModel>?
+     @Headers("Accept: application/json")
+    @GET
+    fun attandancelisting(
+        @Header("Authorization") token: String,
+        @Url url: String
+    ): Call<AttandanceListing>?
+    @Headers("Accept: application/json")
+    @GET
+    fun invoicelisting(
+        @Header("Authorization") token: String,
+        @Url url: String
+    ): Call<InvoiceListJson>?
 
     @Headers("Accept: application/json")
     @POST

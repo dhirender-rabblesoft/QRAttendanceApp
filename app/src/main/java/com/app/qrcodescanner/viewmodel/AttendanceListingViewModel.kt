@@ -7,13 +7,17 @@ import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.dailog.FilterDailog
 import com.app.qrcodescanner.databinding.ActivityAttendanceListingScreenBinding
+import com.app.qrcodescanner.model.AttandanceListing
+import com.app.qrcodescanner.reposiory.CommonRepository
+import com.app.qrcodescanner.ui.HomeScreenActivity
+import com.app.qrcodescanner.utils.Keys
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 
 class AttendanceListingViewModel(application: Application) : AppViewModel(application) {
     private lateinit var binder: ActivityAttendanceListingScreenBinding
     private lateinit var baseActivity: KotlinBaseActivity
     private lateinit var mContext: Context
-
+    var commonRepository=CommonRepository(application)
     fun setBinder(
         binding: ActivityAttendanceListingScreenBinding,
         baseActivity: KotlinBaseActivity
@@ -21,8 +25,8 @@ class AttendanceListingViewModel(application: Application) : AppViewModel(applic
         this.binder = binding
         this.mContext = binding.root.context
         this.baseActivity = baseActivity
-        setAttendanceListingAdapter()
         setToolbar()
+        callApi()
 
     }
 
@@ -39,12 +43,20 @@ class AttendanceListingViewModel(application: Application) : AppViewModel(applic
             baseActivity.onBackPressed()
         }
     }
+    private  fun callApi()
+    {
+        commonRepository.attandancelisting(baseActivity,HomeScreenActivity.token,Keys.ATTANDANCELISTING){
+            setAttendanceListingAdapter(it.data as ArrayList<AttandanceListing.Data>)
+        }
+    }
 
-    private fun setAttendanceListingAdapter() {
+    private fun setAttendanceListingAdapter(list:ArrayList<AttandanceListing.Data>)
+    {
 
         val recentListAdapter = AttendanceListingAdapter(baseActivity) {
 
         }
+        recentListAdapter.addNewList(list)
         binder.rvRecentListAdapter.adapter = recentListAdapter
     }
 

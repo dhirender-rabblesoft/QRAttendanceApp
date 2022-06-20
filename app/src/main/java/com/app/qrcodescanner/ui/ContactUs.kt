@@ -64,8 +64,7 @@ class ContactUs : KotlinBaseActivity() {
 
         if (binding.etusername.text?.trim().toString().isEmpty()) {
             binding.namelayout.error = "Please enter subject"
-            showtoast("Please enter subject")
-            return false
+             return false
         }
 //        if (binding.etemail.text?.trim().toString().isEmpty()) {
 //            binding.emaillayout.error = getString(R.string.v_emailvalidation)
@@ -80,8 +79,7 @@ class ContactUs : KotlinBaseActivity() {
 //        }
         if (binding.ettextarea.text?.trim().toString().isEmpty()) {
             binding.textarealayout.error = getString(R.string.v_validtestfield)
-            showtoast(getString(R.string.v_validtestfield))
-            return false
+             return false
         }
         return true
 

@@ -18,6 +18,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
+import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,10 +29,25 @@ object Utils {
     var RABBLESOFT_LAT = "30.8934667"
     var RABBLESOFT_LNG = "75.8290889"
     var WEBURL = "75.8290889"
+    const val DATETIMEFORMAT="yyyy-MM-dd HH:mm:ss"
+    const val DATEFORMAT="dd-MMM-yyyy"
+    const val TIMEFORMAT="hh:mm aa"
+
     const val DATEFORMAT2="yyyy-MM-dd"
     const val TIMEFORMAT2="hh:mm:ss"
 
-
+    fun formateDateFromstring(inputFormat: String, outputFormat: String, inputDate: String): String {
+        var parsed: Date? = null
+        var outputDate = ""
+        var df_input = SimpleDateFormat(inputFormat, Locale.getDefault())
+        var df_output = SimpleDateFormat(outputFormat, Locale.getDefault())
+        try {
+            parsed = df_input.parse(inputDate)
+            outputDate = df_output.format(parsed)
+        } catch (e: ParseException) {
+        }
+        return outputDate
+    }
 
 
     fun hideKeyBoard(c: Context, v: View) {

@@ -12,6 +12,8 @@
     <string name="comfirm_password">Comfirm Password</string>
     <string name="nointernet">Internet Connection is not available</string>
     <string name="somthingwentwrong">Something Went Wrong</string>
+    <string name="nopermissiongrant">No Permission grant .please allow permission</string>
+
     <string-array name="food_time_array">
         <item>Less Then 10 Min</item>
         <item>Less Then 20 Min</item>
