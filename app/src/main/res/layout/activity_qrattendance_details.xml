@@ -46,6 +46,7 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvcompanyname"
                 style="@style/regularfont"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
@@ -114,7 +115,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:text="Once User Comfirm the Attendance then the working hours will be start and If User checkout then the working time is over OR Day OFF."
+                android:text="Once User Confirm the Attendance then the working hours will be start and If User checkout then the working time is over OR Day OFF."
                 android:textColor="@color/red"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -131,24 +132,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvwarning">
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btcomfirm"
-                    style="@style/mainbutton"
-                    android:layout_width="0dp"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_weight="1"
-                    android:text="Comfirm"
-                    android:textAllCaps="false" />
+
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btcancel"
                     style="@style/mainbutton2"
                     android:layout_width="0dp"
-                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_weight="1"
                     android:text="Cancel"
+                    android:textAllCaps="false" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btcomfirm"
+                    style="@style/mainbutton"
+                    android:layout_width="0dp"
+                    android:layout_marginStart="@dimen/_10sdp"
+
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:text="Confirm"
                     android:textAllCaps="false" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

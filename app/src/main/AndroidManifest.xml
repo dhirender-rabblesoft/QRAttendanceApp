@@ -31,15 +31,19 @@
         android:theme="@style/Theme.QRCodeScanner"
         android:usesCleartextTraffic="true">
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.AddArCode"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.GenrateQrCode"
             android:exported="false" />
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.ChangePassWord"
             android:exported="false" />
         <activity
+
             android:name=".ui.FAQQueryActivity"
             android:exported="false"
             android:screenOrientation="portrait" />

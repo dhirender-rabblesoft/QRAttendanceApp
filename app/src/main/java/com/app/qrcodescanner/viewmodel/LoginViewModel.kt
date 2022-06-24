@@ -88,16 +88,15 @@ class LoginViewModel(application: Application) : AppViewModel(application)
 
                 if (!it.data.user.role.equals("super_admin"))
                 {
-                    Log.e("1111111111111111111","0000000000")
-                    SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
+                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
                     baseActivity.openA(HomeScreenActivity::class)
                 }
                 else{
-                    Log.e("234234234","0000000000")
-                    SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
+                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
                     baseActivity.openA(GenrateQrCode::class)
                     //baseActivity.customSnackBar("Only employee can login",false)
                 }
+                baseActivity.showtoast("Login Successfully")
 
             }
         }

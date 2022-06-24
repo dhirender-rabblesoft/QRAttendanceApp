@@ -175,8 +175,8 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
-                        }
+                            baseActivity.unauthrizeddialog()
+                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(
                                 baseActivity.getString(R.string.somthingwentwrong),
@@ -226,7 +226,8 @@ class CommonRepository(private val baseActivity: Application) {
                                 }
                             }
                             Keys.UNAUTHoRISE -> {
-                                // faqmutableLiveData.setValue(response.body())
+                                baseActivity.unauthrizeddialog()
+
                             }
                             in 500..512 -> {
                                 baseActivity.customSnackBar(
@@ -278,7 +279,8 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
+                            baseActivity.unauthrizeddialog()
+
                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(
@@ -327,7 +329,8 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
+                            baseActivity.unauthrizeddialog()
+
                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(
@@ -379,7 +382,8 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
+                            baseActivity.unauthrizeddialog()
+
                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(
@@ -402,13 +406,16 @@ class CommonRepository(private val baseActivity: Application) {
         baseActivity: KotlinBaseActivity,
         token: String,
         url: String,
+        loading:Boolean=true,
         itemClick: (AttandanceListing) -> Unit
     ) {
         if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
             baseActivity.nointernershowToast()
         } else {
-
-            baseActivity.startProgressDialog()
+            if (loading)
+            {
+                baseActivity.startProgressDialog()
+            }
             retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
                 APIInterface::class.java
             )
@@ -429,7 +436,8 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
+                            baseActivity.unauthrizeddialog()
+
                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(
@@ -479,7 +487,7 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
+                            baseActivity.unauthrizeddialog()
                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(
@@ -530,7 +538,59 @@ class CommonRepository(private val baseActivity: Application) {
                             baseActivity.parseError(response)
                         }
                         Keys.UNAUTHoRISE -> {
-                            // faqmutableLiveData.setValue(response.body())
+                            baseActivity.unauthrizeddialog()
+
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<QrCodeGenerateModel?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+
+    }
+    fun change_qrstatus(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        jsonObject: JsonObject,
+        itemClick: (QrCodeGenerateModel) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.qrCodeGenerate(
+                Keys.BASE_URL + "change-status", token, jsonObject
+            )!!.enqueue(object : Callback<QrCodeGenerateModel?> {
+                override fun onResponse(
+                    call: Call<QrCodeGenerateModel?>,
+                    response: Response<QrCodeGenerateModel?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+
                         }
                         in 500..512 -> {
                             baseActivity.customSnackBar(

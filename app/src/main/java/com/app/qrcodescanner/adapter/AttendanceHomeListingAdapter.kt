@@ -31,8 +31,8 @@ class AttendanceHomeListingAdapter(
                     Utils.formateDateFromstring(Utils.DATETIMEFORMAT, Utils.TIMEFORMAT,list[position].punch_out)
             }
             else{
-                tvcheckouttime.gone()
-
+                tvcheckouttime.visible()
+                tvcheckouttime.text="N/A"
             }
             if (position == 4) {
                 clmorecontainer.visible()

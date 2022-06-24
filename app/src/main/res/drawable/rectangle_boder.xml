@@ -7,6 +7,6 @@
         android:bottomRightRadius="@dimen/_5sdp"/>
 
         <stroke
-            android:width="1dip"
+            android:width="0.5dip"
             android:color="@color/black_1" />
 </shape>

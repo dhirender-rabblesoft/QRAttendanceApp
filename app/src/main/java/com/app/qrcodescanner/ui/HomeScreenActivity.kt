@@ -28,33 +28,28 @@ class HomeScreenActivity : KotlinBaseActivity() {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home_screen)
         viewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
+        viewModel.setBinder(binding, this)
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        parsedata()
-        if (!isfirstime)
-        {
-            viewModel.setBinder(binding, this)
-            isfirstime=true
-        }
-    }
-    fun parsedata()
+    override fun onResume()
     {
-        val data=SharedPreferenceManager(this).getString(Keys.USERDATA).toString()
-        val gson = Gson()
-        userdata = gson.fromJson(data, LoginJson::class.java)
-        if (token.isEmpty())
-        {
-            token="Bearer "+SharedPreferenceManager(this).getString(Keys.TOKEN).toString()
-            Log.e("token", token)
-        }
 
+        super.onResume()
+        viewModel.parsedata()
+        binding.bottomNavigationView.selectedItemId=R.id.home
+//        parsedata()
+//        if (!isfirstime)
+//        {
+//
+//            isfirstime=true
+//        }
     }
+
     companion object{
         var userdata:LoginJson?=null
         var token=""
+        var isEditProfile=""
     }
 
 

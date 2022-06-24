@@ -10,6 +10,7 @@ import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityInvoiceBinding
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.invisible
+import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.fragement.InvoiceDetailFragement
 import com.app.qrcodescanner.model.InvoiceListJson
 import com.app.qrcodescanner.reposiory.CommonRepository
@@ -58,6 +59,13 @@ class InvoiceViewModel(application: Application) : AppViewModel(application)
     }
 
     private fun setInvoiceListingAdapter(list:ArrayList<InvoiceListJson.Data>) {
+        if (list.size==0)
+        {
+            binder.tvnodata.visible()
+        }
+        else{
+            binder.tvnodata.gone()
+        }
         val layoutmanger = LinearLayoutManager(baseActivity, LinearLayoutManager.VERTICAL, false)
         binder.rvInvoicelisting.layoutManager = layoutmanger
         val invoiceListing = InvoiceListingAdapter(baseActivity) {

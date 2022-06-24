@@ -53,7 +53,7 @@ class ChangePassWord : KotlinBaseActivity()
         }
         if (etconfirmpassword.text.toString().trim().isEmpty())
         {
-            confirmpasswordlayout.error="Please enter new  password"
+            confirmpasswordlayout.error="Please enter confirm  password"
             return false
         }
         if (!etconfirmpassword.text.toString().trim().equals(etnewpassword.text.toString().trim()))
@@ -73,6 +73,7 @@ class ChangePassWord : KotlinBaseActivity()
             HomeScreenActivity.token=""
             SharedPreferenceManager(this).saveString(Keys.USERDATA,"")
             SharedPreferenceManager(this).saveString(Keys.USERID,"")
+            showtoast("Password change successfully")
             openA(LoginActivity::class)
             finishAffinity()
         }

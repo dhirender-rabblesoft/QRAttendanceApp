@@ -24,7 +24,8 @@ class AttendanceListingAdapter(val baseActivity: KotlinBaseActivity, val itemCli
                 tvcheckouttime.text=Utils.formateDateFromstring(Utils.DATETIMEFORMAT,Utils.TIMEFORMAT,list[position].punch_out)
             }
             else{
-                tvcheckouttime.gone()
+                tvcheckouttime.visible()
+                tvcheckouttime.text="N/A"
 
             }
 

@@ -48,6 +48,8 @@ class CreatePasswordViewModel(application: Application) : AppViewModel(applicati
         jsonObject.addProperty(Keys.password,binder.etpassword.text.toString().trim())
         jsonObject.addProperty(Keys.confirm_password,binder.etpassword.text.toString().trim())
         commonRepository.forgorpassword(baseActivity,Keys.RESETPASSWORD,jsonObject,ishowloader = true){
+            baseActivity.showtoast("Password reset successfully")
+
             baseActivity.openA(LoginActivity::class)
             baseActivity.finishAffinity()
         }

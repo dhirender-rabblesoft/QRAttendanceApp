@@ -8,9 +8,14 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/attandance_size.xml" value="0.1615" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/faq_size.xml" value="0.1615" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/home_size.xml" value="0.1615" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/ic_baseline_filter_alt_24.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1615" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/ic_timecard.xml" value="0.1615" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/ic_user_profile.xml" value="0.1615" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/info_size.xml" value="0.1615" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/invoice_size.xml" value="0.1615" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/profile_size.xml" value="0.1615" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/rectangle_boder.xml" value="0.1615" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/drawable/support_size.xml" value="0.1275" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_add_ar_code.xml" value="0.25" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_attendance_listing_screen.xml" value="0.24722222222222223" />
@@ -18,6 +23,7 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_contact_us.xml" value="0.334375" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_create_password.xml" value="0.334375" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_faqactivity.xml" value="0.28072916666666664" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_genrate_qr_code.xml" value="0.2" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_home_screen.xml" value="0.33" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/activity_invoice.xml" value="0.334375" />
@@ -26,14 +32,17 @@
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/common_toolbar.xml" value="0.334375" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/custom_snakbar2.xml" value="0.334375" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/dropdown_item.xml" value="0.334375" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/fragment_comfirm_dailog.xml" value="0.2984375" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/fragment_filter_dailog.xml" value="0.17248062015503876" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/fragment_invoice_detail_fragement.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/item_checkin_out_list.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/item_faq.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/item_invoice.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/item_invoice_tasklisting.xml" value="0.3145833333333333" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/item_qr_code_list.xml" value="0.334375" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/item_qr_code_list.xml" value="0.22" />
         <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/progress_dialog.xml" value="0.334375" />
-        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/side_menu_bar.xml" value="0.4218009478672986" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/layout/side_menu_bar.xml" value="0.25" />
+        <entry key="..\:/Users/ASUS/AndroidStudioProjects/QRAttendanceApp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.3145833333333333" />
         <entry key="..\:/Users/asus/.gradle/caches/transforms-3/3eea16b4f8a9fe563231f5ae5eb9948c/transformed/material-1.6.1/res/drawable/mtrl_ic_arrow_drop_down.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable-v24/checkout_image_holder.xml" value="0.282" />
         <entry key="..\:/Users/asus/AndroidStudioProjects/QRCodeScanner/app/src/main/res/drawable-v24/ic_calendar_line_small.xml" value="0.282" />

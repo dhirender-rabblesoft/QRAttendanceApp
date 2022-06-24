@@ -23,8 +23,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.extension.getDecorView
+import com.app.qrcodescanner.extension.showConfirmAlert
 import com.app.qrcodescanner.listner.KotlinBaseListener
 import com.app.qrcodescanner.navigator.Navigator
+import com.app.qrcodescanner.ui.HomeScreenActivity
+import com.app.qrcodescanner.ui.LoginActivity
+import com.app.qrcodescanner.utils.Keys
+import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.google.android.material.snackbar.Snackbar
 import org.json.JSONObject
 import retrofit2.Response
@@ -120,7 +125,8 @@ open class KotlinBaseActivity(@IdRes private val container: Int = 0) : AppCompat
     {
 
         val jsonObj = JSONObject(response.errorBody()?.string().toString())
-        customSnackBar(jsonObj.getString("message"),true)
+        showtoast(jsonObj.getString("message"))
+      //  customSnackBar(jsonObj.getString("message"),true)
         //showtoast(jsonObj.getString("message"))
 
     }
@@ -183,7 +189,18 @@ open class KotlinBaseActivity(@IdRes private val container: Int = 0) : AppCompat
         snackbar.show()
     }
 
+    fun unauthrizeddialog()
+    {
+        showConfirmAlert("",getString(R.string.unauthrised),getString(R.string.ok),"",onCancel = {
 
+        },onConfirmed = {
+            HomeScreenActivity.token=""
+            SharedPreferenceManager(this).saveString(Keys.USERDATA,"")
+            SharedPreferenceManager(this).saveString(Keys.USERID,"")
+            openA(LoginActivity::class)
+            finishAffinity()
+        })
+    }
 
     fun download(url: String) {
         val downloadManger = this.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager

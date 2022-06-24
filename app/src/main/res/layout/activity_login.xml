@@ -59,7 +59,7 @@
                         android:textColorHint="@color/black_1"
                         app:boxStrokeWidthFocused="@dimen/_1sdp"
                         app:errorEnabled="true"
-                        app:errorIconTint="@color/white"
+
                         app:layout_goneMarginEnd="@dimen/_32sdp"
                         app:layout_goneMarginStart="@dimen/_32sdp">
 

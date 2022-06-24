@@ -30,23 +30,13 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_15sdp">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvsorttitle"
-                    style="@style/semiboldfont"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sort_by"
-                    android:textColor="@color/black_1"
-                    android:textSize="@dimen/_16sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvsort"
                     style="@style/semiboldfont"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/sort_by"
+                    android:text="@string/filter"
                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_16sdp"
                     app:layout_constraintEnd_toStartOf="@+id/btcancel"
@@ -68,6 +58,7 @@
                     android:id="@+id/sortbyspinnercontainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/rectangle_boder"
                     android:orientation="horizontal"
@@ -104,6 +95,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_20sdp"
                     android:text="@string/filter"
+                    android:visibility="gone"
                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_16sdp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -156,57 +148,45 @@
                     android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/radioGroup">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/startdatewrap"
-                        style="@style/materialStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:boxStrokeColor="@color/primary_color"
-                        app:boxStrokeWidthFocused="@dimen/_1sdp"
-                        app:startIconDrawable="@drawable/ic_calendar_line_small">
 
-                        <AutoCompleteTextView
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/startdate"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:hint="Start Date"
                             android:inputType="date"
                             android:padding="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/rectangle_boder"
+                            android:drawablePadding="@dimen/_5sdp"
+
+                            android:drawableStart="@drawable/ic_calendar_line_small"
+
                             android:textColor="@color/black_1"
                             android:textColorHint="@color/black_hint"
                             android:textSize="@dimen/_10sdp"
                             app:boxStrokeColor="@color/primary_color" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/enddatewrap"
-                        style="@style/materialStyle"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_weight="1"
-                        android:theme="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        app:boxStrokeColor="@color/primary_color"
-                        app:boxStrokeWidthFocused="@dimen/_1sdp"
-                        app:startIconDrawable="@drawable/ic_calendar_line_small">
 
-                        <AutoCompleteTextView
+
+                        <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/enddate"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginStart="@dimen/_5sdp"
                             android:hint="End Date"
                             android:inputType="date"
+                            android:layout_weight="1"
+                            android:background="@drawable/rectangle_boder"
                             android:padding="@dimen/_10sdp"
+                            android:drawablePadding="@dimen/_5sdp"
                             android:textColor="@color/black_1"
+                            android:drawableStart="@drawable/ic_calendar_line_small"
                             android:textColorHint="@color/black_hint"
                             android:textSize="@dimen/_10sdp"
                             app:boxStrokeColor="@color/primary_color" />
 
-                    </com.google.android.material.textfield.TextInputLayout>
 
 
                 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -12,6 +12,7 @@ import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.dailog.ComfirmDailogue
 import com.app.qrcodescanner.databinding.ActivityQrattendanceDetailsBinding
+import com.app.qrcodescanner.extension.capitalizesLetters
 import com.app.qrcodescanner.extension.invisible
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
@@ -26,12 +27,12 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
     private lateinit var binder: ActivityQrattendanceDetailsBinding
     private lateinit var baseActivity: KotlinBaseActivity
     private lateinit var mContext: Context
-    val commonRepository= CommonRepository(application)
-    var bundle= Bundle()
-    var time=""
-    var url=""
-    var type=""
-    var dailog : ComfirmDailogue?=null
+    val commonRepository = CommonRepository(application)
+    var bundle = Bundle()
+    var time = ""
+    var url = ""
+    var type = ""
+    var dailog: ComfirmDailogue? = null
     fun setBinder(binding: ActivityQrattendanceDetailsBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
         this.baseActivity = baseActivity
@@ -42,32 +43,41 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
     }
 
     private fun settoolbar() {
-        var check=""
-        if (bundle.getString(Keys.USER_TYPE).equals("1"))
-        {
-            check="Check In."
-            type="1"
-            url=Keys.CHECKIN
-        }
-        else{
-            type="2"
-            check="Check Out."
-            url=Keys.CHECKOUT
+        var check = ""
+        if (bundle.getString(Keys.USER_TYPE).equals("1")) {
+            check = "Check In."
+            type = "1"
+            url = Keys.CHECKIN
+        } else {
+            type = "2"
+            check = "Check Out."
+            url = Keys.CHECKOUT
         }
         binder.toolbar.tvtitle.setText("Detail")
-        time=Utils.getcurrenttime()
-        binder.tvusername.text="Name : "+HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
-        binder.tvdesignation.text="Designation : "+HomeScreenActivity.userdata?.data?.user?.role
-        binder.tvattendanceDate.text="Attendance Date : "+Utils.getcurrentdate()
-        binder.tvattendanceTime.text="$check : "+time
+        time = Utils.getcurrenttime()
+        binder.tvusername.text =
+            "Name : " + HomeScreenActivity.userdata?.data?.user?.first_name + " " + HomeScreenActivity.userdata?.data?.user?.last_name
+        binder.tvdesignation.text = "Designation : " + HomeScreenActivity.userdata?.data?.user?.role?.capitalizesLetters()
+        binder.tvattendanceDate.text = "Attendance Date : " + Utils.getcurrentdate()
+        var t1 = Utils.formateDateFromstring(Utils.TIMEFORMAT2, Utils.TIMEFORMAT, time)
+        binder.tvattendanceTime.text = "$check : " + t1
         binder.toolbar.ivback.invisible()
         binder.toolbar.ivdot.invisible()
     }
 
     private fun setClick() {
         binder.btcomfirm.setOnClickListener {
-              dailog = ComfirmDailogue("", "Are you sure you want to submit", "", baseActivity) {
-                 checkinoutapi()
+
+            dailog = ComfirmDailogue("", "Are you sure you want to submit", "", baseActivity) {
+                if (it.equals(0)) {
+                    dailog?.dismiss()
+                    callintent()
+
+                } else {
+
+                    checkinoutapi()
+                }
+
             }
             dailog?.show(baseActivity.supportFragmentManager, dailog?.tag)
 
@@ -78,29 +88,36 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
 
         }
     }
-    fun callintent()
-    {
+
+    fun callintent() {
         android.os.Handler(Looper.getMainLooper()).postDelayed({
-            baseActivity.openA(HomeScreenActivity::class)
+
+            val bundle = Bundle()
+            bundle.putString(Keys.ADDATTANANCE, Keys.ADDATTANANCE)
+            baseActivity.openA(HomeScreenActivity::class, bundle)
             finishAffinity(baseActivity)
         }, 200)
     }
-    private  fun checkinoutapi()
-    {
-        var jsonObject=JsonObject()
-        if (type.equals("1"))
-        {
 
-            jsonObject.addProperty(Keys.punch_in,Utils.getcurrentdate()+" "+time)
-        }
-        else
-        {
-            jsonObject.addProperty(Keys.punch_out,Utils.getcurrentdate()+" "+time)
+    private fun checkinoutapi() {
+        var jsonObject = JsonObject()
+        if (type.equals("1")) {
+
+            jsonObject.addProperty(Keys.punch_in, Utils.getcurrentdate() + " " + time)
+        } else {
+            jsonObject.addProperty(Keys.punch_out, Utils.getcurrentdate() + " " + time)
 
         }
-        jsonObject.addProperty(Keys.latitude,bundle.getString(Keys.LAT))
-        jsonObject.addProperty(Keys.longitude,bundle.getString(Keys.LNG))
-        commonRepository.changepassword(baseActivity,url,HomeScreenActivity.token,jsonObject,true){
+        jsonObject.addProperty(Keys.latitude, bundle.getString(Keys.LAT))
+        jsonObject.addProperty(Keys.longitude, bundle.getString(Keys.LNG))
+        commonRepository.changepassword(
+            baseActivity,
+            url,
+            HomeScreenActivity.token,
+            jsonObject,
+            true
+        ) {
+            baseActivity.showtoast("Attendance  added successfully")
             dailog?.dismiss()
             callintent()
         }

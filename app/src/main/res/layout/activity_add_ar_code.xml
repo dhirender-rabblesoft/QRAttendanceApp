@@ -61,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_20sdp"
-                        android:hint="Address"
+                        android:hint="Address 1"
                         app:errorEnabled="true"
                         app:hintEnabled="true"
                         app:hintTextColor="@color/black_1"
@@ -70,6 +70,47 @@
 
                         <androidx.appcompat.widget.AppCompatEditText
                             android:id="@+id/etaddress"
+                            style="@style/edittextlogintitle"
+                            android:drawablePadding="@dimen/_10sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/addresslayout2"
+                        style="@style/materialStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:hint="Address 2"
+                        app:errorEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/black_1"
+                        app:layout_goneMarginEnd="@dimen/_32sdp"
+                        app:layout_goneMarginStart="@dimen/_32sdp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etaddress2"
+                            style="@style/edittextlogintitle"
+                            android:drawablePadding="@dimen/_10sdp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/pincodelayout"
+                        style="@style/materialStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:hint="Pincode"
+                        app:errorEnabled="true"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/black_1"
+                        app:layout_goneMarginEnd="@dimen/_32sdp"
+                        app:layout_goneMarginStart="@dimen/_32sdp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etpincode"
+
                             style="@style/edittextlogintitle"
                             android:drawablePadding="@dimen/_10sdp" />
 
@@ -90,7 +131,6 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:drawableEnd="@drawable/update_image_holder"
                             android:drawablePadding="@dimen/_10sdp"
                             android:text="@string/submit"
                             android:textAlignment="center"

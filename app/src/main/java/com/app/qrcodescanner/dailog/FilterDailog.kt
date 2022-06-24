@@ -16,6 +16,7 @@ import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.model.FilterModel
 import com.app.qrcodescanner.utils.Utils
+import kotlinx.android.synthetic.main.activity_main.view.*
 
 
 class FilterDailog(
@@ -23,7 +24,7 @@ class FilterDailog(
     var msg: String,
     var buttontext: String,
     var baseActivity: KotlinBaseActivity,
-    var itemClick: (Int) -> Unit,
+    var itemClick: (String,String,String) -> Unit,
 
     ) : DailogBaseFragment() {
 
@@ -32,6 +33,7 @@ class FilterDailog(
     var filterlist: ArrayList<FilterModel>? = null
     var isDateShow = true
     var spinner_value = ""
+    var radioType=""
 
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -61,6 +63,11 @@ class FilterDailog(
         //Setting the ArrayAdapter data on the Spinner
         binding.sortbySpinner.setAdapter(adapter)
     }
+    private  fun clearfilter()
+    {
+        binding.startdate.setText("")
+        binding.enddate.setText("")
+    }
 
     private fun setClicks()
     {
@@ -85,14 +92,19 @@ class FilterDailog(
 
             when (checkId) {
                 R.id.last7days -> {
+                    radioType="2"
                     binding.datecontainer.gone()
+                    clearfilter()
 
                 }
                 R.id.last30days -> {
+                    radioType="1"
                     binding.datecontainer.gone()
+                    clearfilter()
 
                 }
                 R.id.custom -> {
+                    radioType="3"
                     binding.datecontainer.visible()
                 }
                 else -> return@setOnCheckedChangeListener
@@ -101,29 +113,43 @@ class FilterDailog(
 
         }
 
-        binding.startdatewrap.setStartIconOnClickListener {
-            if (isDateShow) {
-                isDateShow = false
-                Utils.shoedatepicker(baseActivity, binding.startdate, onConfirmed = {
-                    isDateShow = true
-                })
-            }
+        binding.startdate.setOnClickListener {
+            Utils.shoedatepicker(baseActivity, binding.startdate, onConfirmed = {
+
+            })
         }
-        binding.enddatewrap.setStartIconOnClickListener {
+        binding.enddate.setOnClickListener {
             if (binding.startdate.text.toString().trim().isEmpty()) {
                 baseActivity.showtoast("Please Select Start Date First")
-                return@setStartIconOnClickListener
+                 return@setOnClickListener
             }
-            if (isDateShow) {
-                isDateShow = false
-                Utils.shoedatepicker(baseActivity, binding.enddate, onConfirmed = {
-                    isDateShow = true
-                })
-            }
+            Utils.shoedatepicker(baseActivity, binding.enddate, onConfirmed = {
+
+            })
+
         }
 
         binding.btfilter.setOnClickListener {
-                     dismiss()
+          if ( binding.radioGroup.checkedRadioButtonId==-1)
+          {
+              baseActivity.showtoast("Please select  option")
+          }
+            else{
+                if (radioType.equals("3"))
+                {
+                    if (binding.enddate.text.toString().trim().isEmpty())
+                    {
+                        baseActivity.showtoast("Please select dates")
+                    }
+                    else{
+                        callapi()
+                    }
+                }
+              else{
+                    callapi()
+                }
+
+          }
 
         }
 
@@ -132,6 +158,11 @@ class FilterDailog(
         }
 
 
+    }
+    private  fun callapi()
+    {
+        itemClick(radioType,binding.startdate.text.toString(),binding.enddate.text.toString())
+        dismiss()
     }
 
 }

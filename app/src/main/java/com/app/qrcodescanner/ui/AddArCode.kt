@@ -45,46 +45,55 @@ class AddArCode : KotlinBaseActivity(), Listener {
 
     }
 
-    private fun setClick() {
+    private fun setClick()
+    {
         loginbutton.setOnClickListener {
             clientAddresss = etaddress.text.toString().trim()
             if (validation()) {
                 qrGenerateClientAPI()
             }
-
-
         }
-
 //        commonRepository.qrCodeGenerate(this,GenrateQrCode.token,)
     }
 
-    private fun qrGenerateClientAPI() {
+    private fun qrGenerateClientAPI()
+    {
         val jsonObject = JsonObject()
         jsonObject.addProperty("client_id", selectedClientID)
         jsonObject.addProperty("title", clientAddresss)
         jsonObject.addProperty("latitude", lat)
         jsonObject.addProperty("longitude", lng)
         commonRepository.qrCodeGenerate(this, GenrateQrCode.token,jsonObject){
+                showtoast("Address added successfully")
                 onBackPressed()
         }
     }
 
-    private fun validation(): Boolean {
+    private fun validation(): Boolean
+    {
         addresslayout.error = null
         clientLayout.error = null
+        pincodelayout.error = null
 
-        if (clientAddresss.isEmpty()) {
+        if (clientAddresss.isEmpty())
+        {
             addresslayout.error = getString(R.string.v_addressvalidation)
             return false
         }
-        if (ettime.text.toString().trim().equals("Choose")) {
+        if (ettime.text.toString().trim().equals("Choose"))
+        {
             clientLayout.error = getString(R.string.v_clentvalidation)
+            return false
+        }
+        if (etpincode.text.toString().trim().isEmpty()) {
+            pincodelayout.error ="Please enter pincode"
             return false
         }
         return true
     }
 
-    private fun setClientAdapter() {
+    private fun setClientAdapter()
+    {
 //        val foodtimearrays = resources.getStringArray(R.array.food_time_array)
         var timeadapter = ArrayAdapter(this, R.layout.dropdown_item, clientarray)
         ettime.setAdapter(timeadapter)
@@ -117,7 +126,8 @@ class AddArCode : KotlinBaseActivity(), Listener {
 
     }
 
-    private fun locationPermission() {
+    private fun locationPermission()
+    {
         val permissonList = ArrayList<String>()
         permissonList.add(Manifest.permission.ACCESS_FINE_LOCATION)
         permissonList.add(Manifest.permission.ACCESS_COARSE_LOCATION)

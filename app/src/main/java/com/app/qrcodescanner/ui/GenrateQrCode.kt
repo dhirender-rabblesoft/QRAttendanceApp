@@ -20,6 +20,7 @@ import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.activity_genrate_qr_code.*
 import kotlinx.android.synthetic.main.common_toolbar.*
@@ -47,13 +48,14 @@ class GenrateQrCode : KotlinBaseActivity() {
 
     override fun onResume() {
         super.onResume()
+        totalpage=0
+        currentPage=1
+        loading=true
         setQrCodeListingApi()
     }
     private  fun setscrolllistner()
     {
-        isswipe.setOnRefreshListener {
-            isswipe.isRefreshing=false
-        }
+
         rvRecentListAdapter.addOnScrollListener(object : RecyclerView.OnScrollListener()
         {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -87,11 +89,12 @@ class GenrateQrCode : KotlinBaseActivity() {
     private fun setToolbar() {
         ivback.gone()
         tvtitle.setText("Welcome Admin")
-        ivdot.setImageResource(R.drawable.logout)
+         ivdot.setImageResource(R.drawable.logout)
         ivdot.setOnClickListener {
             token=""
             SharedPreferenceManager(this).saveString(Keys.USERDATA,"")
             SharedPreferenceManager(this).saveString(Keys.USERID,"")
+            SharedPreferenceManager(this).saveString(Keys.TOKEN,"")
              openA(LoginActivity::class)
             finishAffinity()
          }
@@ -103,8 +106,13 @@ class GenrateQrCode : KotlinBaseActivity() {
     }
 
     private fun setQrCodeListingAdapter() {
-        val qrCodeListingAdapter = QrCodeListingAdapter(this) {
+        val qrCodeListingAdapter = QrCodeListingAdapter(this) {pos,data->
+            val jsonObject = JsonObject()
+            jsonObject.addProperty(Keys.qr_code_id, qrCodeListing[pos].id.toString())
+            jsonObject.addProperty(Keys.status, data)
+            commonRepository.change_qrstatus(this, GenrateQrCode.token,jsonObject){
 
+            }
         }
         rvRecentListAdapter.adapter = qrCodeListingAdapter
         qrCodeListingAdapter.addNewList(qrCodeListing)
@@ -145,6 +153,7 @@ class GenrateQrCode : KotlinBaseActivity() {
         commonRepository.qrCodeListing(this, token, Keys.QR_CLIENT_LISTING_END_POINT) {
             if (totalpage==0)
             {
+                qrCodeListing.clear()
                 totalpage=it.data.last_page
             }
             qrCodeListing.addAll(it.data.data)

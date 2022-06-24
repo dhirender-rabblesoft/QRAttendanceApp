@@ -17,6 +17,7 @@ import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
 import com.permissionx.guolindev.PermissionX
 import id.zelory.compressor.Compressor
+import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.coroutines.async
 import java.io.File
 

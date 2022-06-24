@@ -32,7 +32,9 @@ class Scanner : KotlinBaseActivity(), Listener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         location = EasyWayLocation(this, false, false, this)
+
         setContentView(R.layout.activity_scanner)
         codeScanner = CodeScanner(this, scanner_view)
         bundle= intent.extras!!
@@ -96,7 +98,7 @@ class Scanner : KotlinBaseActivity(), Listener {
                             openA(QRAttendanceDetails::class,bundle1)
                             finishAffinity()
                          } else {
-                            openA(HomeScreenActivity::class)
+
                             showtoast("Attendance can be marked between 200 meters of distance")
                             return@runOnUiThread
 
@@ -159,7 +161,7 @@ class Scanner : KotlinBaseActivity(), Listener {
             lat = location?.latitude.toString()
             lng = location?.longitude.toString()
             Log.e("latitude_location1542 ", location?.latitude.toString())
-            Log.e("logitue location ", location?.latitude.toString())
+            Log.e("logitue location ", location?.longitude.toString())
          }
 
     }

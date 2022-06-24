@@ -2,22 +2,30 @@ package com.app.qrcodescanner.viewmodel
 import android.app.Application
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+import android.icu.number.NumberFormatter.with
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityEditProfileBinding
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.app.qrcodescanner.utils.Utils.getMultiPart
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
 import com.canhub.cropper.CropImageView
 import com.canhub.cropper.options
 import com.google.gson.Gson
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
 import okhttp3.MultipartBody
@@ -53,6 +61,7 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
     {
         binder.toolbar.tvtitle.text="Edit Profile"
         binder.toolbar.ivdot.gone()
+        binder.toolbar.ivdot.setImageResource(R.drawable.edit)
         binder.tvusername.text=
             HomeScreenActivity.userdata?.data?.user?.first_name+" "+ HomeScreenActivity.userdata?.data?.user?.last_name
         binder.etusername.setText(
@@ -67,8 +76,64 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
         }
         if (HomeScreenActivity.userdata?.data?.user?.image.isNotNull())
         {
-            Glide.with(baseActivity).load(HomeScreenActivity.userdata?.data?.user?.image).diskCacheStrategy(DiskCacheStrategy.NONE)
-                .skipMemoryCache(true).into(binder.imageView1)
+
+            binder.homeprogress.visible()
+
+
+
+
+            Glide.with(baseActivity)
+                .load(HomeScreenActivity.userdata?.data?.user?.image.toString())
+                .  diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        binder.homeprogress.gone()
+                         return false
+                    }
+
+
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                         binder.homeprogress.gone()
+                        binder.imageView1.setImageResource(R.drawable.user)
+                        binder.homeprogress.gone()
+                        return false
+                    }
+                })
+                .into(binder.imageView1)
+
+//            Picasso.get()
+//                .load(HomeScreenActivity.userdata?.data?.user?.image.toString())
+//                .networkPolicy(NetworkPolicy.OFFLINE)
+//                .into(binder.imageView1, object: com.squareup.picasso.Callback {
+//                    override fun onSuccess() {
+//                        //set animations here
+//
+//
+//                    }
+//
+//                    override fun onError(e: java.lang.Exception?) {
+//
+//                        //do smth when there is picture loading error
+//                    }
+//                })
+//            Glide.with(baseActivity).load(HomeScreenActivity.userdata?.data?.user?.image).
+//
+//            diskCacheStrategy(DiskCacheStrategy.NONE)
+//                .placeholder(R.drawable.user)
+//                .skipMemoryCache(true).listener(object : RequestListener<String>{}).into(binder.imageView1)
 
         }
     }
@@ -100,13 +165,15 @@ class EditProfileViewModel(application: Application) : AppViewModel(application)
     //    getMultiPart(Keys.email, binder.etemail.text.toString())?.let { fields.add(it) }
         getMultiPart(Keys.phone_number, binder.etphonenumber.text.toString())?.let { fields.add(it) }
         if (file != null) {
-            getMultiPart("file", file!!)?.let { fields.add(it) }
+            getMultiPart("image", file!!)?.let { fields.add(it) }
 
         }
         commonRepository.updateprofile(baseActivity,fields){
             val gson = Gson()
             val json = gson.toJson(it)
             SharedPreferenceManager(baseActivity).saveString(Keys.USERDATA,json)
+            baseActivity.showtoast("Profile update successfully")
+            HomeScreenActivity.isEditProfile="1"
             baseActivity.onBackPressed()
          }
 

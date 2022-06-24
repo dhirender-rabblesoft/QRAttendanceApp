@@ -46,6 +46,7 @@
     <string name="v_validpassword">Please Enter Valid Password</string>
     <string name="v_validtestfield">Please Enter Your Query In Text Field</string>
     <string name="valid_code">Please Enter Valid OTP</string>
+    <string name="unauthrised">Session expired!!!</string>
 
     //permission
     <string name="permisionmsgfirst">Core fundamental are based on these permissions</string>
@@ -88,4 +89,5 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <string name="invoice">Invoice</string>
     <string name="submit_your_question">Submit Your Question</string>
     <string name="current_password">Current Password</string>
+    <string name="no_data_found">No data found</string>
 </resources>

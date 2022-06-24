@@ -51,7 +51,7 @@ class ComfirmDailogue(
             itemClick(1)
         }
         binding.btcancel.setOnClickListener {
-            baseActivity.openA(HomeScreenActivity::class)
+            itemClick(0)
             dismiss()
         }
     }

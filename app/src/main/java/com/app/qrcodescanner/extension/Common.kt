@@ -1,10 +1,14 @@
 package com.app.qrcodescanner.extension
 
 import android.app.Activity
+import android.app.AlertDialog
+import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import com.app.qrcodescanner.R
 import java.util.regex.Pattern
 
 
@@ -33,6 +37,41 @@ fun <T> T.isNotNull(): Boolean {
 }
 fun Activity.getDecorView(): View {
     return window.decorView
+}
+fun Context.showConfirmAlert(
+    title:String="",
+    message: String?, positiveText: String?
+    , negativeText: String?
+    , onConfirmed: () -> Unit = {}
+    , onCancel: () -> Unit = { }
+
+) {
+
+    if (message.isNullOrEmpty()) return
+
+    val builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        AlertDialog.Builder(this, R.style.customAlertheme)
+    } else {
+        AlertDialog.Builder(this)
+    }
+
+
+    builder.setTitle(title).setMessage(message)
+        .setCancelable(false)
+        .setPositiveButton(positiveText) { dialog, _ ->
+            onConfirmed.invoke()
+            dialog.dismiss()
+        }
+        .setNegativeButton(negativeText) { dialog, _ ->
+            onCancel.invoke()
+            dialog.dismiss()
+        }
+        .setNeutralButton(""){dialog, _ ->
+
+        }
+
+    val alert = builder.create()
+    alert.show()
 }
 
 

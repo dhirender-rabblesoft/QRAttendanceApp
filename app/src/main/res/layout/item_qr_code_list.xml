@@ -34,6 +34,7 @@
                 android:id="@+id/tvdate"
                 style="@style/semiboldfont"
                 android:layout_width="0dp"
+                app:layout_constraintEnd_toStartOf="@id/ivcheck2"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_5sdp"
                 android:text="15-05-2022"
@@ -42,6 +43,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_qrCode"
                 app:layout_constraintTop_toTopOf="parent" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_20sdp"
+                android:id="@+id/ivcheck2"
+                android:checked="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
 
 
             <androidx.appcompat.widget.AppCompatTextView

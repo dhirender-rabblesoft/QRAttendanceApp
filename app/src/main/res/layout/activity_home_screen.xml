@@ -24,298 +24,361 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="@dimen/_15sdp"
-                android:paddingEnd="@dimen/_15sdp"
-                android:paddingBottom="@dimen/_15sdp">
+                 >
 
-
-                <include
-                    android:id="@+id/toolbar"
-                    layout="@layout/common_toolbar"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <androidx.core.widget.NestedScrollView
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/lltoobar"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content">
+                    <include
+                        android:id="@+id/toolbar"
+                        layout="@layout/common_toolbar"
+  />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                     android:padding="@dimen/_15sdp"
+                     app:layout_constraintTop_toBottomOf="@id/lltoobar"
+                    app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="0dp">
+
+
+
+                        <androidx.core.widget.NestedScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            app:layout_constraintTop_toTopOf="parent"
+                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            >
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+
+                                <androidx.appcompat.widget.LinearLayoutCompat
+                                    android:id="@+id/clprofilecoantiner"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:gravity="center"
+                                    app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent">
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/iv_backgroundImg"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_40sdp"
+                                        android:scaleType="centerCrop"
+                                        android:src="@drawable/rectangle_gradle"
+                                        android:visibility="gone"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/ivbackgroundblur"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_40sdp"
+                                        android:background="@color/primary_color_blur"
+                                        android:scaleType="centerCrop"
+                                        android:visibility="gone"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:id="@+id/framelayout"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        android:layout_width="@dimen/_100sdp"
+                                        android:layout_height="@dimen/_100sdp">
+
+                                        <de.hdodenhof.circleimageview.CircleImageView
+                                            android:id="@+id/imageView1"
+                                            android:layout_width="match_parent"
+                                            app:civ_border_width="2dp"
+                                            android:src="@drawable/user"
+                                            app:civ_border_color="@color/primary_color"
+                                            android:layout_height="@dimen/_100sdp"
+                                            android:layout_marginTop="@dimen/_60sdp"
+                                            tools:ignore="MissingConstraints" />
+                                        <ProgressBar
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            android:id="@+id/homeprogress"
+                                            android:visibility="gone"
+                                            android:layout_width="@dimen/_30sdp"
+                                            android:layout_gravity="center"
+                                            android:layout_height="@dimen/_30sdp" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                                    <!--                    <androidx.appcompat.widget.AppCompatImageView-->
+                                    <!--                        android:id="@+id/profile_edit"-->
+                                    <!--                        android:layout_width="@dimen/_30sdp"-->
+                                    <!--                        android:layout_height="@dimen/_30sdp"-->
+                                    <!--                        android:src="@drawable/edit_profile"-->
+                                    <!--                        android:visibility="gone"-->
+                                    <!--                        app:layout_constraintBottom_toBottomOf="@+id/imageView1"-->
+                                    <!--                        app:layout_constraintEnd_toEndOf="@+id/imageView1" />-->
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvusername"
+                                        style="@style/semiboldfont"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:text="Alex Shdasdaaw"
+                                        android:textAlignment="center"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="@dimen/_16sdp"
+                                        app:layout_constraintTop_toBottomOf="@+id/imageView1" />
+
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:id="@+id/profile_edit"
+                                        android:layout_width="@dimen/_20sdp"
+                                        android:layout_height="@dimen/_20sdp"
+                                        android:elevation="@dimen/_10sdp"
+                                        android:src="@drawable/editing"
+                                        android:visibility="gone"
+                                        app:layout_constraintBottom_toBottomOf="@+id/tvusername"
+                                        app:layout_constraintStart_toEndOf="@+id/imageView1" />
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvuserdesignation"
+                                        style="@style/semiboldfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:text="Android Developer"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="@dimen/_14sdp"
+                                        app:layout_constraintTop_toBottomOf="@+id/tvusername" />
+                                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                                <androidx.constraintlayout.widget.ConstraintLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="@dimen/_3sdp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintTop_toBottomOf="@+id/clprofilecoantiner">
+
+                                    <View
+                                        android:id="@+id/view1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_1sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:background="@color/white_grey2"
+                                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                                    <androidx.appcompat.widget.LinearLayoutCompat
+                                        android:id="@+id/buttonContainer"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:orientation="horizontal"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/view1">
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            app:cardBackgroundColor="@color/green"
+                                            app:cardCornerRadius="@dimen/_10sdp"
+                                            app:cardElevation="@dimen/_3sdp"
+                                            app:cardUseCompatPadding="true">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/checkin"
+                                                style="@style/checkin"
+                                                android:layout_width="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginEnd="@dimen/_10sdp"
+                                                android:drawableStart="@drawable/checkin_image_holder_big"
+                                                android:drawablePadding="@dimen/_10sdp"
+                                                android:drawableTint="@color/white"
+
+                                                android:padding="@dimen/_10sdp"
+
+                                                android:text="CheckIn"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/white" />
+
+                                        </androidx.cardview.widget.CardView>
+
+                                        <androidx.cardview.widget.CardView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            app:cardBackgroundColor="@color/red2"
+                                            app:cardCornerRadius="@dimen/_10sdp"
+                                            app:cardElevation="@dimen/_3sdp"
+                                            app:cardUseCompatPadding="true">
+
+                                            <androidx.appcompat.widget.AppCompatTextView
+                                                android:id="@+id/checkout"
+                                                style="@style/checkin"
+                                                android:layout_width="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_weight="1"
+                                                android:drawableStart="@drawable/checkout_image_holder_big"
+                                                android:drawablePadding="@dimen/_10sdp"
+                                                android:drawableTint="@color/white"
+                                                android:padding="@dimen/_10sdp"
+                                                android:text="CheckOut"
+                                                android:textAllCaps="false"
+                                                android:textColor="@color/white" />
+                                        </androidx.cardview.widget.CardView>
+
+                                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvannocument"
+                                        style="@style/semiboldfont"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_3sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:text="Annoucement"
+                                        android:visibility="gone"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="@dimen/_16sdp"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/buttonContainer" />
+
+
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:id="@+id/tv_userDes"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:visibility="gone"
+                                        app:cardCornerRadius="@dimen/_10sdp"
+                                        app:cardElevation="@dimen/_5sdp"
+                                        app:cardPreventCornerOverlap="true"
+                                        app:cardUseCompatPadding="true"
+                                        app:layout_constraintTop_toBottomOf="@+id/tvannocument">
+
+                                        <androidx.appcompat.widget.AppCompatTextView
+                                            style="@style/regularfont"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:padding="@dimen/_10sdp"
+                                            android:text="@string/long_des"
+                                            android:textColor="@color/black_1"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toBottomOf="@+id/tvannocument" />
+
+                                    </com.google.android.material.card.MaterialCardView>
+
+
+                                    <View
+                                        android:id="@+id/view2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="@dimen/_1sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:background="@color/white_grey2"
+                                        android:visibility="gone"
+                                        app:layout_constraintTop_toBottomOf="@+id/tv_userDes" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tv_recent"
+                                        style="@style/semiboldfont"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_3sdp"
+                                        android:layout_marginTop="@dimen/_10sdp"
+                                        android:text="Attendance"
+                                        android:textColor="@color/black_1"
+                                        android:textSize="@dimen/_16sdp"
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/view2" />
+
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvviewmore"
+                                        style="@style/mediumfont"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/view_more"
+                                        android:textSize="@dimen/_12sdp"
+                                        android:visibility="gone"
+                                        app:layout_constraintBottom_toBottomOf="@+id/tv_recent"
+                                        app:layout_constraintEnd_toEndOf="parent"
+                                       />
+
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/rvRecentListAdapter"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_20sdp"
+                                        android:nestedScrollingEnabled="false"
+                                        android:orientation="vertical"
+
+                                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        app:layout_constraintTop_toBottomOf="@+id/tvviewmore"
+                                        />
+                                    <androidx.appcompat.widget.AppCompatTextView
+                                        android:id="@+id/tvnodata"
+                                        style="@style/semiboldfont"
+                                         android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/no_data_found"
+                                        android:textSize="@dimen/_12sdp"
+                                        android:visibility="gone"
+                                        android:layout_marginTop="@dimen/_50sdp"
+                                        app:layout_constraintTop_toBottomOf="@id/tv_recent"
+
+                                        app:layout_constraintStart_toStartOf="parent"
+                                         app:layout_constraintEnd_toEndOf="parent"
+                                        />
+
+
+                                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+                        </androidx.core.widget.NestedScrollView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/bottomNavigationView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/toolbar">
+                    app:menu="@menu/bottom_nav_menu"/>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:id="@+id/clprofilecoantiner"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
-
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/iv_backgroundImg"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_40sdp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/rectangle_gradle"
-                                android:visibility="gone"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/ivbackgroundblur"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_40sdp"
-                                android:background="@color/primary_color_blur"
-                                android:scaleType="centerCrop"
-                                android:visibility="gone"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-                            <com.makeramen.roundedimageview.RoundedImageView
-                                android:id="@+id/imageView1"
-                                android:layout_width="@dimen/_100sdp"
-                                android:layout_height="@dimen/_100sdp"
-                                android:layout_marginTop="@dimen/_20sdp"
-                                android:scaleType="fitCenter"
-                                android:src="@drawable/user"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/iv_backgroundImg"
-                                app:riv_corner_radius="30dip"
-                                app:riv_mutate_background="true"
-                                app:riv_oval="true"
-                                  />
-
-
-                            <!--                    <androidx.appcompat.widget.AppCompatImageView-->
-                            <!--                        android:id="@+id/profile_edit"-->
-                            <!--                        android:layout_width="@dimen/_30sdp"-->
-                            <!--                        android:layout_height="@dimen/_30sdp"-->
-                            <!--                        android:src="@drawable/edit_profile"-->
-                            <!--                        android:visibility="gone"-->
-                            <!--                        app:layout_constraintBottom_toBottomOf="@+id/imageView1"-->
-                            <!--                        app:layout_constraintEnd_toEndOf="@+id/imageView1" />-->
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvusername"
-                                style="@style/semiboldfont"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Alex Shdasdaaw"
-                                android:textAlignment="center"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                android:textColor="@color/black_1"
-                                android:textSize="@dimen/_16sdp"
-                                app:layout_constraintTop_toBottomOf="@+id/imageView1" />
-
-
-                            <androidx.appcompat.widget.AppCompatImageView
-                                android:id="@+id/profile_edit"
-                                android:layout_width="@dimen/_20sdp"
-                                android:layout_height="@dimen/_20sdp"
-                                android:elevation="@dimen/_10sdp"
-                                android:src="@drawable/editing"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tvusername"
-                                app:layout_constraintStart_toEndOf="@+id/imageView1" />
-
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvuserdesignation"
-                                style="@style/semiboldfont"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Android Developer"
-                                android:textAlignment="center"
-                                android:textColor="@color/black_1"
-                                android:textSize="@dimen/_14sdp"
-                                app:layout_constraintTop_toBottomOf="@+id/tvusername" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingStart="@dimen/_3sdp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/clprofilecoantiner">
-
-                            <View
-                                android:id="@+id/view1"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:background="@color/white_grey2"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-
-                            <androidx.appcompat.widget.LinearLayoutCompat
-                                android:id="@+id/buttonContainer"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:orientation="horizontal"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/view1">
-
-                                <androidx.cardview.widget.CardView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    app:cardBackgroundColor="@color/green"
-                                    app:cardCornerRadius="@dimen/_10sdp"
-                                    app:cardElevation="@dimen/_3sdp"
-                                    app:cardUseCompatPadding="true">
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/checkin"
-                                        style="@style/checkin"
-                                        android:layout_width="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_marginEnd="@dimen/_10sdp"
-                                        android:drawableStart="@drawable/checkin_image_holder_big"
-                                        android:drawablePadding="@dimen/_10sdp"
-                                        android:drawableTint="@color/white"
-
-                                        android:padding="@dimen/_10sdp"
-
-                                        android:text="CheckIn"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white" />
-
-                                </androidx.cardview.widget.CardView>
-
-                                <androidx.cardview.widget.CardView
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    app:cardBackgroundColor="@color/red2"
-                                    app:cardCornerRadius="@dimen/_10sdp"
-                                    app:cardElevation="@dimen/_3sdp"
-                                    app:cardUseCompatPadding="true">
-
-                                    <androidx.appcompat.widget.AppCompatTextView
-                                        android:id="@+id/checkout"
-                                        style="@style/checkin"
-                                        android:layout_width="wrap_content"
-                                        android:layout_gravity="center"
-                                        android:layout_weight="1"
-                                        android:drawableStart="@drawable/checkout_image_holder_big"
-                                        android:drawablePadding="@dimen/_10sdp"
-                                        android:drawableTint="@color/white"
-                                        android:padding="@dimen/_10sdp"
-                                        android:text="CheckOut"
-                                        android:textAllCaps="false"
-                                        android:textColor="@color/white" />
-                                </androidx.cardview.widget.CardView>
-
-                            </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvannocument"
-                                style="@style/semiboldfont"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_3sdp"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Annoucement"
-                                android:textColor="@color/black_1"
-                                android:textSize="@dimen/_16sdp"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/buttonContainer" />
-
-
-                            <com.google.android.material.card.MaterialCardView
-                                android:id="@+id/tv_userDes"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                app:cardCornerRadius="@dimen/_10sdp"
-                                app:cardElevation="@dimen/_5sdp"
-                                app:cardPreventCornerOverlap="true"
-                                app:cardUseCompatPadding="true"
-                                app:layout_constraintTop_toBottomOf="@+id/tvannocument">
-
-                                <androidx.appcompat.widget.AppCompatTextView
-                                    style="@style/regularfont"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:padding="@dimen/_10sdp"
-                                    android:text="@string/long_des"
-                                    android:textColor="@color/black_1"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/tvannocument" />
-
-                            </com.google.android.material.card.MaterialCardView>
-
-
-                            <View
-                                android:id="@+id/view2"
-                                android:layout_width="match_parent"
-                                android:layout_height="@dimen/_1sdp"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:background="@color/white_grey2"
-                                android:visibility="gone"
-                                app:layout_constraintTop_toBottomOf="@+id/tv_userDes" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tv_recent"
-                                style="@style/semiboldfont"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_3sdp"
-                                android:layout_marginTop="@dimen/_10sdp"
-                                android:text="Last 5 Days Attendance"
-                                android:textColor="@color/black_1"
-                                android:textSize="@dimen/_16sdp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/view2" />
-
-                            <androidx.appcompat.widget.AppCompatTextView
-                                android:id="@+id/tvviewmore"
-                                style="@style/mediumfont"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/view_more"
-                                android:textSize="@dimen/_12sdp"
-                                android:visibility="gone"
-                                app:layout_constraintBottom_toBottomOf="@+id/tv_recent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="@+id/tv_recent" />
-
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rvRecentListAdapter"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_20sdp"
-                                android:nestedScrollingEnabled="false"
-                                android:orientation="vertical"
-                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/tvviewmore"
-                                tools:listitem="@layout/item_checkin_out_list" />
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.core.widget.NestedScrollView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

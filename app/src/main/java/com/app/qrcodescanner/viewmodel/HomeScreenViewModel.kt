@@ -1,8 +1,10 @@
 package com.app.qrcodescanner.viewmodel
 
 import android.Manifest
+import android.app.Activity
 import android.app.Application
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import androidx.core.view.GravityCompat
@@ -11,16 +13,24 @@ import com.app.qrcodescanner.adapter.AttendanceHomeListingAdapter
 import com.app.qrcodescanner.base.AppViewModel
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityHomeScreenBinding
+import com.app.qrcodescanner.extension.capitalizesLetters
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.model.AttandanceListing
+import com.app.qrcodescanner.model.LoginJson
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.*
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.request.RequestListener
+import com.google.gson.Gson
 import com.permissionx.guolindev.PermissionX
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
 
@@ -30,34 +40,118 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
     private lateinit var baseActivity: KotlinBaseActivity
     var  commonRepository=CommonRepository(application)
     lateinit var mContext: Context
+    var bundle= Bundle()
     var ischeckin = false
     fun setBinder(binding: ActivityHomeScreenBinding, baseActivity: KotlinBaseActivity) {
         this.binder = binding
         this.baseActivity = baseActivity
         this.mContext = binding.root.context
+        bundle = (mContext as Activity).intent.extras!!
          setClick()
         settoolbar()
         sidemenuClick()
         setdata()
-        callApi()
+        bottommenuclicklistner()
+
     }
-    private  fun setdata()
+    fun parsedata()
+    {
+        val data=SharedPreferenceManager(baseActivity).getString(Keys.USERDATA).toString()
+        val gson = Gson()
+        HomeScreenActivity.userdata = gson.fromJson(data, LoginJson::class.java)
+        if (HomeScreenActivity.token.isEmpty())
+        {
+            HomeScreenActivity.token ="Bearer "+SharedPreferenceManager(baseActivity).getString(Keys.TOKEN).toString()
+            Log.e("token", HomeScreenActivity.token)
+            callApi(true)
+            upadteimage()
+        }
+        setdata()
+
+    }
+    private  fun upadteimage()
     {
         if (HomeScreenActivity.userdata?.data?.user?.image.isNotNull())
         {
-//            Glide.with(baseActivity).load(HomeScreenActivity.userdata?.data?.user?.image).diskCacheStrategy(
-//                DiskCacheStrategy.NONE)
-//                .skipMemoryCache(true).into(binder.imageView1)
+            binder.homeprogress.visible()
+            Log.e("imageurlll",HomeScreenActivity.userdata?.data?.user?.image.toString())
+
+            Glide.with(baseActivity)
+                .load(HomeScreenActivity.userdata?.data?.user?.image.toString())
+                .  diskCacheStrategy(DiskCacheStrategy.NONE)
+                .skipMemoryCache(true)
+                .listener(object : RequestListener<Drawable> {
+                    override fun onResourceReady(
+                        resource: Drawable?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        dataSource: DataSource?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        binder.homeprogress.gone()
+                        return false
+                    }
+
+
+
+                    override fun onLoadFailed(
+                        e: GlideException?,
+                        model: Any?,
+                        target: com.bumptech.glide.request.target.Target<Drawable>?,
+                        isFirstResource: Boolean
+                    ): Boolean {
+                        binder.homeprogress.gone()
+                        binder.imageView1.setImageResource(R.drawable.user)
+                        binder.homeprogress.gone()
+                        return false
+                    }
+                })
+                .into(binder.imageView1)
+
+
+//            Picasso.get()
+//                .load(HomeScreenActivity.userdata?.data?.user?.image.toString())
+//                .into(binder.imageView1, object: com.squareup.picasso.Callback {
+//                    override fun onSuccess() {
+//                        //set animations here
+//                        binder.homeprogress.gone()
+//
+//                    }
+//
+//                    override fun onError(e: java.lang.Exception?) {
+//                        binder.imageView1.setImageResource(R.drawable.user)
+//                        binder.homeprogress.gone()
+//                        //do smth when there is picture loading error
+//                    }
+//                })
 
         }
+    }
+
+    private  fun setdata()
+    {
+        if (!HomeScreenActivity.isEditProfile.isEmpty())
+        {
+            Log.e("hehehhe","ohohoh")
+            upadteimage()
+            HomeScreenActivity.isEditProfile=""
+        }
+
         binder.tvusername.text=HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
-        binder.tvuserdesignation.text=HomeScreenActivity.userdata?.data?.user?.role
+        binder.tvuserdesignation.text=HomeScreenActivity.userdata?.data?.user?.role?.capitalizesLetters()
         binder.showDrawer.side_user_name.text=HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
         binder.showDrawer.side_email.text=HomeScreenActivity.userdata?.data?.user?.email
+
+        if (bundle.get(Keys.ADDATTANANCE).isNotNull())
+        {
+            callApi(true)
+            upadteimage()
+        }
     }
-    private  fun callApi()
+    private  fun callApi(load:Boolean)
     {
-        commonRepository.attandancelisting(baseActivity,HomeScreenActivity.token,Keys.ATTANDANCELISTING){
+        commonRepository.attandancelisting(baseActivity,HomeScreenActivity.token,Keys.ATTANDANCELISTING,loading = load){
+
             val  list=ArrayList<AttandanceListing.Data>()
             for (i in it.data.indices)
             {
@@ -96,6 +190,17 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             baseActivity.openA(ChangePassWord::class)
         }
     }
+    private   fun  bottommenuclicklistner()
+    {
+        binder.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.attdance->baseActivity.openA(AttendanceListingScreen::class)
+                R.id.settings->baseActivity.openA(EditProfile::class)
+            }
+            true
+        }
+
+    }
 
     private fun settoolbar() {
         binder.toolbar.ivback.setImageResource(R.drawable.menu)
@@ -105,6 +210,13 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
     }
 
     private fun setRecentListAdapter(listing: ArrayList<AttandanceListing.Data>) {
+        if (listing.size==0)
+        {
+            binder.tvnodata.visible()
+        }
+        else{
+            binder.tvnodata.gone()
+        }
         val recentListAdapter = AttendanceHomeListingAdapter(baseActivity) {
 
         }
@@ -113,6 +225,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
     }
 
     private fun setClick() {
+
         binder.checkin.setOnClickListener {
             locationPermission("1")
 

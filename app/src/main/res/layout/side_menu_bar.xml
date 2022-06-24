@@ -133,6 +133,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvside_invoice"
             style="@style/semiboldfont"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
@@ -147,6 +148,7 @@
 
         <View
             android:id="@+id/view4"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_10sdp"
@@ -180,7 +182,7 @@
             android:layout_width="match_parent"
             android:drawableStart="@drawable/invoice_size"
             android:layout_marginTop="@dimen/_5sdp"
-
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/_10sdp"
             android:text="About Us"
@@ -190,6 +192,7 @@
         <View
             android:id="@+id/view6"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="@dimen/_1sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"

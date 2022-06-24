@@ -11,6 +11,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.AutoCompleteTextView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.capitalizesLetters
@@ -31,6 +32,7 @@ object Utils {
     var WEBURL = "75.8290889"
     const val DATETIMEFORMAT="yyyy-MM-dd HH:mm:ss"
     const val DATEFORMAT="dd-MMM-yyyy"
+    const val DATEFORMAT3="dd-MM-yyyy"
     const val TIMEFORMAT="hh:mm aa"
 
     const val DATEFORMAT2="yyyy-MM-dd"
@@ -92,7 +94,7 @@ object Utils {
 
     fun shoedatepicker(
         baseActivity: KotlinBaseActivity,
-        lblDate: AutoCompleteTextView,
+        lblDate: AppCompatTextView,
         onConfirmed: () -> Unit = {}
     ) {
         val c = Calendar.getInstance()
