@@ -5,9 +5,12 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.app.qrcodescanner.R
+import com.app.qrcodescanner.applications.QrApplication
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.utils.Keys
+import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.app.qrcodescanner.utils.Utils
 import com.budiyev.android.codescanner.AutoFocusMode
 import com.budiyev.android.codescanner.CodeScanner
@@ -17,12 +20,16 @@ import com.budiyev.android.codescanner.ScanMode
 import com.example.easywaylocation.EasyWayLocation
 import com.example.easywaylocation.Listener
 import com.google.android.gms.maps.model.LatLng
+import com.google.gson.JsonObject
 import com.google.maps.android.SphericalUtil
+import kotlinx.android.synthetic.main.activity_change_pass_word.*
 import kotlinx.android.synthetic.main.activity_scanner.*
 
 class Scanner : KotlinBaseActivity(), Listener {
 
     private lateinit var codeScanner: CodeScanner
+    val commonRepository = CommonRepository(QrApplication.myApp!!)
+
     lateinit var location: EasyWayLocation
     var lat = ""
     var lng = ""
@@ -39,6 +46,19 @@ class Scanner : KotlinBaseActivity(), Listener {
         codeScanner = CodeScanner(this, scanner_view)
         bundle= intent.extras!!
         barcodescanner()
+
+    }
+    private  fun decodeqr(data:String)
+    {
+        val  jsonObject = JsonObject()
+        jsonObject.addProperty(Keys.encode,data)
+        commonRepository.decodeqr(this,Keys.DECODEQR,HomeScreenActivity.token,jsonObject,ishowloader = true){
+            if (it.code.equals(200))
+            {
+                substringvalue(it.data.lat,it.data.long,it.data.client.name)
+            }
+        }
+
     }
 
     private fun barcodescanner() {
@@ -53,7 +73,8 @@ class Scanner : KotlinBaseActivity(), Listener {
         // Callbacks
         codeScanner.decodeCallback = DecodeCallback {
             runOnUiThread {
-
+                decodeqr(it.text.toString())
+                Log.e("payload",it.text.toString())
 //                //get lat and long of company from google map link
 //                val companyLatLng = it.text.toString()
 //                val first = companyLatLng.split("@")
@@ -72,44 +93,6 @@ class Scanner : KotlinBaseActivity(), Listener {
 
 
                // Log.e("fwerewrfewfefewf", it.text.toString())
-                if (it.text.toString().startsWith("lat"))
-                {
-
-                    var res=it.text.split(",")
-                    var templat=res[0]
-                    var templng=res[1]
-                    var actual_lat=templat.split("=")
-                    var actual_lng=templng.split("=")
-                    if (actual_lat.size==2)
-                    {
-                        l1=actual_lat[1]
-                        lon2=actual_lng[1]
-                    }
-                    Log.e("actual_lat", l1+","+lon2)
-                    if (calculateDistance().isNotNull()) {
-
-                        if (calculateDistance() <= 200) {
-
-                            val  bundle1=Bundle()
-                            bundle1.putString(Keys.LAT,l1)
-                            bundle1.putString(Keys.LNG,lon2)
-                            Log.e("calculateDistance",bundle.getString(Keys.USER_TYPE).toString())
-                            bundle1.putString(Keys.USER_TYPE,bundle.getString(Keys.USER_TYPE))
-                            openA(QRAttendanceDetails::class,bundle1)
-                            finishAffinity()
-                         } else {
-
-                            showtoast("Attendance can be marked between 200 meters of distance")
-                            return@runOnUiThread
-
-                        }
-
-                    }
-
-                }
-                else{
-                    showtoast("Invalid QrCode")
-                }
 
 
 
@@ -127,6 +110,70 @@ class Scanner : KotlinBaseActivity(), Listener {
             codeScanner.startPreview()
         }
 
+
+    }
+    private  fun  substringvalue(lat:String,lng:String,name:String)
+    {
+        l1=lat
+        lon2=lng
+        Log.e("actual_lat", l1+","+lon2)
+        if (calculateDistance().isNotNull()) {
+
+            if (calculateDistance() <= 200) {
+
+                val  bundle1=Bundle()
+                bundle1.putString(Keys.LAT,l1)
+                bundle1.putString(Keys.LNG,lon2)
+                Log.e("calculateDistance",bundle.getString(Keys.USER_TYPE).toString())
+                bundle1.putString(Keys.USER_TYPE,bundle.getString(Keys.USER_TYPE))
+                bundle1.putString(Keys.name,name)
+                openA(QRAttendanceDetails::class,bundle1)
+                finishAffinity()
+            } else {
+
+                showtoast("Attendance can be marked between 200 meters of distance")
+
+            }
+
+        }
+//        if (it.toString().startsWith("lat"))
+//        {
+//
+//            var res=it.split(",")
+//            var templat=res[0]
+//            var templng=res[1]
+//            var actual_lat=lat
+//            var actual_lng=templng.split("=")
+//            if (actual_lat.size==2)
+//            {
+//
+//            }
+//            l1=lat
+//            lon2=lng
+//            Log.e("actual_lat", l1+","+lon2)
+//            if (calculateDistance().isNotNull()) {
+//
+//                if (calculateDistance() <= 200) {
+//
+//                    val  bundle1=Bundle()
+//                    bundle1.putString(Keys.LAT,l1)
+//                    bundle1.putString(Keys.LNG,lon2)
+//                    Log.e("calculateDistance",bundle.getString(Keys.USER_TYPE).toString())
+//                    bundle1.putString(Keys.USER_TYPE,bundle.getString(Keys.USER_TYPE))
+//                    openA(QRAttendanceDetails::class,bundle1)
+//                    finishAffinity()
+//                } else {
+//
+//                    showtoast("Attendance can be marked between 200 meters of distance")
+//
+//                }
+//
+//            }
+//
+//        }
+//        else{
+//            showtoast("Invalid QrCode")
+//        }
 
     }
 

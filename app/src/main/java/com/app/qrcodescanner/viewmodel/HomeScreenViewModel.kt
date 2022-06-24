@@ -138,7 +138,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         }
 
         binder.tvusername.text=HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
-        binder.tvuserdesignation.text=HomeScreenActivity.userdata?.data?.user?.role?.capitalizesLetters()
+     //   binder.tvuserdesignation.text=HomeScreenActivity.userdata?.data?.user?.role?.capitalizesLetters()
         binder.showDrawer.side_user_name.text=HomeScreenActivity.userdata?.data?.user?.first_name+" "+HomeScreenActivity.userdata?.data?.user?.last_name
         binder.showDrawer.side_email.text=HomeScreenActivity.userdata?.data?.user?.email
 

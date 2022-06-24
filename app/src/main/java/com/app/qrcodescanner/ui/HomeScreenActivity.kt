@@ -1,25 +1,24 @@
 package com.app.qrcodescanner.ui
 
 import android.os.Bundle
-import android.util.Log
-import android.view.WindowManager
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityHomeScreenBinding
 import com.app.qrcodescanner.model.LoginJson
-import com.app.qrcodescanner.utils.Keys
-import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.app.qrcodescanner.viewmodel.HomeScreenViewModel
 import com.example.easywaylocation.EasyWayLocation
-import com.google.gson.Gson
+import javax.crypto.KeyGenerator
+import javax.crypto.SecretKey
 
 class HomeScreenActivity : KotlinBaseActivity() {
     lateinit var binding: ActivityHomeScreenBinding
     lateinit var viewModel: HomeScreenViewModel
     lateinit var location: EasyWayLocation
     var  isfirstime=false
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 //        getWindow().setFlags(
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -29,6 +28,7 @@ class HomeScreenActivity : KotlinBaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home_screen)
         viewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
         viewModel.setBinder(binding, this)
+
 
     }
 

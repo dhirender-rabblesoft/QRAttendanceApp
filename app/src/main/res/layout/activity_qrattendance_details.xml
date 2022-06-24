@@ -46,11 +46,11 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvcompanyname"
                 style="@style/regularfont"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:text="Compnay Name : XYZ Pvt. Ltd."
+                android:text="Client Name : XYZ Pvt. Ltd."
                 android:textColor="@color/black_1"
                 android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"

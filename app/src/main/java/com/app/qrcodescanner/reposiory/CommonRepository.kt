@@ -194,6 +194,61 @@ class CommonRepository(private val baseActivity: Application) {
         }
 
     }
+    fun decodeqr(
+        baseActivity: KotlinBaseActivity,
+        url: String,
+        token: String,
+        jsonObject: JsonObject,
+        ishowloader: Boolean = false,
+        itemClick: (DecodeQr) -> Unit
+    ) {
+
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+            if (ishowloader) {
+
+                baseActivity.startProgressDialog()
+            }
+
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.decodeqr(
+                token, Keys.BASE_URL + url, jsonObject
+            )!!.enqueue(object : Callback<DecodeQr?> {
+                override fun onResponse(
+                    call: Call<DecodeQr?>,
+                    response: Response<DecodeQr?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        in 200..201 -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+                         }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<DecodeQr?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+    }
 
     fun qrCodeListing(
         baseActivity: KotlinBaseActivity,

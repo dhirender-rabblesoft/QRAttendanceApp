@@ -47,6 +47,13 @@ interface APIInterface {
         @Url url: String,
         @Body jsonObject: JsonObject?
     ): Call<ResponseBody>?
+    @Headers("Accept: application/json")
+    @POST
+    fun decodeqr(
+        @Header("Authorization") token: String,
+        @Url url: String,
+        @Body jsonObject: JsonObject?
+    ): Call<DecodeQr>?
 
     @Headers("Accept: application/json")
     @Multipart

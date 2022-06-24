@@ -54,8 +54,10 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
             url = Keys.CHECKOUT
         }
         binder.toolbar.tvtitle.setText("Detail")
+        binder.tvcompanyname.setText("Client Name :"+bundle.getString(Keys.name))
         time = Utils.getcurrenttime()
         binder.tvusername.text =
+
             "Name : " + HomeScreenActivity.userdata?.data?.user?.first_name + " " + HomeScreenActivity.userdata?.data?.user?.last_name
         binder.tvdesignation.text = "Designation : " + HomeScreenActivity.userdata?.data?.user?.role?.capitalizesLetters()
         binder.tvattendanceDate.text = "Attendance Date : " + Utils.getcurrentdate()
