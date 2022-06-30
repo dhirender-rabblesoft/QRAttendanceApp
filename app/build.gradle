@@ -6,9 +6,9 @@ plugins {
 
 android {
     compileSdk 32
-
+    // key store:opaylhrms,password:opaylhrms
     defaultConfig {
-        applicationId "com.app.qrcodescanner"
+        applicationId "com.opayl.qrcodescanner"
         minSdk 23
         targetSdk 32
         versionCode 1
