@@ -10,7 +10,7 @@
 
     <item
         android:gravity="center"
-        android:height="26dp"
-        android:width="26dp"
+        android:height="16dp"
+        android:width="16dp"
         android:drawable="@drawable/out" />
 </layer-list>

@@ -15,6 +15,7 @@
         app:cardElevation="0dp"
 
         app:cardUseCompatPadding="true"
+        app:cardBackgroundColor="@color/white"
         app:contentPadding="@dimen/_10sdp"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="@color/black_4"
@@ -57,6 +58,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_5sdp"
+
+                    style="@style/regularfont"
+                    android:textColor="@color/black_1"
                      />
 
             </androidx.appcompat.widget.LinearLayoutCompat>

@@ -19,16 +19,15 @@ class HomeScreenActivity : KotlinBaseActivity() {
     var  isfirstime=false
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
 //        getWindow().setFlags(
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState)
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home_screen)
         viewModel = ViewModelProvider(this).get(HomeScreenViewModel::class.java)
         viewModel.setBinder(binding, this)
-
 
     }
 

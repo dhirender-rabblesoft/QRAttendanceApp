@@ -164,8 +164,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:hint="First Name"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black_1"
+                         app:hintTextColor="@color/black_1"
                         app:layout_goneMarginEnd="@dimen/_32sdp"
                         app:layout_goneMarginStart="@dimen/_32sdp">
 
@@ -183,8 +182,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:hint="Last Name"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black_1"
+                         app:hintTextColor="@color/black_1"
                         app:layout_goneMarginEnd="@dimen/_32sdp"
                         app:layout_goneMarginStart="@dimen/_32sdp">
 
@@ -220,8 +218,7 @@
                         style="@style/materialStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:hintEnabled="true"
-                        app:hintTextColor="@color/black_1"
+                         app:hintTextColor="@color/black_1"
                         app:layout_goneMarginEnd="@dimen/_32sdp"
                         app:layout_goneMarginStart="@dimen/_32sdp">
                         <!--this is the actual edit text which takes the input-->

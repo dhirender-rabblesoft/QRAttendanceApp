@@ -19,6 +19,7 @@
             app:cardElevation="@dimen/_5sdp"
             app:cardPreventCornerOverlap="true"
             android:layout_marginStart="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/white"
             android:layout_marginEnd="@dimen/_10sdp"
             app:cardUseCompatPadding="true"
             app:layout_constraintBottom_toBottomOf="parent"

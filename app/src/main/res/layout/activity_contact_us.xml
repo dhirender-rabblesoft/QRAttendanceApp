@@ -7,7 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white_grey"
+        android:background="@color/white"
         android:orientation="vertical"
         tools:context=".ui.ContactUs"
         android:paddingBottom="@dimen/_15sdp"
@@ -33,14 +33,15 @@
                 style="@style/materialStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:hintEnabled="true"
+                 app:hintTextColor="@color/black_1"
+
                 app:layout_goneMarginEnd="@dimen/_32sdp"
                 app:layout_goneMarginStart="@dimen/_32sdp">
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etusername"
                     style="@style/edittextlogintitle"
-                    android:drawablePadding="@dimen/_10sdp"
+                     android:drawablePadding="@dimen/_10sdp"
                     android:hint="Subject" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -51,8 +52,9 @@
                 android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 app:hintEnabled="true"
-                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:hintTextColor="@color/black_1"
+
+                 app:layout_goneMarginEnd="@dimen/_32sdp"
                 app:layout_goneMarginStart="@dimen/_32sdp">
 
                 <androidx.appcompat.widget.AppCompatEditText
@@ -67,7 +69,6 @@
                 style="@style/materialStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                 app:hintEnabled="true"
                 app:layout_goneMarginEnd="@dimen/_32sdp"
                 app:layout_goneMarginStart="@dimen/_32sdp">
 

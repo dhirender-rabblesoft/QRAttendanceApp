@@ -13,7 +13,8 @@
         app:cardElevation="@dimen/_3sdp"
         app:cardUseCompatPadding="true"
         app:contentPadding="@dimen/_10sdp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="@color/white"
+          app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
