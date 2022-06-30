@@ -9,6 +9,7 @@ import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.databinding.ActivityLoginBinding
 import com.app.qrcodescanner.extension.isEmailValid
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.extension.visible
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.*
 import com.app.qrcodescanner.utils.Keys
@@ -23,11 +24,17 @@ class LoginViewModel(application: Application) : AppViewModel(application)
     private lateinit var mContext: Context
     var  commonRepository=CommonRepository(application)
     lateinit var baseActivity: KotlinBaseActivity
-    fun setBinder(binder: ActivityLoginBinding, baseActivity: KotlinBaseActivity) {
+    var type=""
+    fun setBinder(binder: ActivityLoginBinding, baseActivity: KotlinBaseActivity,type:String="") {
         this.binder = binder
         this.mContext = binder.root.context
         this.baseActivity = baseActivity
         this.binder.viewModel = this
+       this.type=type
+        if (!type.isEmpty())
+        {
+            binder.namelayout.visible()
+        }
         setClick()
     }
     private fun validation(): Boolean {
@@ -60,18 +67,23 @@ class LoginViewModel(application: Application) : AppViewModel(application)
         binder.loginbutton.setOnClickListener {
             //main code
             if (validation()) {
-                loginApi()
+                if (type.isEmpty())
+                {
+                    loginApi()
+                }
+
             }
 
         }
         binder.llsignup.setOnClickListener {
-            baseActivity.openA(ContactUs::class)
+            baseActivity.openA(Signup::class)
 
         }
         binder.tvforgotpasssword.setOnClickListener {
             baseActivity.openA(ForgotPassword::class)
         }
     }
+
     private  fun loginApi()
     {
         val jsonobj= JsonObject()
@@ -88,7 +100,7 @@ class LoginViewModel(application: Application) : AppViewModel(application)
 
                 if (!it.data.user.role.equals("super_admin"))
                 {
-                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
+                    SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
                     baseActivity.openA(HomeScreenActivity::class)
                 }
                 else{
@@ -97,6 +109,7 @@ class LoginViewModel(application: Application) : AppViewModel(application)
                     //baseActivity.customSnackBar("Only employee can login",false)
                 }
                 baseActivity.showtoast("Login Successfully")
+                baseActivity.finishAffinity()
 
             }
         }

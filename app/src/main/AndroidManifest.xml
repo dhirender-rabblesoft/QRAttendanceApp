@@ -22,11 +22,12 @@
     <uses-feature android:name="android.hardware.location.gps" />
 
     <application
+
         android:name=".applications.QrApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/playstore"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/playstore"
         android:supportsRtl="true"
         android:theme="@style/Theme.QRCodeScanner"
         android:usesCleartextTraffic="true">
@@ -61,6 +62,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.ContactUs"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.Signup"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity

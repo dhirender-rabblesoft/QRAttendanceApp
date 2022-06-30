@@ -7,6 +7,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
+
         tools:context=".ui.EditProfile">
 
         <androidx.core.widget.NestedScrollView
@@ -60,7 +62,7 @@
                         style="@style/materialStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:hint="Address 1"
                         app:errorEnabled="true"
                         app:hintEnabled="true"
@@ -80,6 +82,7 @@
                         style="@style/materialStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         android:layout_marginTop="@dimen/_20sdp"
                         android:hint="Address 2"
                         app:errorEnabled="true"
@@ -103,6 +106,7 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:hint="Pincode"
                         app:errorEnabled="true"
+                        android:visibility="gone"
                         app:hintEnabled="true"
                         app:hintTextColor="@color/black_1"
                         app:layout_goneMarginEnd="@dimen/_32sdp"

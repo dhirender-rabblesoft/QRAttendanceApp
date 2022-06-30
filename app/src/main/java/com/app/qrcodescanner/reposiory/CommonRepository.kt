@@ -1,5 +1,4 @@
 package com.app.qrcodescanner.reposiory
-
 import android.app.Application
 
 import androidx.lifecycle.MutableLiveData
@@ -22,12 +21,10 @@ import okhttp3.ResponseBody
 
 import retrofit2.Call
 import java.util.ArrayList
-
-
-class CommonRepository(private val baseActivity: Application) {
+class CommonRepository(private val baseActivity: Application)
+{
     var retrofitClient: APIInterface? = null
     private val mutableLiveData = MutableLiveData<ResponseBody>()
-
     fun getlogin(
         baseActivity: KotlinBaseActivity,
         url: String,
@@ -306,7 +303,6 @@ class CommonRepository(private val baseActivity: Application) {
     fun faq(
         baseActivity: KotlinBaseActivity,
         url: String,
-
         itemClick: (FaqJson) -> Unit
     ) {
 

@@ -56,7 +56,7 @@
 
                 android:drawablePadding="@dimen/_10sdp"
                 android:text="Home"
-                android:drawableStart="@drawable/home_size"
+                android:drawableStart="@drawable/ic_category"
                 android:textSize="@dimen/_12sdp" />
 
 
@@ -80,7 +80,7 @@
             android:layout_marginTop="@dimen/_5sdp"
 
             android:drawablePadding="@dimen/_10sdp"
-            android:drawableStart="@drawable/profile_size"
+            android:drawableStart="@drawable/ic_profile_boy"
 
             android:textSize="@dimen/_12sdp" />
         <View
@@ -98,7 +98,7 @@
             android:layout_marginTop="@dimen/_5sdp"
 
             android:drawablePadding="@dimen/_10sdp"
-            android:drawableStart="@drawable/profile_size"
+            android:drawableStart="@drawable/ic_forgot_user_password"
 
             android:textSize="@dimen/_12sdp" />
 
@@ -118,7 +118,7 @@
             android:text="Attendance"
             android:layout_marginTop="@dimen/_5sdp"
 
-            android:drawableStart="@drawable/attandance_size"
+            android:drawableStart="@drawable/ic_timecard"
             android:textSize="@dimen/_12sdp" />
 
 
@@ -160,7 +160,7 @@
             android:layout_marginTop="@dimen/_5sdp"
 
             android:drawablePadding="@dimen/_10sdp"
-            android:drawableStart="@drawable/support_size"
+            android:drawableStart="@drawable/ic_ringing_phone_outline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Contact Us"
@@ -206,7 +206,7 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/_10sdp"
             android:text="FAQ"
-            android:drawableStart="@drawable/faq_size"
+            android:drawableStart="@drawable/ic_faq"
             android:textSize="@dimen/_12sdp" />
 
 
@@ -231,7 +231,7 @@
             android:id="@+id/side_iv_logout"
             android:layout_width="@dimen/_20sdp"
             android:layout_height="@dimen/_20sdp"
-            android:src="@drawable/logout" />
+            android:src="@drawable/ic_shutdown" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvside_logout"

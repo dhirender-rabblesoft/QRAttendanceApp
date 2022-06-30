@@ -38,10 +38,12 @@ class AddArCode : KotlinBaseActivity(), Listener {
         super.onCreate(savedInstanceState)
         location = EasyWayLocation(this, false, false, this)
         setContentView(R.layout.activity_add_ar_code)
+
         locationPermission()
         settoolbar()
         clientListingApi()
         setClick()
+
 
     }
 
@@ -73,7 +75,7 @@ class AddArCode : KotlinBaseActivity(), Listener {
     {
         addresslayout.error = null
         clientLayout.error = null
-        pincodelayout.error = null
+       // pincodelayout.error = null
 
         if (clientAddresss.isEmpty())
         {
@@ -85,10 +87,10 @@ class AddArCode : KotlinBaseActivity(), Listener {
             clientLayout.error = getString(R.string.v_clentvalidation)
             return false
         }
-        if (etpincode.text.toString().trim().isEmpty()) {
-            pincodelayout.error ="Please enter pincode"
-            return false
-        }
+//        if (etpincode.text.toString().trim().isEmpty()) {
+//            pincodelayout.error ="Please enter pincode"
+//            return false
+//        }
         return true
     }
 
@@ -99,12 +101,14 @@ class AddArCode : KotlinBaseActivity(), Listener {
         ettime.setAdapter(timeadapter)
         ettime.onItemClickListener =
             OnItemClickListener { parent, view, position, id ->
-                selectedClientID = clientlist[position]
+               // selectedClientID =position.toString()
+                selectedClientID =clientlist[position]
 
             }
     }
 
-    private fun settoolbar() {
+    private fun settoolbar()
+    {
         ivdot.gone()
         tvtitle.text = "Add Address"
         ivback.setOnClickListener {

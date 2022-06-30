@@ -7,6 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/_15sdp"
+        android:background="@color/white"
         android:paddingEnd="@dimen/_15sdp"
         android:paddingBottom="@dimen/_15sdp"
         tools:context=".ui.AboutUs">

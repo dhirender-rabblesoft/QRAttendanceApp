@@ -44,18 +44,42 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_15sdp"
                         android:text="@string/login"
+                        android:layout_marginBottom="@dimen/_8sdp"
                         android:textAlignment="center"
                         android:textColor="@color/black_1"
                         android:textSize="@dimen/_30sdp"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/emaillayout"
+                        android:id="@+id/namelayout"
                         style="@style/materialStyle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_25sdp"
-                        android:hint="@string/enter_email"
+                        android:hint="Enter Name"
+                        android:textColorHint="@color/black_1"
+                        app:boxStrokeWidthFocused="@dimen/_1sdp"
+                        app:errorEnabled="true"
+                        android:visibility="gone"
+
+                        app:layout_goneMarginEnd="@dimen/_32sdp"
+                        app:layout_goneMarginStart="@dimen/_32sdp">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/etanem"
+                            style="@style/edittextlogintitle"
+                            android:drawablePadding="@dimen/_10sdp"
+                            android:hint="Enter Name"
+                            android:inputType="textEmailAddress" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/emaillayout"
+                        style="@style/materialStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                         android:hint="@string/enter_email"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:textColorHint="@color/black_1"
                         app:boxStrokeWidthFocused="@dimen/_1sdp"
                         app:errorEnabled="true"

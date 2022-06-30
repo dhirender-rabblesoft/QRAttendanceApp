@@ -13,6 +13,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
+
         tools:context=".ui.EditProfile">
 
         <androidx.core.widget.NestedScrollView
@@ -23,6 +25,8 @@
                 android:layout_width="match_parent"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
+                android:background="@color/white"
+
                 android:layout_height="match_parent">
                 <include android:id="@+id/toolbar" layout="@layout/common_toolbar"/>
 
