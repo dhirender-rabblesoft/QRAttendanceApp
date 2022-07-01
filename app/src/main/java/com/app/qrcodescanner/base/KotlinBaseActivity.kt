@@ -26,6 +26,7 @@ import com.app.qrcodescanner.extension.getDecorView
 import com.app.qrcodescanner.extension.showConfirmAlert
 import com.app.qrcodescanner.listner.KotlinBaseListener
 import com.app.qrcodescanner.navigator.Navigator
+import com.app.qrcodescanner.ui.GenrateQrCode
 import com.app.qrcodescanner.ui.HomeScreenActivity
 import com.app.qrcodescanner.ui.LoginActivity
 import com.app.qrcodescanner.utils.Keys
@@ -195,8 +196,11 @@ open class KotlinBaseActivity(@IdRes private val container: Int = 0) : AppCompat
 
         },onConfirmed = {
             HomeScreenActivity.token=""
+            GenrateQrCode.token=""
             SharedPreferenceManager(this).saveString(Keys.USERDATA,"")
             SharedPreferenceManager(this).saveString(Keys.USERID,"")
+            SharedPreferenceManager(this).saveString(Keys.TOKEN,"")
+            SharedPreferenceManager(this).removeValue(Keys.TOKEN)
             openA(LoginActivity::class)
             finishAffinity()
         })

@@ -36,7 +36,7 @@ object Utils {
     const val TIMEFORMAT="hh:mm aa"
 
     const val DATEFORMAT2="yyyy-MM-dd"
-    const val TIMEFORMAT2="hh:mm:ss"
+    const val TIMEFORMAT2="HH:mm:ss"
 
     fun formateDateFromstring(inputFormat: String, outputFormat: String, inputDate: String): String {
         var parsed: Date? = null

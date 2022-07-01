@@ -9,6 +9,7 @@ import com.app.qrcodescanner.R
 import com.app.qrcodescanner.adapter.QrCodeListingAdapter
 import com.app.qrcodescanner.applications.QrApplication
 import com.app.qrcodescanner.base.KotlinBaseActivity
+import com.app.qrcodescanner.extension.capitalizesLetters
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isNotNull
 import com.app.qrcodescanner.extension.visible
@@ -53,6 +54,8 @@ class GenrateQrCode : KotlinBaseActivity() {
         loading=true
         setQrCodeListingApi()
     }
+
+
     private  fun setscrolllistner()
     {
 
@@ -95,6 +98,7 @@ class GenrateQrCode : KotlinBaseActivity() {
             SharedPreferenceManager(this).saveString(Keys.USERDATA,"")
             SharedPreferenceManager(this).saveString(Keys.USERID,"")
             SharedPreferenceManager(this).saveString(Keys.TOKEN,"")
+            SharedPreferenceManager(this).removeValue(Keys.TOKEN)
              openA(LoginActivity::class)
             finishAffinity()
          }
@@ -104,6 +108,7 @@ class GenrateQrCode : KotlinBaseActivity() {
 
          }
     }
+
 
     private fun setQrCodeListingAdapter() {
         val qrCodeListingAdapter = QrCodeListingAdapter(this) {pos,data->
@@ -123,7 +128,7 @@ class GenrateQrCode : KotlinBaseActivity() {
     fun parsedata() {
         val data = SharedPreferenceManager(this).getString(Keys.USERDATA).toString()
         val gson = Gson()
-        userdata = gson.fromJson(data, LoginJson2::class.java)
+        userdata = gson.fromJson(data, LoginJson::class.java)
         setdata()
         if (token.isEmpty()) {
             token = "Bearer " + SharedPreferenceManager(this).getString(Keys.TOKEN).toString()
@@ -134,16 +139,16 @@ class GenrateQrCode : KotlinBaseActivity() {
 
 
     private fun setdata() {
-//        if (userdata.user?.image.isNotNull()) {
-//            Glide.with(this).load(userdata?.data?.user?.image)
-//                .diskCacheStrategy(
-//                    DiskCacheStrategy.NONE
-//                )
-//                .skipMemoryCache(true).into(imageView1)
-//
-//        }
-        tvusername.text = userdata?.user?.name
-        tvuserdesignation.text =  "Admin"
+        if (userdata?.data?.user?.image.isNotNull()) {
+            Glide.with(this).load(userdata?.data?.user?.image)
+                .diskCacheStrategy(
+                    DiskCacheStrategy.NONE
+                )
+                .skipMemoryCache(true).into(imageView1)
+
+        }
+        tvusername.text = userdata?.data?.user?.first_name+" "+userdata?.data?.user?.last_name
+        tvuserdesignation.text = userdata?.data?.user?.role?.capitalizesLetters()
 
     }
 
@@ -162,7 +167,7 @@ class GenrateQrCode : KotlinBaseActivity() {
 
 
     companion object {
-        var userdata: LoginJson2? = null
+        var userdata: LoginJson? = null
         var token = ""
     }
 

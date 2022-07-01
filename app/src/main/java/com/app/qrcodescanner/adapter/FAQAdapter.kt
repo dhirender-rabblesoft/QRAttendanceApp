@@ -37,10 +37,10 @@ class FAQAdapter(val baseActivity: KotlinBaseActivity, val itemClick: (Int) -> U
                             clanserconatiner.visible()
                             cvfaqcontainer.cardElevation = 10f
                             cvfaqcontainer.strokeWidth = 0
-                            Log.e("conatnervisisable","858585858585")
 
-
-                        } else {
+                        }
+                        else
+                        {
                             cvfaqcontainer.cardElevation = 0f
                             cvfaqcontainer.strokeWidth = 4
                             cvfaqcontainer.strokeWidth = getResources().getDimensionPixelSize(com.intuit.sdp.R.dimen._1sdp);

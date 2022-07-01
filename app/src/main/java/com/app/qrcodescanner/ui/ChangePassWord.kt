@@ -58,7 +58,7 @@ class ChangePassWord : KotlinBaseActivity()
         }
         if (!etconfirmpassword.text.toString().trim().equals(etnewpassword.text.toString().trim()))
         {
-            confirmpasswordlayout.error="Password does n't match"
+            confirmpasswordlayout.error="Password doesn't match"
             return false
         }
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">QRCodeScanner</string>
+    <string name="app_name">OPAYL HRMS</string>
     <string name="login">Login</string>
     <string name="enter_email">Enter Email</string>
     <string name="enter_password">Enter Password</string>

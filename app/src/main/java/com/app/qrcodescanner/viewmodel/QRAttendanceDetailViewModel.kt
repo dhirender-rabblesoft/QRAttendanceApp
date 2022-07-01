@@ -5,6 +5,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.os.Looper
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat.finishAffinity
 import com.app.qrcodescanner.applications.QrApplication
@@ -56,9 +57,7 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
         binder.toolbar.tvtitle.setText("Detail")
         binder.tvcompanyname.setText("Client Name :"+bundle.getString(Keys.name))
         time = Utils.getcurrenttime()
-        binder.tvusername.text =
-
-            "Name : " + HomeScreenActivity.userdata?.data?.user?.first_name + " " + HomeScreenActivity.userdata?.data?.user?.last_name
+         binder.tvusername.text = "Name : " + HomeScreenActivity.userdata?.data?.user?.first_name + " " + HomeScreenActivity.userdata?.data?.user?.last_name
         binder.tvdesignation.text = "Designation : " + HomeScreenActivity.userdata?.data?.user?.role?.capitalizesLetters()
         binder.tvattendanceDate.text = "Attendance Date : " + Utils.getcurrentdate()
         var t1 = Utils.formateDateFromstring(Utils.TIMEFORMAT2, Utils.TIMEFORMAT, time)

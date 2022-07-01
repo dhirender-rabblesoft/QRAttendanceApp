@@ -17,7 +17,6 @@ class SplashScreen : KotlinBaseActivity() {
 
         val userid=SharedPreferenceManager(this).getString(Keys.USERID)
 
-
         Handler(Looper.getMainLooper()).postDelayed({
             Log.e("useriddddd",userid.toString())
             if (userid == null || userid.toString().isEmpty())
