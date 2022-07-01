@@ -150,11 +150,13 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
 
         if (bundle.get(Keys.ADDATTANANCE).isNotNull())
         {
+            HomeScreenActivity.token=bundle.get(Keys.TOKEN).toString()
+            Log.e("aftercancel","aftercancel")
             callApi(true)
             upadteimage()
         }
     }
-    private  fun callApi(load:Boolean)
+       fun callApi(load:Boolean)
     {
         commonRepository.attandancelisting(baseActivity,HomeScreenActivity.token,Keys.ATTANDANCELISTING,loading = load){
 

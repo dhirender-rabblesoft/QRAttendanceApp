@@ -18,6 +18,7 @@ import com.app.qrcodescanner.extension.invisible
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
 import com.app.qrcodescanner.ui.LoginActivity
+import com.app.qrcodescanner.ui.Scanner
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.Utils
 import com.google.gson.JsonObject
@@ -72,6 +73,7 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
             dailog = ComfirmDailogue("", "Are you sure you want to submit", "", baseActivity) {
                 if (it.equals(0)) {
                     dailog?.dismiss()
+                    HomeScreenActivity.isattandence=false
                     callintent()
 
                 } else {
@@ -85,19 +87,20 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
         }
         binder.btcancel.setOnClickListener {
             baseActivity.showtoast("Cancel your attendance try again ")
+            HomeScreenActivity.isattandence=false
             callintent()
 
         }
     }
 
     fun callintent() {
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
 
-            val bundle = Bundle()
-            bundle.putString(Keys.ADDATTANANCE, Keys.ADDATTANANCE)
-            baseActivity.openA(HomeScreenActivity::class, bundle)
-            finishAffinity(baseActivity)
-        }, 200)
+        baseActivity.onBackPressed()
+//        val bundle = Bundle()
+//        bundle.putString(Keys.ADDATTANANCE, Keys.ADDATTANANCE)
+//        bundle.putString(Keys.TOKEN, HomeScreenActivity.token)
+//        baseActivity.openA(HomeScreenActivity::class, bundle)
+//        baseActivity.finishAffinity()
     }
 
     private fun checkinoutapi() {
@@ -118,8 +121,10 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
             jsonObject,
             true
         ) {
+            HomeScreenActivity.isattandence=true
             baseActivity.showtoast("Attendance  added successfully")
             dailog?.dismiss()
+            HomeScreenActivity.isattandence=true
             callintent()
         }
     }

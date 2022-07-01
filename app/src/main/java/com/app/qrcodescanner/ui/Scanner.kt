@@ -36,6 +36,10 @@ class Scanner : KotlinBaseActivity(), Listener {
     var l1=""
     var lon2=""
     var bundle=Bundle()
+    companion object{
+        var performyoperation=""
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,6 +116,7 @@ class Scanner : KotlinBaseActivity(), Listener {
 
 
     }
+
     private  fun  substringvalue(lat:String,lng:String,name:String)
     {
         l1=lat
@@ -128,7 +133,7 @@ class Scanner : KotlinBaseActivity(), Listener {
                 bundle1.putString(Keys.USER_TYPE,bundle.getString(Keys.USER_TYPE))
                 bundle1.putString(Keys.name,name)
                 openA(QRAttendanceDetails::class,bundle1)
-                finishAffinity()
+                finish()
             } else {
 
                 showtoast("Attendance can be marked between 200 meters of distance")
@@ -190,6 +195,10 @@ class Scanner : KotlinBaseActivity(), Listener {
 
     override fun onResume() {
         super.onResume()
+//        if (!performyoperation.isEmpty())
+//        {
+//            onBackPressed()
+//        }
         codeScanner.startPreview()
         location.startLocation()
     }

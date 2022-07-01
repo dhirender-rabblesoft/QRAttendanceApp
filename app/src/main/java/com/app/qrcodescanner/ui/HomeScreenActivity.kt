@@ -1,6 +1,7 @@
 package com.app.qrcodescanner.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.app.qrcodescanner.R
@@ -35,6 +36,11 @@ class HomeScreenActivity : KotlinBaseActivity() {
     {
 
         super.onResume()
+        if (isattandence)
+        {
+            viewModel.callApi(true)
+            isattandence=false
+        }
         viewModel.parsedata()
         binding.bottomNavigationView.selectedItemId=R.id.home
 //        parsedata()
@@ -45,10 +51,19 @@ class HomeScreenActivity : KotlinBaseActivity() {
 //        }
     }
 
+    override fun onStop() {
+        Log.e("testinggg","122")
+        super.onStop()
+    }
+    override fun onDestroy() {
+        Log.e("testinggg","133")
+        super.onDestroy()
+    }
     companion object{
         var userdata:LoginJson?=null
         var token=""
         var isEditProfile=""
+        var isattandence=false
     }
 
 
