@@ -7,6 +7,7 @@ import android.util.Log
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.ui.timesheet.TimeSheet
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.SharedPreferenceManager
 
@@ -16,7 +17,12 @@ class SplashScreen : KotlinBaseActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         val userid=SharedPreferenceManager(this).getString(Keys.USERID)
+        openA(TimeSheet::class)
+        //callhgandler(userid.toString())
 
+    }
+    private  fun callhgandler(userid:String)
+    {
         Handler(Looper.getMainLooper()).postDelayed({
             Log.e("useriddddd",userid.toString())
             if (userid == null || userid.toString().isEmpty())
@@ -27,10 +33,10 @@ class SplashScreen : KotlinBaseActivity() {
             else{
                 if (SharedPreferenceManager(this).getString(Keys.USER_TYPE).equals("super_admin"))
                 {
-                     openA(GenrateQrCode::class)
+                    openA(GenrateQrCode::class)
 
                 }else{
-                     openA(HomeScreenActivity::class)
+                    openA(HomeScreenActivity::class)
 
                 }
             }

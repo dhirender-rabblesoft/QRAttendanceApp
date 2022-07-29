@@ -19,10 +19,14 @@
     <color name="black_2">#5C6179</color>
     <color name="black_3">#A2A6B8</color>
     <color name="black_4">#DDDDDD</color>
+    <color name="black_5">#949494</color>
     <color name="black_hint">#CC4C5270</color>
     <color name="red">#CC2956</color>
     <color name="green">#00E687</color>
     <color name="red2">#ff3838</color>
     <color name="dark_blue">#004481</color>
+    <string name="clear_pad">Erase</string>
+    <string name="save_signature">Save</string>
+    <string name="compress_signature">Scale 50%</string>
 
 </resources>

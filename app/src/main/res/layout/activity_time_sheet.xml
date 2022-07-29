@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.timesheet.TimeSheet">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clhedaer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/common_toolbar" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/clhedaer">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAttendeanceTitle"
+                style="@style/boldfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="Staff Detail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_22sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Id:"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvstaffid"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="te001"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Name :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvstaffname"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="test"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Position  :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvstaffpos"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="Admin"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Staff Email  :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvstaffemail"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="abc@gmail.com"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Week Commencing Date :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvdate"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="12 Ayg-2012"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work Date  :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvworkdate"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="12 Ayg-2012"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Work Hours (24 HOUR Format):"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvtime"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="13:15"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Break Time (in hours):"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvofftime"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="13:15"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Care Home Name  :"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvcare"
+                    style="@style/regularfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:text="test"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/semiboldfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Care Home Unit (if applicable)  :"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/clientauto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight=".3"
+
+                    android:background="@drawable/editext_background"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/loginbutton"
+                    style="@style/mainbutton"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_weight=".9"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="gone" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/semiboldfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Authorized By Shift Incharge Name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/inchargeauto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight=".3"
+
+                    android:background="@drawable/editext_background"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="@dimen/_10sdp" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/inchargebutton"
+                    style="@style/mainbutton"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_weight=".9"
+                    android:text="@string/submit"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_10sdp"
+                    android:visibility="gone" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/semiboldfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Authorized By Shift Incharge Signature"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llsign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="vertical"
+                android:background="@drawable/dash_border"
+                android:padding="@dimen/_20sdp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/mediumfont"
+                    android:textSize="@dimen/_12sdp"
+                    android:text="Sign here"
+                    android:textAlignment="center"
+                    android:id="@+id/tvsign"
+                     android:layout_marginTop="@dimen/_8sdp"
+                    android:visibility="visible"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivsignature"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:scaleType="centerCrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/semiboldfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Any Note"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textarealayout"
+                style="@style/materialStyle"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:layout_goneMarginStart="@dimen/_32sdp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/ettextarea"
+                    style="@style/edittextlogintitle"
+                    android:layout_height="@dimen/_120sdp"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:gravity="start"
+                    android:singleLine="false"
+                    android:textSize="@dimen/_12sdp"
+                    android:hint="Type here..." />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/submit"
+                style="@style/mainbutton"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/submit"
+                android:textAllCaps="false" />
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"/>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

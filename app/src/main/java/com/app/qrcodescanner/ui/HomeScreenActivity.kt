@@ -1,5 +1,4 @@
 package com.app.qrcodescanner.ui
-
 import android.os.Bundle
 import android.util.Log
 import androidx.databinding.DataBindingUtil
@@ -12,14 +11,12 @@ import com.app.qrcodescanner.viewmodel.HomeScreenViewModel
 import com.example.easywaylocation.EasyWayLocation
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
-
-class HomeScreenActivity : KotlinBaseActivity() {
+class HomeScreenActivity : KotlinBaseActivity()
+{
     lateinit var binding: ActivityHomeScreenBinding
     lateinit var viewModel: HomeScreenViewModel
     lateinit var location: EasyWayLocation
     var  isfirstime=false
-
-
     override fun onCreate(savedInstanceState: Bundle?)
     {
 //        getWindow().setFlags(
@@ -31,10 +28,8 @@ class HomeScreenActivity : KotlinBaseActivity() {
         viewModel.setBinder(binding, this)
 
     }
-
     override fun onResume()
     {
-
         super.onResume()
         if (isattandence)
         {
@@ -50,21 +45,19 @@ class HomeScreenActivity : KotlinBaseActivity() {
 //            isfirstime=true
 //        }
     }
-
-    override fun onStop() {
-        Log.e("testinggg","122")
+    override fun onStop()
+    {
         super.onStop()
     }
-    override fun onDestroy() {
-        Log.e("testinggg","133")
+    override fun onDestroy()
+    {
         super.onDestroy()
     }
-    companion object{
+    companion object
+    {
         var userdata:LoginJson?=null
         var token=""
         var isEditProfile=""
         var isattandence=false
     }
-
-
 }

@@ -137,9 +137,13 @@ class FilterDailog(
             else{
                 if (radioType.equals("3"))
                 {
-                    if (binding.enddate.text.toString().trim().isEmpty())
+                    if (binding.startdate.text.toString().trim().isEmpty())
                     {
-                        baseActivity.showtoast("Please select dates")
+                        baseActivity.showtoast("Please select start date")
+                    }
+                    else if (binding.enddate.text.toString().trim().isEmpty())
+                    {
+                        baseActivity.showtoast("Please select end date")
                     }
                     else{
                         callapi()

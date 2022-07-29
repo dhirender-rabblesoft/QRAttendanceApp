@@ -113,6 +113,7 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
 
         }
         jsonObject.addProperty(Keys.latitude, bundle.getString(Keys.LAT))
+        jsonObject.addProperty(Keys.client_id, bundle.getString(Keys.id))
         jsonObject.addProperty(Keys.longitude, bundle.getString(Keys.LNG))
         commonRepository.changepassword(
             baseActivity,

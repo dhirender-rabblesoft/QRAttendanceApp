@@ -1,5 +1,4 @@
 package com.app.qrcodescanner.ui
-
 import android.Manifest
 import android.os.Bundle
 import android.util.Log
@@ -27,8 +26,8 @@ import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.activity_genrate_qr_code.*
 import kotlinx.android.synthetic.main.common_toolbar.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
-
-class GenrateQrCode : KotlinBaseActivity() {
+class GenrateQrCode : KotlinBaseActivity()
+{
     var qrCodeListing = ArrayList<QrCodeListingModel.Data.Data>()
     var commonRepository = CommonRepository(QrApplication.myApp!!)
     private var loading = true
@@ -38,16 +37,16 @@ class GenrateQrCode : KotlinBaseActivity() {
     private val recordPerPage = 10
     lateinit var mLayoutManger: LinearLayoutManager
     private var firstVisibleItemPosition: Int = 0
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_genrate_qr_code)
         parsedata()
         setToolbar()
         setscrolllistner()
-
     }
-
-    override fun onResume() {
+    override fun onResume()
+    {
         super.onResume()
         totalpage=0
         currentPage=1
@@ -58,7 +57,6 @@ class GenrateQrCode : KotlinBaseActivity() {
 
     private  fun setscrolllistner()
     {
-
         rvRecentListAdapter.addOnScrollListener(object : RecyclerView.OnScrollListener()
         {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
@@ -83,13 +81,10 @@ class GenrateQrCode : KotlinBaseActivity() {
                 }
             }
         })
-
-
-
-
     }
 
-    private fun setToolbar() {
+    private fun setToolbar()
+    {
         ivback.gone()
         tvtitle.setText("Welcome Admin")
          ivdot.setImageResource(R.drawable.ic_shutdown)
@@ -103,13 +98,9 @@ class GenrateQrCode : KotlinBaseActivity() {
             finishAffinity()
          }
         addlist.setOnClickListener {
-
              openA(AddArCode::class)
-
          }
     }
-
-
     private fun setQrCodeListingAdapter() {
         val qrCodeListingAdapter = QrCodeListingAdapter(this) {pos,data->
             val jsonObject = JsonObject()

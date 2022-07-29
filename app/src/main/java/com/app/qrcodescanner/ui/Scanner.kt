@@ -31,10 +31,10 @@ class Scanner : KotlinBaseActivity(), Listener {
     val commonRepository = CommonRepository(QrApplication.myApp!!)
 
     lateinit var location: EasyWayLocation
-    var lat = ""
-    var lng = ""
-    var l1=""
-    var lon2=""
+    var lat = "0.00"
+    var lng = "0.00"
+    var l1="0.00"
+    var lon2="0.00"
     var bundle=Bundle()
     companion object{
         var performyoperation=""
@@ -59,7 +59,7 @@ class Scanner : KotlinBaseActivity(), Listener {
         commonRepository.decodeqr(this,Keys.DECODEQR,HomeScreenActivity.token,jsonObject,ishowloader = true){
             if (it.code.equals(200))
             {
-                substringvalue(it.data.lat,it.data.long,it.data.client.name)
+                substringvalue(it.data.lat,it.data.long,it.data.client.name,it.data.client.id)
             }
         }
 
@@ -117,27 +117,29 @@ class Scanner : KotlinBaseActivity(), Listener {
 
     }
 
-    private  fun  substringvalue(lat:String,lng:String,name:String)
+    private  fun  substringvalue(lat:String,lng:String,name:String,client_id:String)
     {
         l1=lat
         lon2=lng
         Log.e("actual_lat", l1+","+lon2)
         if (calculateDistance().isNotNull()) {
 
-            if (calculateDistance() <= 200) {
-
+            if (calculateDistance() <= 200)
+            {
                 val  bundle1=Bundle()
                 bundle1.putString(Keys.LAT,l1)
                 bundle1.putString(Keys.LNG,lon2)
+                bundle1.putString(Keys.id,client_id)
                 Log.e("calculateDistance",bundle.getString(Keys.USER_TYPE).toString())
                 bundle1.putString(Keys.USER_TYPE,bundle.getString(Keys.USER_TYPE))
                 bundle1.putString(Keys.name,name)
                 openA(QRAttendanceDetails::class,bundle1)
                 finish()
-            } else {
 
+            }
+            else
+            {
                 showtoast("Attendance can be marked between 200 meters of distance")
-
             }
 
         }

@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:hint="Address 1"
+                        android:hint="Title"
                         app:errorEnabled="true"
                         app:hintEnabled="true"
                         app:hintTextColor="@color/black_1"
