@@ -21,6 +21,7 @@ import com.app.qrcodescanner.model.AttandanceListing
 import com.app.qrcodescanner.model.LoginJson
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.*
+import com.app.qrcodescanner.ui.timesheet.TimeSheet
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.bumptech.glide.Glide
@@ -203,7 +204,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         binder.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.attdance->baseActivity.openA(AttendanceListingScreen::class)
-                R.id.settings->baseActivity.openA(EditProfile::class)
+                R.id.settings->baseActivity.openA(TimeSheet::class)
             }
             true
         }

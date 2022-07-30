@@ -57,7 +57,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Staff Id:"
+                    android:text="Id "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -67,8 +67,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="te001"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -81,7 +80,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Staff Name :"
+                    android:text="Name "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -91,8 +90,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="test"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -105,7 +103,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Staff Position  :"
+                    android:text="Position  "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -115,8 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="Admin"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -129,7 +126,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Staff Email  :"
+                    android:text=" Email  "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -139,10 +136,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="abc@gmail.com"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                 style="@style/boldfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Work Detail"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_22sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
@@ -153,7 +160,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Week Commencing Date :"
+                    android:text="Week Commencing Date "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -163,8 +170,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="12 Ayg-2012"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -177,7 +183,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Work Date  :"
+                    android:text="Date  "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -187,8 +193,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="12 Ayg-2012"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -201,7 +206,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Work Hours (24 HOUR Format):"
+                    android:text="Hours "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -211,8 +216,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="13:15"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -225,7 +229,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Break Time (in hours):"
+                    android:text="Break Time "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -235,8 +239,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="13:15"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -259,8 +262,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:text="test"
-                    android:textColor="@color/black_1"
+                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_12sdp" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -285,14 +287,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_weight=".3"
-
                     android:background="@drawable/editext_background"
                     android:inputType="text"
                     android:maxLines="1"
                     android:padding="@dimen/_10sdp" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/loginbutton"
+                    android:id="@+id/carebutton"
                     style="@style/mainbutton"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:layout_weight=".9"
@@ -379,6 +380,20 @@
                     android:layout_height="@dimen/_50sdp"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/clearsign"
+                style="@style/mainbutton"
+                android:layout_marginStart="@dimen/_8sdp"
+                 android:layout_marginTop="@dimen/_5sdp"
+                android:text="Clear"
+                android:textAllCaps="false"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone" />
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/semiboldfont"
                 android:layout_width="wrap_content"

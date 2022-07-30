@@ -1,33 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.feedback.FeedBack">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_height="wrap_content">
-        <include layout="@layout/common_toolbar"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include layout="@layout/common_toolbar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.core.widget.NestedScrollView
-        app:layout_constraintTop_toBottomOf="@id/header"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="0dp">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
+
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/mediumfont"
                 android:layout_width="wrap_content"
@@ -41,8 +48,8 @@
                 style="@style/materialStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/enter_email"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/enter_email"
                 android:textColorHint="@color/black_1"
                 app:boxStrokeWidthFocused="@dimen/_1sdp"
                 app:errorEnabled="true"
@@ -53,16 +60,312 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/etemail"
                     style="@style/edittextlogintitle"
-                    android:enabled="false"
-                    android:text="RGN/RLd"
                     android:drawablePadding="@dimen/_10sdp"
+                    android:enabled="false"
                     android:hint="@string/enter_email"
+                    android:inputType="textEmailAddress"
+                    android:text="RGN/RLd" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="General Observation/Comments"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/commentlay"
+                style="@style/materialStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/enter_email"
+                android:textColorHint="@color/black_1"
+                app:boxStrokeWidthFocused="@dimen/_1sdp"
+                app:errorEnabled="true"
+
+                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:layout_goneMarginStart="@dimen/_32sdp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etcomment"
+                    style="@style/edittextlogintitle"
+                    android:drawablePadding="@dimen/_10sdp"
                     android:inputType="textEmailAddress" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/addresslay"
+                style="@style/materialStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/enter_email"
+                android:textColorHint="@color/black_1"
+                app:boxStrokeWidthFocused="@dimen/_1sdp"
+                app:errorEnabled="true"
+
+                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:layout_goneMarginStart="@dimen/_32sdp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etaddress"
+                    style="@style/edittextlogintitle"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:inputType="textEmailAddress" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PostCode"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/materialStyle"
+                android:id="@+id/passcodelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/enter_email"
+                android:textColorHint="@color/black_1"
+                app:boxStrokeWidthFocused="@dimen/_1sdp"
+                app:errorEnabled="true"
+
+                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:layout_goneMarginStart="@dimen/_32sdp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etpostcode"
+                    style="@style/edittextlogintitle"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name of nurse incharge"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/materialStyle"
+                android:id="@+id/namelay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/enter_email"
+                android:textColorHint="@color/black_1"
+                app:boxStrokeWidthFocused="@dimen/_1sdp"
+                app:errorEnabled="true"
+
+                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:layout_goneMarginStart="@dimen/_32sdp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etnurse"
+                    style="@style/edittextlogintitle"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Signature"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llsign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/dash_border"
+                android:orientation="vertical"
+                android:padding="@dimen/_20sdp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvsign"
+                    style="@style/mediumfont"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:text="Sign here"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"
+                    android:visibility="visible" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivsignature"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_50sdp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/clearsign"
+                style="@style/mainbutton"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Clear"
+                android:textAllCaps="false"
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+
+                android:textSize="@dimen/_10sdp"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Position"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/materialStyle"
+                android:id="@+id/postionlay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:hint="@string/enter_email"
+                android:textColorHint="@color/black_1"
+                app:boxStrokeWidthFocused="@dimen/_1sdp"
+                app:errorEnabled="true"
+
+                app:layout_goneMarginEnd="@dimen/_32sdp"
+                app:layout_goneMarginStart="@dimen/_32sdp">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etpos"
+                    style="@style/edittextlogintitle"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="Date"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvdate"
+                style="@style/regularfont"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+
+                android:background="@drawable/editext_background"
+                android:padding="@dimen/_10sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select review"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <RadioGroup
+                android:id="@+id/rbgrp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/rbexcellent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10sdp"
+                    android:text="Excellent" />
+                <RadioButton
+                    android:id="@+id/rbvgood"
+                    android:textSize="@dimen/_10sdp"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Very Good" />
+                <RadioButton
+                    android:id="@+id/rbgood"
+                    android:textSize="@dimen/_10sdp"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Good" />
+                <RadioButton
+                    android:id="@+id/rbfair"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Fair" />
+                <RadioButton
+                    android:id="@+id/rbpoor"
+                    android:textSize="@dimen/_10sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Poor" />
+            </RadioGroup>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/mediumfont"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select score"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvlist"
+                android:layout_marginTop="@dimen/_5sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginbutton"
+                style="@style/mainbutton"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/submit"
+                android:textAllCaps="false" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_30sdp" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
 
     </androidx.core.widget.NestedScrollView>

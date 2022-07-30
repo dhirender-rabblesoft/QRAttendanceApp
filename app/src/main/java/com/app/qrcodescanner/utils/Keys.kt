@@ -2,8 +2,8 @@ package com.app.qrcodescanner.utils
 
 object Keys
 {
-    const val  BASE_URL="http://18.219.171.249/api/"
-//    const val   BASE_URL="https://fbef-49-36-205-104.ngrok.io/hrms-app/public/api/"
+    //const val  BASE_URL="http://18.219.171.249/api/"
+    const val   BASE_URL="https://ad8e-2405-201-5007-b08b-d73e-96a5-3440-4a58.ngrok.io/api/"
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
@@ -22,7 +22,9 @@ object Keys
     const val contactus="contactus"
     const val ATTANDANCELISTING="attendance-listing"
     const val INVOICELISTING="invoice-listing"
-    const val CHANGESTATUS="change-status"
+    const val UNITLIST="units?client_id="
+    const val AUTHRISEUSER="authorized-users?company_id="
+    const val TIMESHEET="time-sheet-details?id="
     const val DECODEQR="decode-qr"
 
     const val email="email"
@@ -37,7 +39,9 @@ object Keys
     const val last_name="last_name"
     const val LAT="lat"
     const val LNG="lng"
-    const val CHECKIN="check-in"
+    const val user_id="user_id"
+    const val company_id="company_id"
+     const val CHECKIN="check-in"
     const val CHECKOUT="check-out"
     const val phone_number="phone_number"
     const val password="password"
@@ -49,6 +53,10 @@ object Keys
     const val latitude="latitude"
     const val longitude="longitude"
     const val client_id="client_id"
+    const val branch_id="branch_id"
+    const val unit_id="unit_id"
+    const val note="note"
+    const val authorized_by_id="authorized_by_id"
     const val encode="encode"
 
     //Api End Points

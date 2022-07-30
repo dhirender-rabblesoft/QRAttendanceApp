@@ -17,7 +17,10 @@ import android.graphics.Color
 import android.net.Uri
 import android.util.Log
 import android.view.View
+ import com.app.qrcodescanner.extension.gone
+ import com.app.qrcodescanner.ui.feedback.FeedBack
  import com.app.qrcodescanner.ui.timesheet.TimeSheet
+ import kotlinx.android.synthetic.main.common_toolbar.*
  import java.io.*
 
 class Signatures : KotlinBaseActivity() {
@@ -29,9 +32,10 @@ class Signatures : KotlinBaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signatures)
         mSilkySignaturePad = findViewById(R.id.signature_pad)
+        settoolbar()
         mSilkySignaturePad!!.setOnSignedListener(object : OnSignedListener {
             override fun onStartSigning() {
-                Toast.makeText(this@Signatures, "OnStartSigning", Toast.LENGTH_SHORT).show()
+          //      Toast.makeText(this@Signatures, "OnStartSigning", Toast.LENGTH_SHORT).show()
             }
 
             override fun onSigned() {
@@ -90,6 +94,14 @@ class Signatures : KotlinBaseActivity() {
             }
         })
     }
+    private  fun settoolbar()
+    {
+        ivback.setOnClickListener {
+            onBackPressed()
+        }
+        tvtitle.text="Signature"
+        ivdot.gone()
+    }
 
     fun getAlbumStorageDir(albumName: String?): File {
         // Get the directory for the user's public pictures directory.
@@ -123,7 +135,15 @@ class Signatures : KotlinBaseActivity() {
                 getAlbumStorageDir("SignaturePad"),
                 String.format("Signature_%d.jpg", System.currentTimeMillis())
             )
-            TimeSheet.signature=photo
+            if (intent.extras!=null && intent?.extras!!.getString("from").equals("1"))
+            {
+                FeedBack.signature=photo
+
+            }
+            else{
+                TimeSheet.signature=photo
+
+            }
             Log.e("photoooo1", photo.path)
             saveBitmapToJPG(signature, photo)
             scanMediaFile(photo)

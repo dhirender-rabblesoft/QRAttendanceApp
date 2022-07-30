@@ -63,6 +63,14 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Part fields: ArrayList<MultipartBody.Part>
     ): Call<LoginJson>
+ @Headers("Accept: application/json")
+    @Multipart
+    @POST
+    fun addtimesheet(
+        @Url url: String,
+        @Header("Authorization") token: String,
+        @Part fields: ArrayList<MultipartBody.Part>
+    ): Call<AddTimeSheetJson>
 
 
     @Headers("Accept:application/json")
@@ -72,8 +80,31 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject?
     ): Call<QrCodeGenerateModel>
+    @Headers("Accept:application/json")
+    @POST
+    fun addunit(
+        @Url url: String,
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject?
+    ): Call<AddUnitJson>
+    @Headers("Accept:application/json")
+    @POST
+    fun addauthuser(
+        @Url url: String,
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject?
+    ): Call<AddUnitJson>
 
     @Headers("Accept:application/json")
     @GET
     fun qrCodeListing(@Url url: String,@Header("Authorization") token: String):Call<QrCodeListingModel>
+    @Headers("Accept:application/json")
+    @GET
+    fun gettimesheetJson(@Url url: String,@Header("Authorization") token: String):Call<GetTimeSheetJson>
+    @Headers("Accept:application/json")
+    @GET
+    fun getcarenamelist(@Url url: String,@Header("Authorization") token: String):Call<CareListJson>
+    @Headers("Accept:application/json")
+    @GET
+    fun getauthroiselist(@Url url: String,@Header("Authorization") token: String):Call<AuthoriseList>
 }

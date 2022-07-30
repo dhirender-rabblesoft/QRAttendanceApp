@@ -95,6 +95,7 @@ object Utils {
     fun shoedatepicker(
         baseActivity: KotlinBaseActivity,
         lblDate: AppCompatTextView,
+        ispast:Boolean=false,
         onConfirmed: () -> Unit = {}
     ) {
         val c = Calendar.getInstance()
@@ -123,6 +124,10 @@ object Utils {
                     onConfirmed.invoke()
                 }
             })
+        if (ispast)
+        {
+            dpd.getDatePicker().setMinDate(c.getTimeInMillis());
+        }
 
         dpd.show()
     }

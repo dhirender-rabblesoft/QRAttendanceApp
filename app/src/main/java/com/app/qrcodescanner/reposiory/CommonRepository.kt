@@ -298,6 +298,159 @@ class CommonRepository(private val baseActivity: Application)
                 )
         }
     }
+    fun getTimeSheetJson(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (GetTimeSheetJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+            baseActivity.startProgressDialog()
+            retrofitClient =
+                RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
+            retrofitClient?.gettimesheetJson(  url, token)!!
+                .enqueue(object : Callback<GetTimeSheetJson> {
+                    override fun onResponse(
+                        call: Call<GetTimeSheetJson>,
+                        response: Response<GetTimeSheetJson>
+                    ) {
+                        baseActivity.stopProgressDialog()
+                        when(response.code()){
+                            Keys.RESPONSE_SUCESS ->{
+                                response.body()?.let {
+                                    itemClick(it)
+                                }
+                            }
+                            Keys.ERRORCODE ->{
+                                response.errorBody()?.let {
+                                    baseActivity.parseError(response)
+                                }
+                            }
+                            Keys.UNAUTHoRISE -> {
+                                baseActivity.unauthrizeddialog()
+
+                            }
+                            in 500..512 -> {
+                                baseActivity.customSnackBar(
+                                    baseActivity.getString(R.string.somthingwentwrong),
+                                    true
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<GetTimeSheetJson>, t: Throwable) {
+                        baseActivity.stopProgressDialog()
+                    }
+
+                }
+                )
+        }
+    }
+    fun getcarenamelist(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (CareListJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+          //  baseActivity.startProgressDialog()
+            retrofitClient =
+                RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
+            retrofitClient?.getcarenamelist(  url, token)!!
+                .enqueue(object : Callback<CareListJson> {
+                    override fun onResponse(
+                        call: Call<CareListJson>,
+                        response: Response<CareListJson>
+                    ) {
+                        baseActivity.stopProgressDialog()
+                        when(response.code()){
+                            Keys.RESPONSE_SUCESS ->{
+                                response.body()?.let {
+                                    itemClick(it)
+                                }
+                            }
+                            Keys.ERRORCODE ->{
+                                response.errorBody()?.let {
+                                    baseActivity.parseError(response)
+                                }
+                            }
+                            Keys.UNAUTHoRISE -> {
+                                baseActivity.unauthrizeddialog()
+
+                            }
+                            in 500..512 -> {
+                                baseActivity.customSnackBar(
+                                    baseActivity.getString(R.string.somthingwentwrong),
+                                    true
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<CareListJson>, t: Throwable) {
+                        baseActivity.stopProgressDialog()
+                    }
+
+                }
+                )
+        }
+    }
+    fun getauthroiselist(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (AuthoriseList) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+          //  baseActivity.startProgressDialog()
+            retrofitClient =
+                RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
+            retrofitClient?.getauthroiselist(  url, token)!!
+                .enqueue(object : Callback<AuthoriseList> {
+                    override fun onResponse(
+                        call: Call<AuthoriseList>,
+                        response: Response<AuthoriseList>
+                    ) {
+                        baseActivity.stopProgressDialog()
+                        when(response.code()){
+                            Keys.RESPONSE_SUCESS ->{
+                                response.body()?.let {
+                                    itemClick(it)
+                                }
+                            }
+                            Keys.ERRORCODE ->{
+                                response.errorBody()?.let {
+                                    baseActivity.parseError(response)
+                                }
+                            }
+                            Keys.UNAUTHoRISE -> {
+                                baseActivity.unauthrizeddialog()
+
+                            }
+                            in 500..512 -> {
+                                baseActivity.customSnackBar(
+                                    baseActivity.getString(R.string.somthingwentwrong),
+                                    true
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<AuthoriseList>, t: Throwable) {
+                        baseActivity.stopProgressDialog()
+                    }
+
+                }
+                )
+        }
+    }
 
 
     fun faq(
@@ -394,6 +547,57 @@ class CommonRepository(private val baseActivity: Application)
                 }
 
                 override fun onFailure(call: Call<LoginJson?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+
+    }
+
+    fun addtimesheet(
+        baseActivity: KotlinBaseActivity,
+        fields: ArrayList<MultipartBody.Part>,
+        itemClick: (AddTimeSheetJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.addtimesheet(
+                Keys.BASE_URL + "add-time-sheet", HomeScreenActivity.token, fields
+            )!!.enqueue(object : Callback<AddTimeSheetJson?> {
+                override fun onResponse(
+                    call: Call<AddTimeSheetJson?>,
+                    response: Response<AddTimeSheetJson?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<AddTimeSheetJson?>, t: Throwable) {
                     baseActivity.stopProgressDialog()
                 }
             })
@@ -603,6 +807,108 @@ class CommonRepository(private val baseActivity: Application)
                 }
 
                 override fun onFailure(call: Call<QrCodeGenerateModel?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+
+    }
+    fun addunit(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        jsonObject: JsonObject,
+        itemClick: (AddUnitJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.addunit(
+                Keys.BASE_URL + "add-unit", token, jsonObject
+            )!!.enqueue(object : Callback<AddUnitJson?> {
+                override fun onResponse(
+                    call: Call<AddUnitJson?>,
+                    response: Response<AddUnitJson?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<AddUnitJson?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+
+    }
+    fun addusthrisedUser(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        jsonObject: JsonObject,
+        itemClick: (AddUnitJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.addauthuser(
+                Keys.BASE_URL + "add-authorized-user", token, jsonObject
+            )!!.enqueue(object : Callback<AddUnitJson?> {
+                override fun onResponse(
+                    call: Call<AddUnitJson?>,
+                    response: Response<AddUnitJson?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<AddUnitJson?>, t: Throwable) {
                     baseActivity.stopProgressDialog()
                 }
             })

@@ -22,8 +22,7 @@ class AttendanceHomeListingAdapter(
         holder.itemView.apply {
 
             tvdate.text= Utils.formateDateFromstring(Utils.DATETIMEFORMAT, Utils.DATEFORMAT,list[position].punch_in)
-            tvcheckintime.text=
-                Utils.formateDateFromstring(Utils.DATETIMEFORMAT, Utils.TIMEFORMAT,list[position].punch_in)
+            tvcheckintime.text= Utils.formateDateFromstring(Utils.DATETIMEFORMAT, Utils.TIMEFORMAT,list[position].punch_in)
             if (list[position].punch_out.isNotNull())
             {
                 tvcheckouttime.visible()

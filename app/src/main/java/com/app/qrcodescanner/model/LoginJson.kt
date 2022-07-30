@@ -19,6 +19,7 @@ data class LoginJson(
             val first_name: String,
             val gender: Any,
             val id: Int,
+            val company_id: Int,
             val image: Any,
             val last_name: String,
             val ni_number: Any,

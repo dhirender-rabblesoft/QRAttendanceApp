@@ -47,8 +47,17 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_35sdp</item>
         <item name="android:textColor">@color/white</item>
-        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
         <item name="android:background">@drawable/color_round</item>
+        <item name="singleLine">true</item>
+        <item name="android:textSize">@dimen/_13sdp</item>
+    </style>
+    <style name="mainbutton4">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="fontFamily">@font/poppins_semibold</item>
+        <item name="android:background">@drawable/black_rounded</item>
         <item name="singleLine">true</item>
         <item name="android:textSize">@dimen/_13sdp</item>
     </style>

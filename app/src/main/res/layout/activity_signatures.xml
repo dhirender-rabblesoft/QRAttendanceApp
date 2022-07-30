@@ -5,9 +5,19 @@
     android:layout_height="match_parent"
 
      >
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:id="@+id/header"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_height="wrap_content">
+        <include  layout="@layout/common_toolbar"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
     <RelativeLayout
+        android:layout_below="@id/header"
         android:id="@+id/signature_pad_container"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -18,7 +28,8 @@
             android:layout_height="1dp"
             android:layout_above="@+id/signature_pad_description"
             android:layout_marginBottom="8dp"
-            android:background="@android:color/darker_gray" />
+
+           />
 
         <TextView
             android:id="@+id/signature_pad_description"
@@ -40,17 +51,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:orientation="horizontal"
         android:paddingTop="10dp">
-
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/clear_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:singleLine="true"
+            android:layout_weight="1"
+            style="@style/mainbutton4"
+             android:enabled="false"
+            android:text="@string/clear_pad" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:layout_weight="1"
-            android:layout_marginEnd="@dimen/_5sdp"
-            android:background="@android:color/holo_green_dark"
+            android:layout_marginStart="@dimen/_5sdp"
+            style="@style/mainbutton"
             android:textColor="@android:color/white"
             android:enabled="false"
             android:text="@string/save_signature" />
@@ -67,16 +90,7 @@
             android:background="@android:color/holo_orange_dark"
             android:text="@string/compress_signature" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/clear_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:singleLine="true"
-            android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
-            android:enabled="false"
-            android:text="@string/clear_pad" />
+
 
     </LinearLayout>
 
