@@ -19,6 +19,7 @@ import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
 import com.app.qrcodescanner.ui.LoginActivity
 import com.app.qrcodescanner.ui.Scanner
+import com.app.qrcodescanner.ui.timesheet.TimeSheet
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.Utils
 import com.google.gson.JsonObject
@@ -122,11 +123,20 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
             jsonObject,
             true
         ) {
-            HomeScreenActivity.isattandence=true
-            baseActivity.showtoast("Attendance  added successfully")
             dailog?.dismiss()
-            HomeScreenActivity.isattandence=true
-            callintent()
+            // checkout case for timesheet
+            if (type.equals("2"))
+            {
+                baseActivity.openA(TimeSheet::class)
+            }
+            else{
+                HomeScreenActivity.isattandence=true
+                baseActivity.showtoast("Attendance  added successfully")
+
+                HomeScreenActivity.isattandence=true
+                callintent()
+            }
+
         }
     }
 

@@ -18,7 +18,16 @@
         <include
             android:id="@+id/toolbar"
             layout="@layout/common_toolbar" />
-
+        <ProgressBar
+            android:id="@+id/p_Bar"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:minWidth="200dp"
+            android:progress="0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -35,12 +44,13 @@
             android:layout_marginEnd="@dimen/_20sdp"
             android:orientation="vertical">
 
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvAttendeanceTitle"
                 style="@style/boldfont"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="Staff Detail"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_22sdp"
@@ -252,7 +262,7 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Care Home Name  :"
+                    android:text="Care Home Name  "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -271,7 +281,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="Care Home Unit (if applicable)  :"
+                android:text="Care Home Unit (if applicable)  "
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
@@ -286,18 +296,28 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_weight=".3"
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
+                    android:hint="Search care unit"
+                    android:dropDownHeight="@dimen/_150sdp"
+
+                    style="@style/edittextlogintitle_regular"
+                    android:fontFamily="@font/poppins_regular"
                     android:background="@drawable/editext_background"
                     android:inputType="text"
-                    android:maxLines="1"
-                    android:padding="@dimen/_10sdp" />
+                    android:textSize="@dimen/_10sdp"
+                    android:padding="@dimen/_8sdp"
+                     android:maxLines="1"
+                     />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/carebutton"
                     style="@style/mainbutton"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_weight=".9"
-                    android:text="@string/submit"
+                    android:layout_weight=".8"
+
+                    android:text="@string/add"
+                    android:layout_height="@dimen/_35sdp"
                     android:textAllCaps="false"
                     android:textSize="@dimen/_10sdp"
                     android:visibility="gone" />
@@ -324,19 +344,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
-                    android:layout_weight=".3"
-
+                    android:layout_weight=".2"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/poppins_regular"
+                    style="@style/edittextlogintitle_regular"
+                    android:textSize="@dimen/_10sdp"
+                    android:hint="Search name"
                     android:background="@drawable/editext_background"
                     android:inputType="text"
                     android:maxLines="1"
-                    android:padding="@dimen/_10sdp" />
+                    android:padding="@dimen/_8sdp" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/inchargebutton"
                     style="@style/mainbutton"
                     android:layout_marginStart="@dimen/_8sdp"
-                    android:layout_weight=".9"
-                    android:text="@string/submit"
+                    android:layout_weight=".8"
+                    android:text="@string/add"
                     android:textAllCaps="false"
                     android:textSize="@dimen/_10sdp"
                     android:visibility="gone" />
@@ -355,10 +379,11 @@
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:id="@+id/llsign"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_100sdp"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:orientation="vertical"
-                android:background="@drawable/dash_border"
+                android:gravity="center"
+                 android:background="@drawable/dash_border"
                 android:padding="@dimen/_20sdp">
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/mediumfont"
@@ -366,8 +391,8 @@
                     android:text="Sign here"
                     android:textAlignment="center"
                     android:id="@+id/tvsign"
-                     android:layout_marginTop="@dimen/_8sdp"
-                    android:visibility="visible"
+                    android:gravity="center"
+                      android:visibility="visible"
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
@@ -375,9 +400,12 @@
                     android:id="@+id/ivsignature"
                     android:layout_gravity="center"
                     android:visibility="gone"
-                    android:scaleType="centerCrop"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_50sdp"/>
+                    android:scaleType="fitXY"
+
+                    android:adjustViewBounds="true"
+
+                     android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_60sdp"/>
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -414,12 +442,12 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/ettextarea"
-                    style="@style/edittextlogintitle"
+                    style="@style/edittextlogintitle_regular"
                     android:layout_height="@dimen/_120sdp"
                     android:drawablePadding="@dimen/_10sdp"
                     android:gravity="start"
                     android:singleLine="false"
-                    android:textSize="@dimen/_12sdp"
+                    android:textSize="@dimen/_10sdp"
                     android:hint="Type here..." />
             </com.google.android.material.textfield.TextInputLayout>
 

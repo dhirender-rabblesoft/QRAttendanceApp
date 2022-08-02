@@ -98,9 +98,17 @@ interface APIInterface {
     @Headers("Accept:application/json")
     @GET
     fun qrCodeListing(@Url url: String,@Header("Authorization") token: String):Call<QrCodeListingModel>
+
+    @Headers("Accept:application/json")
+    @GET
+    fun feedbacklist(@Url url: String):Call<FeebackListJson>
+
     @Headers("Accept:application/json")
     @GET
     fun gettimesheetJson(@Url url: String,@Header("Authorization") token: String):Call<GetTimeSheetJson>
+    @Headers("Accept:application/json")
+    @GET
+    fun getfeedback(@Url url: String,@Header("Authorization") token: String):Call<FeedbackJson>
     @Headers("Accept:application/json")
     @GET
     fun getcarenamelist(@Url url: String,@Header("Authorization") token: String):Call<CareListJson>

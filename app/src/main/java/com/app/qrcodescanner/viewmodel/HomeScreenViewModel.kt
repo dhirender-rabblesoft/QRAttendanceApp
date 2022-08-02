@@ -73,15 +73,13 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
 
     override fun onCleared() {
         HomeScreenActivity.token=""
-        Log.e("oncleareddd","onclear")
-        super.onCleared()
+         super.onCleared()
     }
     private  fun upadteimage()
     {
         if (HomeScreenActivity.userdata?.data?.user?.image.isNotNull())
         {
             binder.homeprogress.visible()
-            Log.e("imageurlll",HomeScreenActivity.userdata?.data?.user?.image.toString())
 
             Glide.with(baseActivity)
                 .load(HomeScreenActivity.userdata?.data?.user?.image.toString())
@@ -139,8 +137,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
     {
         if (!HomeScreenActivity.isEditProfile.isEmpty())
         {
-            Log.e("hehehhe","ohohoh")
-            upadteimage()
+             upadteimage()
             HomeScreenActivity.isEditProfile=""
         }
 
@@ -152,8 +149,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         if (bundle.get(Keys.ADDATTANANCE).isNotNull())
         {
             HomeScreenActivity.token=bundle.get(Keys.TOKEN).toString()
-            Log.e("aftercancel","aftercancel")
-            callApi(true)
+             callApi(true)
             upadteimage()
         }
     }
@@ -204,7 +200,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         binder.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.attdance->baseActivity.openA(AttendanceListingScreen::class)
-                R.id.settings->baseActivity.openA(TimeSheet::class)
+                R.id.settings->baseActivity.openA(EditProfile::class)
             }
             true
         }

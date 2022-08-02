@@ -298,6 +298,57 @@ class CommonRepository(private val baseActivity: Application)
                 )
         }
     }
+    fun feedbacklist(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (FeebackListJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+            baseActivity.startProgressDialog()
+            retrofitClient =
+                RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
+            retrofitClient?.feedbacklist(Keys.BASE_URL + url)!!
+                .enqueue(object : Callback<FeebackListJson> {
+                    override fun onResponse(
+                        call: Call<FeebackListJson>,
+                        response: Response<FeebackListJson>
+                    ) {
+                        baseActivity.stopProgressDialog()
+                        when(response.code()){
+                            Keys.RESPONSE_SUCESS ->{
+                                response.body()?.let {
+                                    itemClick(it)
+                                }
+                            }
+                            Keys.ERRORCODE ->{
+                                response.errorBody()?.let {
+                                    baseActivity.parseError(response)
+                                }
+                            }
+                            Keys.UNAUTHoRISE -> {
+                                baseActivity.unauthrizeddialog()
+
+                            }
+                            in 500..512 -> {
+                                baseActivity.customSnackBar(
+                                    baseActivity.getString(R.string.somthingwentwrong),
+                                    true
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<FeebackListJson>, t: Throwable) {
+                        baseActivity.stopProgressDialog()
+                    }
+
+                }
+                )
+        }
+    }
     fun getTimeSheetJson(
         baseActivity: KotlinBaseActivity,
         token: String,
@@ -342,6 +393,57 @@ class CommonRepository(private val baseActivity: Application)
                     }
 
                     override fun onFailure(call: Call<GetTimeSheetJson>, t: Throwable) {
+                        baseActivity.stopProgressDialog()
+                    }
+
+                }
+                )
+        }
+    }
+    fun getfeedbackdata(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (FeedbackJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+            baseActivity.startProgressDialog()
+            retrofitClient =
+                RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
+            retrofitClient?.getfeedback(  url, token)!!
+                .enqueue(object : Callback<FeedbackJson> {
+                    override fun onResponse(
+                        call: Call<FeedbackJson>,
+                        response: Response<FeedbackJson>
+                    ) {
+                        baseActivity.stopProgressDialog()
+                        when(response.code()){
+                            Keys.RESPONSE_SUCESS ->{
+                                response.body()?.let {
+                                    itemClick(it)
+                                }
+                            }
+                            Keys.ERRORCODE ->{
+                                response.errorBody()?.let {
+                                    baseActivity.parseError(response)
+                                }
+                            }
+                            Keys.UNAUTHoRISE -> {
+                                baseActivity.unauthrizeddialog()
+
+                            }
+                            in 500..512 -> {
+                                baseActivity.customSnackBar(
+                                    baseActivity.getString(R.string.somthingwentwrong),
+                                    true
+                                )
+                            }
+                        }
+                    }
+
+                    override fun onFailure(call: Call<FeedbackJson>, t: Throwable) {
                         baseActivity.stopProgressDialog()
                     }
 
@@ -570,6 +672,57 @@ class CommonRepository(private val baseActivity: Application)
             )
             retrofitClient?.addtimesheet(
                 Keys.BASE_URL + "add-time-sheet", HomeScreenActivity.token, fields
+            )!!.enqueue(object : Callback<AddTimeSheetJson?> {
+                override fun onResponse(
+                    call: Call<AddTimeSheetJson?>,
+                    response: Response<AddTimeSheetJson?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<AddTimeSheetJson?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+
+    }
+
+    fun addfeedback(
+        baseActivity: KotlinBaseActivity,
+        fields: ArrayList<MultipartBody.Part>,
+        itemClick: (AddTimeSheetJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+            baseActivity.startProgressDialog()
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.addtimesheet(
+                Keys.BASE_URL + "add-feedback", HomeScreenActivity.token, fields
             )!!.enqueue(object : Callback<AddTimeSheetJson?> {
                 override fun onResponse(
                     call: Call<AddTimeSheetJson?>,

@@ -4,11 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-
     android:paddingTop="@dimen/_8sdp"
-    android:paddingBottom="@dimen/_8sdp"
-     >
-
+    android:paddingBottom="@dimen/_8sdp">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivback"
@@ -31,8 +28,8 @@
         android:layout_height="wrap_content"
         android:text=""
         android:textAlignment="center"
-        android:textColor="@color/black_1"
-        android:textSize="@dimen/_18sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivdot"
         app:layout_constraintStart_toEndOf="@+id/ivback"

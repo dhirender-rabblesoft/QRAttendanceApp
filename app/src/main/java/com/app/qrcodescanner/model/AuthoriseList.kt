@@ -6,10 +6,10 @@ data class AuthoriseList(
     val message: String
 ) {
     data class Data(
-        val company_id: Int,
-        val created_at: String,
-        val id: Int,
-        val name: String,
-        val updated_at: String
+        val company_id: Int=0,
+        val created_at: String="",
+        val id: Int=0,
+        val name: String="",
+        val updated_at: String=""
     )
 }

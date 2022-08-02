@@ -28,6 +28,8 @@ class Signatures : KotlinBaseActivity() {
     private var mClearButton: AppCompatButton? = null
     private var mSaveButton: AppCompatButton? = null
     private var mCompressButton: AppCompatButton? = null
+    var iscare=false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signatures)
@@ -54,43 +56,43 @@ class Signatures : KotlinBaseActivity() {
         mSaveButton = findViewById(R.id.save_button)
         mClearButton!!.setOnClickListener(View.OnClickListener { mSilkySignaturePad?.clear() })
         mSaveButton!!.setOnClickListener(View.OnClickListener {
-            val signatureBitmap = mSilkySignaturePad?.getSignatureBitmap()
+            val signatureBitmap = mSilkySignaturePad?.getTransparentSignatureBitmap(true)
             if (addJpgSignatureToGallery(signatureBitmap!!)) {
-                Toast.makeText(
-                    this@Signatures,
-                    "Signature saved into the Gallery",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this@Signatures,
+//                    "Signature saved into the Gallery",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             } else {
-                Toast.makeText(this@Signatures, "Unable to store the signature", Toast.LENGTH_SHORT)
-                    .show()
+//                Toast.makeText(this@Signatures, "Unable to store the signature", Toast.LENGTH_SHORT)
+//                    .show()
             }
             if (addSvgSignatureToGallery(mSilkySignaturePad!!.getSignatureSvg())) {
-                Toast.makeText(
-                    this@Signatures,
-                    "SVG Signature saved into the Gallery",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this@Signatures,
+//                    "SVG Signature saved into the Gallery",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             } else {
-                Toast.makeText(
-                    this@Signatures,
-                    "Unable to store the SVG signature",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this@Signatures,
+//                    "Unable to store the SVG signature",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             }
         })
         mCompressButton = findViewById(R.id.compress_button)
         mCompressButton?.setOnClickListener(View.OnClickListener {
             val signatureBitmap = mSilkySignaturePad?.getCompressedSignatureBitmap(50)
             if (addJpgSignatureToGallery(signatureBitmap!!)) {
-                Toast.makeText(
-                    this@Signatures,
-                    "50% compressed signature saved into the Gallery",
-                    Toast.LENGTH_SHORT
-                ).show()
+//                Toast.makeText(
+//                    this@Signatures,
+//                    "50% compressed signature saved into the Gallery",
+//                    Toast.LENGTH_SHORT
+//                ).show()
             } else {
-                Toast.makeText(this@Signatures, "Unable to store the signature", Toast.LENGTH_SHORT)
-                    .show()
+//                Toast.makeText(this@Signatures, "Unable to store the signature", Toast.LENGTH_SHORT)
+//                    .show()
             }
         })
     }

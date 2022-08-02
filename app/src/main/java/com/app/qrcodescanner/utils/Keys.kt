@@ -3,7 +3,7 @@ package com.app.qrcodescanner.utils
 object Keys
 {
     //const val  BASE_URL="http://18.219.171.249/api/"
-    const val   BASE_URL="https://ad8e-2405-201-5007-b08b-d73e-96a5-3440-4a58.ngrok.io/api/"
+    const val   BASE_URL="https://2e0c-2405-201-5007-b08b-d869-dac2-591c-ee00.ngrok.io/api/"
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
@@ -26,6 +26,8 @@ object Keys
     const val AUTHRISEUSER="authorized-users?company_id="
     const val TIMESHEET="time-sheet-details?id="
     const val DECODEQR="decode-qr"
+    const val FEEDBACK="feedback"
+    const val FEEDBACKDATA="feedback-data/"
 
     const val email="email"
     const val code="code"
@@ -52,12 +54,22 @@ object Keys
     const val punch_out="punch_out"
     const val latitude="latitude"
     const val longitude="longitude"
+    const val break_hours="break_hours"
     const val client_id="client_id"
     const val branch_id="branch_id"
     const val unit_id="unit_id"
     const val note="note"
+    const val staff_name="staff_name"
+    const val rating="rating"
+    const val comment="comment"
     const val authorized_by_id="authorized_by_id"
     const val encode="encode"
+    const val client_name="client_name"
+    const val address="address"
+    const val postcode="postcode"
+    const val position="position"
+    const val nurse_charge="nurse_charge"
+    const val feedback="feedback"
 
     //Api End Points
     const val CLIENT_LISTING_END_POINT = "clients"

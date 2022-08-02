@@ -31,6 +31,7 @@
         android:theme="@style/Theme.QRCodeScanner"
         android:usesCleartextTraffic="true">
         <activity
+            android:screenOrientation="portrait"
             android:name=".ui.feedback.FeedBack"
             android:exported="false" />
         <activity

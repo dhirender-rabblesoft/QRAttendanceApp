@@ -4,9 +4,14 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Build
+import android.os.CountDownTimer
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AutoCompleteTextView
+import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.app.qrcodescanner.R
 import java.util.regex.Pattern
@@ -26,6 +31,25 @@ fun View.gone() {
 
 fun View.invisible() {
     this.visibility = View.INVISIBLE
+}
+fun AutoCompleteTextView.afterTextChangedDelayed(afterTextChanged: (String) -> Unit) {
+    this.addTextChangedListener(object : TextWatcher {
+        var timer: CountDownTimer? = null
+
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+        override fun afterTextChanged(editable: Editable?) {
+            timer?.cancel()
+            timer = object : CountDownTimer(1000, 500) {
+                override fun onTick(millisUntilFinished: Long) {}
+                override fun onFinish() {
+                    afterTextChanged.invoke(editable.toString())
+                }
+            }.start()
+        }
+    })
 }
 fun String.capitalizesLetters(): String {
     return if (this.isEmpty())

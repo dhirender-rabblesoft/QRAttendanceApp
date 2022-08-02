@@ -18,14 +18,13 @@ class SplashScreen : KotlinBaseActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         val userid=SharedPreferenceManager(this).getString(Keys.USERID)
-         callhgandler(userid.toString())
+       callhgandler(userid.toString())
 
     }
     private  fun callhgandler(userid:String)
     {
         Handler(Looper.getMainLooper()).postDelayed({
-            Log.e("useriddddd",userid.toString())
-            if (userid == null || userid.toString().isEmpty())
+             if (userid == null || userid.toString().isEmpty())
             {
 
                 openA(LoginActivity::class)

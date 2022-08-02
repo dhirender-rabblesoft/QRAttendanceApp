@@ -65,6 +65,7 @@
             android:layout_weight="1"
             style="@style/mainbutton4"
              android:enabled="false"
+            android:textAllCaps="false"
             android:text="@string/clear_pad" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/save_button"
@@ -72,6 +73,8 @@
             android:layout_height="wrap_content"
             android:singleLine="true"
             android:layout_weight="1"
+            android:textAllCaps="false"
+
             android:layout_marginStart="@dimen/_5sdp"
             style="@style/mainbutton"
             android:textColor="@android:color/white"
