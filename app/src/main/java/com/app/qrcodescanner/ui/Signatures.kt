@@ -56,6 +56,11 @@ class Signatures : KotlinBaseActivity() {
         mSaveButton = findViewById(R.id.save_button)
         mClearButton!!.setOnClickListener(View.OnClickListener { mSilkySignaturePad?.clear() })
         mSaveButton!!.setOnClickListener(View.OnClickListener {
+                            Toast.makeText(
+                    this@Signatures,
+                    "Please wait while generate signature ",
+                    Toast.LENGTH_SHORT
+                ).show()
             val signatureBitmap = mSilkySignaturePad?.getTransparentSignatureBitmap(true)
             if (addJpgSignatureToGallery(signatureBitmap!!)) {
 //                Toast.makeText(
@@ -67,19 +72,19 @@ class Signatures : KotlinBaseActivity() {
 //                Toast.makeText(this@Signatures, "Unable to store the signature", Toast.LENGTH_SHORT)
 //                    .show()
             }
-            if (addSvgSignatureToGallery(mSilkySignaturePad!!.getSignatureSvg())) {
-//                Toast.makeText(
-//                    this@Signatures,
-//                    "SVG Signature saved into the Gallery",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-            } else {
-//                Toast.makeText(
-//                    this@Signatures,
-//                    "Unable to store the SVG signature",
-//                    Toast.LENGTH_SHORT
-//                ).show()
-            }
+//            if (addSvgSignatureToGallery(mSilkySignaturePad!!.getSignatureSvg())) {
+////                Toast.makeText(
+////                    this@Signatures,
+////                    "SVG Signature saved into the Gallery",
+////                    Toast.LENGTH_SHORT
+////                ).show()
+//            } else {
+////                Toast.makeText(
+////                    this@Signatures,
+////                    "Unable to store the SVG signature",
+////                    Toast.LENGTH_SHORT
+////                ).show()
+//            }
         })
         mCompressButton = findViewById(R.id.compress_button)
         mCompressButton?.setOnClickListener(View.OnClickListener {
@@ -148,7 +153,7 @@ class Signatures : KotlinBaseActivity() {
             }
             Log.e("photoooo1", photo.path)
             saveBitmapToJPG(signature, photo)
-            scanMediaFile(photo)
+           // scanMediaFile(photo)
             result = true
             onBackPressed()
         } catch (e: IOException) {

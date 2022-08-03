@@ -128,6 +128,9 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
             if (type.equals("2"))
             {
                 baseActivity.openA(TimeSheet::class)
+                baseActivity.finish()
+                HomeScreenActivity.isattandence=true
+
             }
             else{
                 HomeScreenActivity.isattandence=true

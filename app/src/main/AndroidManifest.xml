@@ -31,9 +31,15 @@
         android:theme="@style/Theme.QRCodeScanner"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.ThankYou"
             android:screenOrientation="portrait"
-            android:name=".ui.feedback.FeedBack"
             android:exported="false" />
+        <activity
+            android:name=".ui.feedback.FeedBack"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.Signatures"
             android:exported="false"
@@ -41,6 +47,7 @@
         <activity
             android:name=".ui.timesheet.TimeSheet"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.AddArCode"

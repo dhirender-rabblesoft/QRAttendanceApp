@@ -2,8 +2,8 @@ package com.app.qrcodescanner.utils
 
 object Keys
 {
-    //const val  BASE_URL="http://18.219.171.249/api/"
-    const val   BASE_URL="https://2e0c-2405-201-5007-b08b-d869-dac2-591c-ee00.ngrok.io/api/"
+    const val  BASE_URL="http://18.219.171.249/api/"
+//    const val   BASE_URL="https://045e-2405-201-5007-b08b-6768-43e7-41cf-cec5.ngrok.io/api/"
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
@@ -72,7 +72,9 @@ object Keys
     const val feedback="feedback"
 
     //Api End Points
-    const val CLIENT_LISTING_END_POINT = "clients"
+     const val COMPANLYLISTING = "company-listing"
+    const val CLIENT_LISTING_END_POINT = "client-listing?id="
+    const val CLIENT_UNIT = "unit-listing?id="
     const val QR_CLIENT_LISTING_END_POINT = "qr-code-listing"
 
 }

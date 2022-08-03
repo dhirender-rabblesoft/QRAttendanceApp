@@ -29,21 +29,67 @@
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvdate"
-                style="@style/semiboldfont"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="0dp"
+                android:orientation="vertical"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/ivcheck2"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:text="15-05-2022"
-                android:textColor="@color/black_1"
-                android:textSize="@dimen/_12sdp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/iv_qrCode"
-                app:layout_constraintTop_toTopOf="parent" />
+                 android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvtitle"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:text="15-05-2022"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_11sdp"
+                   />
+                   <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvcompanyname"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                     android:textColor="@color/black_1"
+                    android:textSize="@dimen/_11sdp"
+                      />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvclientname"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                     android:textColor="@color/black_1"
+                    android:textSize="@dimen/_11sdp"
+                      />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvclientaddress"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                     android:textColor="@color/black_1"
+                    android:textSize="@dimen/_11sdp"
+                      />
+                  <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvbranch"
+                    style="@style/mediumfont"
+                    android:layout_width="wrap_content"
+                      android:visibility="gone"
+                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                     android:textColor="@color/black_1"
+                    android:textSize="@dimen/_11sdp"
+                      />
+
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/_20sdp"
@@ -55,20 +101,7 @@
                 />
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvcheckintime"
-                style="@style/regularfont"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_5sdp"
-                android:layout_marginTop="@dimen/_3sdp"
-                android:text="12:00 AM"
-                android:textColor="@color/black_1"
-                android:textSize="@dimen/_12sdp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/iv_qrCode"
-                app:layout_constraintTop_toBottomOf="@+id/tvdate" />
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

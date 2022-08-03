@@ -15,8 +15,6 @@ import android.widget.TextView
 import androidx.annotation.LayoutRes
 import com.app.qrcodescanner.R
 import java.util.regex.Pattern
-
-
 infix fun ViewGroup.inflate(@LayoutRes view: Int): View {
     return LayoutInflater.from(context).inflate(view, this, false)
 }

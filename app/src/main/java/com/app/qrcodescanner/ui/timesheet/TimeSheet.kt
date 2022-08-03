@@ -2,18 +2,14 @@ package com.app.qrcodescanner.ui.timesheet
 
 import android.os.Bundle
 import android.os.Handler
-import android.text.Editable
+import android.os.Looper
 import android.text.TextUtils
-import android.text.TextWatcher
 import android.util.Log
-import android.view.View
 import android.widget.AdapterView.OnItemClickListener
-import android.widget.AutoCompleteTextView
+import androidx.core.widget.addTextChangedListener
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.adapter.AutoCompleteAuthoriseAdapter
 import com.app.qrcodescanner.adapter.AutoCompletePlaceAdapter
-import com.app.qrcodescanner.adapter.AutoSuggestAdapter
-import com.app.qrcodescanner.adapter.Place
 import com.app.qrcodescanner.applications.QrApplication
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.*
@@ -22,10 +18,13 @@ import com.app.qrcodescanner.model.AuthoriseList
 import com.app.qrcodescanner.model.CareListJson
 import com.app.qrcodescanner.model.GetTimeSheetJson
 import com.app.qrcodescanner.reposiory.CommonRepository
+import com.app.qrcodescanner.ui.GenrateQrCode
 import com.app.qrcodescanner.ui.HomeScreenActivity
+import com.app.qrcodescanner.ui.LoginActivity
 import com.app.qrcodescanner.ui.Signatures
 import com.app.qrcodescanner.ui.feedback.FeedBack
 import com.app.qrcodescanner.utils.Keys
+import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.app.qrcodescanner.utils.Utils
 import com.google.gson.JsonObject
 import com.squareup.picasso.Picasso
@@ -54,6 +53,9 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
     var timeshetdata: GetTimeSheetJson? = null
     var isauth = true
     var iscare = true
+    private val TRIGGER_AUTO_COMPLETE = 100
+    private val AUTO_COMPLETE_DELAY: Long = 300
+    private var handler: Handler? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_time_sheet)
@@ -179,7 +181,9 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         }
         commonRepository.addtimesheet(this, fields) {
             if (it.data.isNotNull()) {
+
                 openA(FeedBack::class)
+                finish()
             }
         }
     }
@@ -188,6 +192,7 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         p_Bar.visible()
         var url = Keys.BASE_URL + Keys.UNITLIST + companyid + "&keyword=" + word
         commonRepository.getcarenamelist(this, HomeScreenActivity.token, url) {
+            handler?.removeMessages(TRIGGER_AUTO_COMPLETE);
             careList.clear()
             p_Bar.invisible()
             companynamelist.clear()
@@ -206,7 +211,7 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
 
 
             } else {
-                iscare = false
+                iscare = true
 
                 var add = "(Add " + clientauto.text.toString() + " )"
                 careList.add(CareListJson.Data(unit = "No unit found $add"))
@@ -323,14 +328,35 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
 //                    selctcompanyid = list[0].id.toString()
 //                }
             })
+//        clientauto.addTextChangedListener {
+//            handler?.removeMessages(TRIGGER_AUTO_COMPLETE);
+//            handler?.sendEmptyMessageDelayed(TRIGGER_AUTO_COMPLETE,
+//                AUTO_COMPLETE_DELAY);
+//        }
 
         clientauto.afterTextChangedDelayed {
-            if (!TextUtils.isEmpty(clientauto.getText()) && iscare) {
+            if (!TextUtils.isEmpty(clientauto.getText())&& iscare) {
                 getcatenamelist(clientauto.getText().toString())
             }
         }
+//        handler = Handler { msg ->
+//            if (msg.what === TRIGGER_AUTO_COMPLETE) {
+//                if (!TextUtils.isEmpty(clientauto.getText()) && iscare) {
+//                    getcatenamelist(clientauto.getText().toString())
+//                }
+//            }
+//            false
+//        }
 
 
+    }
+
+    private  fun  refreshparms()
+    {
+        Handler(Looper.getMainLooper()).postDelayed({
+            iscare=true
+            isauth=true
+        }, 1000)
     }
 
     private fun getauthrisedadapter() {
@@ -350,8 +376,11 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
 //                }
             })
         inchargeauto.afterTextChangedDelayed {
-            if (!TextUtils.isEmpty(inchargeauto.getText()) && isauth) {
+            if (!TextUtils.isEmpty(inchargeauto.getText()) ) {
                 getauthriseduser(inchargeauto.getText().toString())
+            }
+            else{
+                setauthrisecompanyId=""
             }
         }
     }
@@ -365,6 +394,8 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         when (type) {
             "2" -> {
                 setauthrisecompanyId = authdata?.id.toString()
+                isauth=false
+
                 inchargeauto.dismissDropDown()
             }
             "3" -> {
@@ -376,8 +407,15 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
                 inchargeauto.dismissDropDown()
             }
             "4" -> {
-                clientauto.dismissDropDown()
+
+
+               // clientauto.setText("")
+               // refreshparms()
+             //   clientauto.hint=caredata?.unit
+                //clientauto.setText(caredata?.unit)
                 selctcompanyid=caredata?.id.toString()
+                clientauto.dismissDropDown()
+
             }
             "1" -> {
                 if (!clientauto.text.toString().isEmpty()) {
@@ -386,6 +424,7 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
                     showtoast("Please enter care name")
                 }
                 clientauto.dismissDropDown()
+
             }
         }
     }

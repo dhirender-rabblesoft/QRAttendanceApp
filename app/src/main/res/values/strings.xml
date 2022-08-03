@@ -35,7 +35,8 @@
     //validation
     <string name="v_emailvalidation">Please Enter Email</string>
     <string name="v_addressvalidation">Please Enter Title</string>
-    <string name="v_clentvalidation">Please Select Client</string>
+    <string name="v_clentvalidation">Please Select company</string>
+    <string name="v_companyclentvalidation">Please Select Client</string>
     <string name="v_comfirmpassword">Comfirm Password should not be null</string>
     <string name="phonelength">Phone Number should be 10 characters</string>
     <string name="passwordnotmatch">Password Should be matched</string>
@@ -91,4 +92,5 @@ Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots 
     <string name="current_password">Current Password</string>
     <string name="no_data_found">No data found</string>
     <string name="add">Add</string>
+    <string name="back_to_home">Back to Home</string>
 </resources>

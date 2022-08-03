@@ -17,6 +17,7 @@ import com.app.qrcodescanner.model.FeedbackJson
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
 import com.app.qrcodescanner.ui.Signatures
+ import com.app.qrcodescanner.ui.ThankYou
  import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.Utils
 import com.google.gson.JsonObject
@@ -77,6 +78,9 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
             if (!TextUtils.isEmpty(inchargeauto.getText()) && isauth) {
                 getauthriseduser(inchargeauto.getText().toString())
             }
+            else{
+                setauthrisecompanyId=""
+            }
         }
     }
 
@@ -95,6 +99,11 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
                 }
                 if (it.data.company.isNotNull()) {
                     authrisecompanyId = it.data.company.company_id.toString()
+                    if(it.data.company.company_logo.isNotNull() &&!it.data.company.company_logo.isEmpty())
+                    {
+                        Picasso.get().load(it.data.company.company_logo).into(ivlogo)
+                        ivlogo.visible()
+                    }
                 }
                 if (it.data.user.position.isNotNull()) {
                     tvpostion.text = it.data.user.position.position.toString()
@@ -102,7 +111,7 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
             }
             if (it.data.client.isNotNull()) {
                 tvclientname.text = it.data.client.client_name
-                tvaddress.text = it.data.client.address_2 + " " + it.data.client.postcode
+                tvaddress.text = it.data.client.address + " " + it.data.client.postcode
 
             }
         }
@@ -190,9 +199,9 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
             Utils.getMultiPart("sign", signature!!)?.let { fields.add(it) }
         }
         commonRepository.addfeedback(this, fields) {
-            if (it.data.isNotNull()) {
-                openA(FeedBack::class)
-            }
+            openA(ThankYou::class)
+            finish()
+
         }
     }
 

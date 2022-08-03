@@ -90,7 +90,7 @@ class LoginViewModel(application: Application) : AppViewModel(application)
         jsonobj.addProperty(Keys.email,binder.etemail.text.toString().trim())
         jsonobj.addProperty(Keys.password,binder.etpassword.text.toString().trim())
         commonRepository.getlogin(baseActivity,Keys.LOGIN,jsonobj,true){
-            if (it.data.isNotNull())
+            if (it.data.isNotNull()&& !it.data.user.role.equals("super_admin"))
             {
                 val gson = Gson()
                 val json = gson.toJson(it)
@@ -98,7 +98,7 @@ class LoginViewModel(application: Application) : AppViewModel(application)
                 SharedPreferenceManager(baseActivity).saveString(Keys.TOKEN,it.data.token.toString())
                 SharedPreferenceManager(baseActivity).saveString(Keys.USER_TYPE,it.data.user.role.toString())
 
-                if (!it.data.user.role.equals("super_admin"))
+                if (it.data.user.role.equals("employee"))
                 {
                     SharedPreferenceManager(baseActivity).saveString(Keys.USERID,it.data.user.id.toString())
                     baseActivity.openA(HomeScreenActivity::class)
@@ -111,6 +111,9 @@ class LoginViewModel(application: Application) : AppViewModel(application)
                 baseActivity.showtoast("Login Successfully")
                 baseActivity.finishAffinity()
 
+            }
+            else{
+                baseActivity.showtoast("Only employees  and mangers can login")
             }
         }
     }

@@ -30,7 +30,7 @@ class SplashScreen : KotlinBaseActivity() {
                 openA(LoginActivity::class)
             }
             else{
-                if (SharedPreferenceManager(this).getString(Keys.USER_TYPE).equals("super_admin"))
+                if (SharedPreferenceManager(this).getString(Keys.USER_TYPE).equals("company"))
                 {
                     openA(GenrateQrCode::class)
 

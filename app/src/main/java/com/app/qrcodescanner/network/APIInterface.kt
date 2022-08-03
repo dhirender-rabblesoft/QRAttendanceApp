@@ -19,6 +19,12 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Url url: String
     ): Call<CilentListingModel>?
+    @Headers("Accept: application/json")
+    @GET
+    fun unitListing(
+        @Header("Authorization") token: String,
+        @Url url: String
+    ): Call<UnitListingJson>?
      @Headers("Accept: application/json")
     @GET
     fun attandancelisting(
@@ -63,7 +69,7 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Part fields: ArrayList<MultipartBody.Part>
     ): Call<LoginJson>
- @Headers("Accept: application/json")
+    @Headers("Accept: application/json")
     @Multipart
     @POST
     fun addtimesheet(
@@ -71,6 +77,14 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Part fields: ArrayList<MultipartBody.Part>
     ): Call<AddTimeSheetJson>
+    @Headers("Accept: application/json")
+    @Multipart
+    @POST
+    fun adddfeesback(
+        @Url url: String,
+        @Header("Authorization") token: String,
+        @Part fields: ArrayList<MultipartBody.Part>
+    ): Call<AddFeedbackJson>
 
 
     @Headers("Accept:application/json")

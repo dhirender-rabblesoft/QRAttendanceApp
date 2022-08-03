@@ -73,6 +73,7 @@ class GenrateQrCode : KotlinBaseActivity()
                             {
                                 idPBLoading.visible()
                                 currentPage++
+                                setQrCodeListingApi()
 
                             }
                         }
@@ -145,7 +146,9 @@ class GenrateQrCode : KotlinBaseActivity()
 
 
     private fun setQrCodeListingApi() {
-        commonRepository.qrCodeListing(this, token, Keys.QR_CLIENT_LISTING_END_POINT) {
+        commonRepository.qrCodeListing(this, token, Keys.QR_CLIENT_LISTING_END_POINT+"?page="+currentPage.toString(),loading) {
+            idPBLoading.gone()
+            loading=true
             if (totalpage==0)
             {
                 qrCodeListing.clear()

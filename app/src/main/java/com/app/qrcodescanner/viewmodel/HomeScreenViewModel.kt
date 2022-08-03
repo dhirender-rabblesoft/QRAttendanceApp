@@ -6,6 +6,7 @@ import android.app.Application
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.core.view.GravityCompat
 import com.app.qrcodescanner.R
@@ -31,7 +32,6 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.google.gson.Gson
 import com.permissionx.guolindev.PermissionX
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
 
@@ -41,6 +41,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
     private lateinit var baseActivity: KotlinBaseActivity
     var  commonRepository=CommonRepository(application)
     lateinit var mContext: Context
+
     var bundle= Bundle()
     var ischeckin = false
     fun setBinder(binding: ActivityHomeScreenBinding, baseActivity: KotlinBaseActivity) {
@@ -67,7 +68,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             callApi(true)
             upadteimage()
         }
-        setdata()
+         setdata()
 
     }
 

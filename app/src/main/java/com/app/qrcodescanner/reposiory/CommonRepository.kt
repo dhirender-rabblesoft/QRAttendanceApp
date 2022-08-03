@@ -251,12 +251,16 @@ class CommonRepository(private val baseActivity: Application)
         baseActivity: KotlinBaseActivity,
         token: String,
         url: String,
+        isload:Boolean=true,
         itemClick: (QrCodeListingModel) -> Unit
     ) {
         if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
             baseActivity.nointernershowToast()
         } else {
-            baseActivity.startProgressDialog()
+            if (isload)
+            {
+                baseActivity.startProgressDialog()
+            }
             retrofitClient =
                 RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
             retrofitClient?.qrCodeListing(Keys.BASE_URL + url, token)!!
@@ -711,7 +715,7 @@ class CommonRepository(private val baseActivity: Application)
     fun addfeedback(
         baseActivity: KotlinBaseActivity,
         fields: ArrayList<MultipartBody.Part>,
-        itemClick: (AddTimeSheetJson) -> Unit
+        itemClick: (AddFeedbackJson) -> Unit
     ) {
         if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
             baseActivity.nointernershowToast()
@@ -721,12 +725,12 @@ class CommonRepository(private val baseActivity: Application)
             retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
                 APIInterface::class.java
             )
-            retrofitClient?.addtimesheet(
+            retrofitClient?.adddfeesback(
                 Keys.BASE_URL + "add-feedback", HomeScreenActivity.token, fields
-            )!!.enqueue(object : Callback<AddTimeSheetJson?> {
+            )!!.enqueue(object : Callback<AddFeedbackJson?> {
                 override fun onResponse(
-                    call: Call<AddTimeSheetJson?>,
-                    response: Response<AddTimeSheetJson?>
+                    call: Call<AddFeedbackJson?>,
+                    response: Response<AddFeedbackJson?>
                 ) {
                     baseActivity.stopProgressDialog()
                     when (response.code()) {
@@ -750,7 +754,7 @@ class CommonRepository(private val baseActivity: Application)
 
                 }
 
-                override fun onFailure(call: Call<AddTimeSheetJson?>, t: Throwable) {
+                override fun onFailure(call: Call<AddFeedbackJson?>, t: Throwable) {
                     baseActivity.stopProgressDialog()
                 }
             })
@@ -804,6 +808,57 @@ class CommonRepository(private val baseActivity: Application)
                 }
 
                 override fun onFailure(call: Call<CilentListingModel?>, t: Throwable) {
+                    baseActivity.stopProgressDialog()
+                }
+            })
+        }
+
+    }
+    fun clientunitListing(
+        baseActivity: KotlinBaseActivity,
+        token: String,
+        url: String,
+        itemClick: (UnitListingJson) -> Unit
+    ) {
+        if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
+            baseActivity.nointernershowToast()
+        } else {
+
+
+            retrofitClient = RetrofitClient.with(this.baseActivity)?.client?.create(
+                APIInterface::class.java
+            )
+            retrofitClient?.unitListing(
+                token,
+                Keys.BASE_URL + url
+            )!!.enqueue(object : Callback<UnitListingJson?> {
+                override fun onResponse(
+                    call: Call<UnitListingJson?>,
+                    response: Response<UnitListingJson?>
+                ) {
+                    baseActivity.stopProgressDialog()
+                    when (response.code()) {
+                        Keys.RESPONSE_SUCESS -> {
+                            response.body()?.let { itemClick(it) }
+                        }
+                        Keys.ERRORCODE -> {
+                            baseActivity.parseError(response)
+                        }
+                        Keys.UNAUTHoRISE -> {
+                            baseActivity.unauthrizeddialog()
+
+                        }
+                        in 500..512 -> {
+                            baseActivity.customSnackBar(
+                                baseActivity.getString(R.string.somthingwentwrong),
+                                true
+                            )
+                        }
+                    }
+
+                }
+
+                override fun onFailure(call: Call<UnitListingJson?>, t: Throwable) {
                     baseActivity.stopProgressDialog()
                 }
             })
