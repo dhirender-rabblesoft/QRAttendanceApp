@@ -1,5 +1,6 @@
 package com.app.qrcodescanner.ui
 import android.Manifest
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -104,16 +105,62 @@ class GenrateQrCode : KotlinBaseActivity()
     }
     private fun setQrCodeListingAdapter() {
         val qrCodeListingAdapter = QrCodeListingAdapter(this) {pos,data->
-            val jsonObject = JsonObject()
-            jsonObject.addProperty(Keys.qr_code_id, qrCodeListing[pos].id.toString())
-            jsonObject.addProperty(Keys.status, data)
-            commonRepository.change_qrstatus(this, GenrateQrCode.token,jsonObject){
+           if (data.equals(3))
+           {
+               donwloadfile(qrCodeListing[pos].qrcode.toString())
+           }
+           else
+            {
+               val jsonObject = JsonObject()
+               jsonObject.addProperty(Keys.qr_code_id, qrCodeListing[pos].id.toString())
+               jsonObject.addProperty(Keys.status, data)
+               commonRepository.change_qrstatus(this, GenrateQrCode.token,jsonObject){
 
-            }
+               }
+           }
+
         }
         rvRecentListAdapter.adapter = qrCodeListingAdapter
         qrCodeListingAdapter.addNewList(qrCodeListing)
 //        rvRecentListAdapter
+    }
+    private  fun donwloadfile(url:String)
+    {
+        val permissonList = ArrayList<String>()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            permissonList.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+
+        } else {
+            permissonList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            permissonList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+        }
+        PermissionX.init(this)
+            .permissions(permissonList)
+            .onExplainRequestReason { scope, deniedList ->
+                scope.showRequestReasonDialog(
+                    deniedList,
+                    getString(R.string.permisionmsgfirst),
+                    getString(R.string.ok),
+                    getString(R.string.cancel)
+                )
+            }
+            .onForwardToSettings { scope, deniedList ->
+                scope.showForwardToSettingsDialog(
+                    deniedList,
+                    getString(R.string.manualpermission),
+                    getString(R.string.ok),
+                    getString(R.string.cancel)
+                )
+            }
+            .request { allGranted, grantedList, deniedList ->
+                if (allGranted) {
+                    downloadImage(url)
+
+                } else {
+
+                    showtoast(getString(R.string.nopermissiongrant))
+                }
+            }
     }
 
 

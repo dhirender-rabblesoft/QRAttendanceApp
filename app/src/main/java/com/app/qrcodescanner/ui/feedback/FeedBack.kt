@@ -1,7 +1,10 @@
 package com.app.qrcodescanner.ui.feedback
 
  import android.os.Bundle
-import android.text.TextUtils
+ import android.os.Handler
+ import android.os.Looper
+ import android.text.TextUtils
+ import android.util.Log
  import android.widget.AdapterView
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.adapter.AutoCompleteAuthoriseAdapter
@@ -56,6 +59,14 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
         feedbacklist()
         getfeedbackdata()
         getauthrisedadapter()
+        setdata()
+
+    }
+    private  fun setdata()
+    {
+        tvname.text = HomeScreenActivity.userdata!!.data.user.first_name.capitalizesLetters()+" "+HomeScreenActivity.userdata!!.data.user.last_name.capitalizesLetters()
+        tvpostion.text = HomeScreenActivity.userdata!!.data.user.role.capitalizesLetters()
+
     }
 
     private fun getauthrisedadapter() {
@@ -69,53 +80,67 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
         inchargeauto.setAdapter(autjorisedautoSuggestAdapter)
         inchargeauto.setOnItemClickListener(
             AdapterView.OnItemClickListener { parent, view, position, id ->
-//                var list = authriseList.filter { it.name.equals(inchargeauto.text.toString()) }
-//                if (list.size > 0) {
-//                    setauthrisecompanyId = list[0].id.toString()
-//                }
+                isauth=false
+                var list = authriseList.filter { it.name.equals(inchargeauto.text.toString()) }
+               if (list.size > 0) {
+
+                    setauthrisecompanyId = list[0].id.toString()
+                   Log.e("authriseiddd",setauthrisecompanyId)
+                   refreshparms()
+               }
             })
         inchargeauto.afterTextChangedDelayed {
+
             if (!TextUtils.isEmpty(inchargeauto.getText()) && isauth) {
+
                 getauthriseduser(inchargeauto.getText().toString())
             }
             else{
-                setauthrisecompanyId=""
+                authclear()
             }
+//            else{
+//                setauthrisecompanyId=""
+//            }
         }
+    }
+    private  fun  refreshparms()
+    {
+        Handler(Looper.getMainLooper()).postDelayed({
+
+            isauth=true
+        }, 1000)
     }
 
     private fun getfeedbackdata() {
-        commonRepository.getfeedbackdata(this, HomeScreenActivity.token, Keys.BASE_URL + Keys.FEEDBACKDATA + HomeScreenActivity.userdata!!.data.user.id.toString()) {
-            if (it.data.user.isNotNull()) {
-                model = it
-                tvname.text = it.data.user.first_name + " " + it.data.user.last_name
-                if (it.data.user.date.isNotNull()) {
+        commonRepository.getfeedbackdata(this, HomeScreenActivity.token, Keys.BASE_URL + Keys.FEEDBACKDATA+intent.extras!!.getString("punch_in") ) {
 
-                    tvdate1.text = Utils.formateDateFromstring(
-                        Utils.DATETIMEFORMAT,
-                        Utils.DATEFORMAT3,
-                        it.data.user.date.toString()
-                    )
-                }
-                if (it.data.company.isNotNull()) {
-                    authrisecompanyId = it.data.company.company_id.toString()
-                    if(it.data.company.company_logo.isNotNull() &&!it.data.company.company_logo.isEmpty())
-                    {
-                        Picasso.get().load(it.data.company.company_logo).into(ivlogo)
-                        ivlogo.visible()
-                    }
-                }
-                if (it.data.user.position.isNotNull()) {
-                    tvpostion.text = it.data.user.position.position.toString()
+            model = it
+            if (it.data.work.isNotNull()) {
+
+                tvdate1.text = Utils.formateDateFromstring(
+                    Utils.DATETIMEFORMAT,
+                    Utils.DATEFORMAT3,
+                    it.data.work.date.toString()
+                )
+            }
+            if (it.data.company.isNotNull()) {
+                authrisecompanyId = it.data.company.company_id.toString()
+                if(it.data.company.company_logo.isNotNull() &&!it.data.company.company_logo.isEmpty())
+                {
+                    Picasso.get().load(it.data.company.company_logo).into(ivlogo)
+                    ivlogo.visible()
                 }
             }
+
             if (it.data.client.isNotNull()) {
                 tvclientname.text = it.data.client.client_name
+                clientid = it.data.client.id.toString()
                 tvaddress.text = it.data.client.address + " " + it.data.client.postcode
 
             }
         }
     }
+    var clientid=""
 
     private fun settoolbar() {
         tvtitle.text = "Feedback Form"
@@ -137,10 +162,11 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
             authriseList.forEach {
                 authrisestringlist.add(it.name)
             }
+            isauth = true
             autjorisedautoSuggestAdapter?.setData(authriseList);
             autjorisedautoSuggestAdapter?.notifyDataSetChanged();
             if (it.data.size == 0) {
-                isauth = false
+
                 var add = "(Add " + inchargeauto.text.toString() + " )"
                 authriseList.add(AuthoriseList.Data(name = "No name found $add"))
                 autjorisedautoSuggestAdapter?.setData(authriseList);
@@ -148,8 +174,15 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
                 autjorisedautoSuggestAdapter?.notifyDataSetChanged();
 
             } else {
-                isauth = true
-                inchargeauto.setDropDownHeight(500);
+                if (it.data.size==1)
+                {
+                    inchargeauto.setDropDownHeight(220);
+                }
+                else{
+                    inchargeauto.setDropDownHeight(500);
+                }
+
+
                 //inchargebutton.gone()
             }
 
@@ -185,18 +218,18 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
 
     private fun submitDAta() {
         val fields = java.util.ArrayList<MultipartBody.Part>()
-        Utils.getMultiPart(Keys.staff_name, tvname.text.toString().trim())?.let { fields.add(it) }
-        Utils.getMultiPart(Keys.rating, rbvalue)?.let { fields.add(it) }
+        //Utils.getMultiPart(Keys.staff_name, tvname.text.toString().trim())?.let { fields.add(it) }
+        Utils.getMultiPart(Keys.rating, rbvalue.toFloat().toInt().toString())?.let { fields.add(it) }
         Utils.getMultiPart(Keys.comment, etcomment.text.toString().trim())?.let { fields.add(it) }
-        Utils.getMultiPart(Keys.client_name, tvclientname.text.toString().trim())
+        Utils.getMultiPart(Keys.client_id, clientid)
             ?.let { fields.add(it) }
-        Utils.getMultiPart(Keys.position, tvpostion.text.toString().trim())?.let { fields.add(it) }
-        Utils.getMultiPart(Keys.address, tvaddress.text.toString())?.let { fields.add(it) }
+       // Utils.getMultiPart(Keys.position, tvpostion.text.toString().trim())?.let { fields.add(it) }
+        //Utils.getMultiPart(Keys.address, tvaddress.text.toString())?.let { fields.add(it) }
         Utils.getMultiPart(Keys.postcode, model!!.data.client.postcode)?.let { fields.add(it) }
-        Utils.getMultiPart(Keys.nurse_charge, setauthrisecompanyId)?.let { fields.add(it) }
+        Utils.getMultiPart(Keys.authorized_by_id, setauthrisecompanyId)?.let { fields.add(it) }
         Utils.getMultiPart(Keys.feedback, stringBuilder.toString())?.let { fields.add(it) }
         if (signature != null) {
-            Utils.getMultiPart("sign", signature!!)?.let { fields.add(it) }
+            Utils.getMultiPart("signature", signature!!)?.let { fields.add(it) }
         }
         commonRepository.addfeedback(this, fields) {
             openA(ThankYou::class)
@@ -205,12 +238,22 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        signature=null
+    }
+
     private fun validations(): Boolean {
         commentlay.error = null
 
 
-        if (rbvalue.isEmpty()) {
+        if (rbvalue.isEmpty())
+        {
             showtoast("Please select rating")
+            return false
+        }
+        if (inchargeauto.text.toString().isEmpty()) {
+            showtoast("Please enter name of incharge")
             return false
         }
         if (setauthrisecompanyId.isEmpty()) {
@@ -243,7 +286,7 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
 //                "Very Good"=> "4",
 //                "Excellent"=> "5"
 
-        loginbutton.setOnClickListener {
+        submit.setOnClickListener {
             if (validations()) {
                 idslist.clear()
                 feedbacklist.forEach {
@@ -268,6 +311,9 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
 
             }
         }
+        cancelbutton.setOnClickListener {
+            onBackPressed()
+        }
         review_rating.setOnRatingChangeListener { ratingBar, rating1, fromUser ->
 
             when (rating1.toInt()) {
@@ -275,7 +321,7 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
                     tvratingvalue.text = "(" + rating1.toInt().toString() + ")" + " Excellent"
                 }
                 4 -> {
-                    tvratingvalue.text = "(" + rating1.toInt().toString() + ")" + " Very Good"
+                    tvratingvalue.text = "(" + rating1.toInt().toString() + ")" + "Very Good"
 
                 }
                 3 -> {
@@ -309,7 +355,13 @@ class FeedBack : KotlinBaseActivity(), AutocompletListner {
             openA(Signatures::class, bund)
         }
     }
-
+    private  fun authclear()
+    {
+      //  setauthrisecompanyId=""
+        authriseList.clear()
+        autjorisedautoSuggestAdapter?.setData(authriseList);
+        autjorisedautoSuggestAdapter?.notifyDataSetChanged();
+    }
     private fun addauthrisedUser() {
         val jsonObject = JsonObject()
         jsonObject.addProperty("company_id", authrisecompanyId)

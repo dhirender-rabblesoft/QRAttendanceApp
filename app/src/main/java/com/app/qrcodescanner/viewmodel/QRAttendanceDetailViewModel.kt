@@ -116,7 +116,7 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
         jsonObject.addProperty(Keys.latitude, bundle.getString(Keys.LAT))
         jsonObject.addProperty(Keys.client_id, bundle.getString(Keys.id))
         jsonObject.addProperty(Keys.longitude, bundle.getString(Keys.LNG))
-        commonRepository.changepassword(
+        commonRepository.addattendance(
             baseActivity,
             url,
             HomeScreenActivity.token,
@@ -127,7 +127,9 @@ class QRAttendanceDetailViewModel(application: Application) : AppViewModel(appli
             // checkout case for timesheet
             if (type.equals("2"))
             {
-                baseActivity.openA(TimeSheet::class)
+                val bund=Bundle()
+                bund.putString("punch_in",it.punch_in)
+                baseActivity.openA(TimeSheet::class,bund)
                 baseActivity.finish()
                 HomeScreenActivity.isattandence=true
 

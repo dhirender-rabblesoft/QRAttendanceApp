@@ -10,18 +10,19 @@ import android.graphics.drawable.ColorDrawable
 import android.view.Gravity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.AutoCompleteTextView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.capitalizesLetters
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 object Utils {
 
@@ -90,6 +91,14 @@ object Utils {
     {
         val requestFile = file.asRequestBody("multipart/form-data".toMediaTypeOrNull())
         return MultipartBody.Part.createFormData(key!!, file.name, requestFile)
+    }
+      fun createPartFromString(descriptionString: String?): RequestBody? {
+        return if (descriptionString == null) RequestBody.create(
+            MultipartBody.FORM,
+            ""
+        ) else RequestBody.create(
+            MultipartBody.FORM, descriptionString
+        )
     }
 
     fun shoedatepicker(

@@ -198,6 +198,8 @@
                     style="@style/mainbutton"
                     android:layout_width="0dp"
                     android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_weight="1"
                     android:text="@string/filter"

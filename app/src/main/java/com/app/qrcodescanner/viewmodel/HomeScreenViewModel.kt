@@ -22,7 +22,10 @@ import com.app.qrcodescanner.model.AttandanceListing
 import com.app.qrcodescanner.model.LoginJson
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.*
+import com.app.qrcodescanner.ui.feedback.FeedBack
+import com.app.qrcodescanner.ui.feedback.FeedbackList
 import com.app.qrcodescanner.ui.timesheet.TimeSheet
+import com.app.qrcodescanner.ui.timesheet.TimeSheetList
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.bumptech.glide.Glide
@@ -69,7 +72,6 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             upadteimage()
         }
          setdata()
-
     }
 
     override fun onCleared() {
@@ -189,8 +191,14 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         binder.showDrawer.tvside_invoice.setOnClickListener {
             baseActivity.openA(InvoiceActivity::class)
         }
+        binder.showDrawer.tvtimesheet.setOnClickListener {
+            baseActivity.openA(TimeSheetList::class)
+        }
         binder.showDrawer.tvside_faq.setOnClickListener {
             baseActivity.openA(FAQActivity::class)
+        }
+        binder.showDrawer.tvfeedback.setOnClickListener {
+            baseActivity.openA(FeedbackList::class)
         }
         binder.showDrawer.tvchangepassword.setOnClickListener {
             baseActivity.openA(ChangePassWord::class)

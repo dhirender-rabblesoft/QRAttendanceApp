@@ -99,6 +99,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivdownload"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:src="@drawable/ic_download_file_icon"
+                android:tint="@color/black"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
 
 

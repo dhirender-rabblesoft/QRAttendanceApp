@@ -7,16 +7,18 @@ data class FeedbackJson(
 ) {
     data class Data(
         val client: Client,
-        val user: User,
+         val work: Work,
         val company: Company,
         val unit: Unit
     ) {
         data class Client(
             val address: String,
+            val id: Int=0,
             val address_2: String,
             val client_name: String,
             val postcode: String
         )
+        data class Work(var date:String)
 
         data class User(
             val date: Any,

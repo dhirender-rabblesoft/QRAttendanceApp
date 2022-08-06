@@ -3,10 +3,11 @@ package com.app.qrcodescanner.network
 import com.app.qrcodescanner.model.*
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
-import java.util.ArrayList
+
 
 interface APIInterface {
     @Headers("Accept: application/json")
@@ -55,6 +56,13 @@ interface APIInterface {
     ): Call<ResponseBody>?
     @Headers("Accept: application/json")
     @POST
+    fun addattendance(
+        @Header("Authorization") token: String,
+        @Url url: String,
+        @Body jsonObject: JsonObject?
+    ): Call<AddAttedanceJson>?
+    @Headers("Accept: application/json")
+    @POST
     fun decodeqr(
         @Header("Authorization") token: String,
         @Url url: String,
@@ -85,6 +93,17 @@ interface APIInterface {
         @Header("Authorization") token: String,
         @Part fields: ArrayList<MultipartBody.Part>
     ): Call<AddFeedbackJson>
+    @Headers("Accept: application/json")
+    @Multipart
+    @POST("")
+    fun adddfeesback2(
+        @Url url: String,
+        @Header("Authorization") token: String,
+        @PartMap partMap: HashMap<String, RequestBody>?,
+        @Part file: MultipartBody.Part?,
+        @Part("feedback") items: ArrayList<Int>?
+    ): Call<AddFeedbackJson?>?
+
 
 
     @Headers("Accept:application/json")
@@ -112,10 +131,19 @@ interface APIInterface {
     @Headers("Accept:application/json")
     @GET
     fun qrCodeListing(@Url url: String,@Header("Authorization") token: String):Call<QrCodeListingModel>
+    @Headers("Accept:application/json")
+    @GET
+    fun timelisting(@Url url: String,@Header("Authorization") token: String):Call<TimeSheetListJson>
+ @Headers("Accept:application/json")
+    @GET
+    fun feedlist(@Url url: String,@Header("Authorization") token: String):Call<FeeedbackListJson>
 
     @Headers("Accept:application/json")
     @GET
-    fun feedbacklist(@Url url: String):Call<FeebackListJson>
+    fun feedbacklist(@Url url: String,@Header("Authorization") token: String):Call<FeebackListJson>
+    @Headers("Accept:application/json")
+    @GET
+    fun feedbackdetail(@Url url: String,@Header("Authorization") token: String):Call<FeedbackDetailJson>
 
     @Headers("Accept:application/json")
     @GET

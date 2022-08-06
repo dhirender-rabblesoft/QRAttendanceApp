@@ -1,0 +1,7 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:drawable="@drawable/starempty"
+        android:width="@dimen/_10sdp"
+        android:height="@dimen/_10sdp">
+    </item>
+</layer-list>

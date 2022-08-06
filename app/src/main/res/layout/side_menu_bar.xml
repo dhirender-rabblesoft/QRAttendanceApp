@@ -131,6 +131,47 @@
             android:background="@color/white_grey"
             app:layout_constraintTop_toBottomOf="@+id/llattendancecontainer" />
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvtimesheet"
+            style="@style/semiboldfont"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_10sdp"
+            android:text="Time Sheet"
+            android:layout_marginTop="@dimen/_5sdp"
+
+            android:drawableStart="@drawable/ic_timecard"
+            android:textSize="@dimen/_12sdp" />
+
+
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/white_grey"
+            app:layout_constraintTop_toBottomOf="@+id/llattendancecontainer" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvfeedback"
+            style="@style/semiboldfont"
+             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/_10sdp"
+            android:text="Feed Back"
+            android:layout_marginTop="@dimen/_5sdp"
+
+            android:drawableStart="@drawable/ic_feedback_icon"
+            android:textSize="@dimen/_12sdp" />
+
+
+
+        <View
+              android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@color/white_grey"
+            app:layout_constraintTop_toBottomOf="@+id/llattendancecontainer" />
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvside_invoice"
             style="@style/semiboldfont"
             android:visibility="gone"

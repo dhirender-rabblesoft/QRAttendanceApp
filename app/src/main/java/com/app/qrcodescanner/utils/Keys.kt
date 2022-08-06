@@ -3,7 +3,7 @@ package com.app.qrcodescanner.utils
 object Keys
 {
     const val  BASE_URL="http://18.219.171.249/api/"
-//    const val   BASE_URL="https://045e-2405-201-5007-b08b-6768-43e7-41cf-cec5.ngrok.io/api/"
+   // const val   BASE_URL="https://bb2f-2405-201-5007-b08b-d088-782c-27bd-629e.ngrok.io/api/"
     const val   USERDATA="userdata"
     const val   USERID="userid"
     const val   TOKEN="token"
@@ -24,10 +24,10 @@ object Keys
     const val INVOICELISTING="invoice-listing"
     const val UNITLIST="units?client_id="
     const val AUTHRISEUSER="authorized-users?company_id="
-    const val TIMESHEET="time-sheet-details?id="
+    const val TIMESHEET="time-sheet-details?punch_in="
     const val DECODEQR="decode-qr"
-    const val FEEDBACK="feedback"
-    const val FEEDBACKDATA="feedback-data/"
+    const val FEEDBACK="feedback-options"
+    const val FEEDBACKDATA="feedback-details?punch_in="
 
     const val email="email"
     const val code="code"
@@ -69,7 +69,11 @@ object Keys
     const val postcode="postcode"
     const val position="position"
     const val nurse_charge="nurse_charge"
-    const val feedback="feedback"
+     const val feedback="feedback"
+    const val timesheetlisting="timesheet-listing"
+    const val feedbacklisting="feedback-listing"
+    const val feedbackdetails="feedback-details"
+    const val getfeedback="get-feedback"
 
     //Api End Points
      const val COMPANLYLISTING = "company-listing"

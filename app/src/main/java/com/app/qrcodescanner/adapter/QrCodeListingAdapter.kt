@@ -44,6 +44,9 @@ class QrCodeListingAdapter(
             else{
                 ivcheck2.isChecked = false
             }
+            ivdownload.setOnClickListener {
+                itemClick(position,3)
+            }
              ivcheck2.setOnCheckedChangeListener { switch, isChecked ->
                 // Handle switch checked/unchecked
                 if (isChecked){

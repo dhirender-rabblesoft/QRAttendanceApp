@@ -70,12 +70,12 @@ public class AutoCompleteAuthoriseAdapter extends ArrayAdapter<AuthoriseList.Dat
             }
             else
             {
-                placeLabel.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        autocompletListner.autoclick("2",place,null);
-                    }
-                });
+//                placeLabel.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        autocompletListner.autoclick("2",place,null);
+//                    }
+//                });
                 carebutton.setVisibility(View.GONE);
             }
          //   Glide.with(convertView).load(place.getImageUrl()).into(placeImage);

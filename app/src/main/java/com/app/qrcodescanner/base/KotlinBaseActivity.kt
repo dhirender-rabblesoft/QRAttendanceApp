@@ -1,9 +1,11 @@
 package com.app.qrcodescanner.base
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Dialog
 import android.app.DownloadManager
 import android.content.Context
+import android.database.Cursor
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
@@ -21,6 +23,7 @@ import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.lifecycle.lifecycleScope
 import com.app.qrcodescanner.R
 import com.app.qrcodescanner.extension.getDecorView
 import com.app.qrcodescanner.extension.showConfirmAlert
@@ -32,8 +35,11 @@ import com.app.qrcodescanner.ui.LoginActivity
 import com.app.qrcodescanner.utils.Keys
 import com.app.qrcodescanner.utils.SharedPreferenceManager
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
 import retrofit2.Response
+import java.io.File
 import java.util.*
 import kotlin.reflect.KClass
 
@@ -205,10 +211,18 @@ open class KotlinBaseActivity(@IdRes private val container: Int = 0) : AppCompat
             finishAffinity()
         })
     }
+    @SuppressLint("Range")
+    fun downloadImage(url: String) {
+        //val directory = File(Environment.DIRECTORY_PICTURES)
 
-    fun download(url: String) {
-        val downloadManger = this.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+//        if (!directory.exists()) {
+//            directory.mkdirs()
+//        }
+
+        val downloadManager = this.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+
         val downloadUri = Uri.parse(url)
+
         val request = DownloadManager.Request(downloadUri).apply {
             setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI or DownloadManager.Request.NETWORK_MOBILE)
                 .setAllowedOverRoaming(false)
@@ -219,10 +233,52 @@ open class KotlinBaseActivity(@IdRes private val container: Int = 0) : AppCompat
                     Environment.DIRECTORY_DOWNLOADS,
                     url.substring(url.lastIndexOf("/") + 1)
                 )
-        }
-        val downloadid = downloadManger.enqueue(request)
 
+        }
+        //use when just to download the file with getting status
+        //downloadManager.enqueue(request)
+
+        val downloadId = downloadManager.enqueue(request)
+        val query = DownloadManager.Query().setFilterById(downloadId)
+
+        lifecycleScope.launchWhenStarted {
+            var lastMsg: String = ""
+            var downloading = true
+            while (downloading) {
+                val cursor: Cursor = downloadManager.query(query)
+                cursor.moveToFirst()
+                if (cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS)) == DownloadManager.STATUS_SUCCESSFUL) {
+                    downloading = false
+                }
+                val status = cursor.getInt(cursor.getColumnIndex(DownloadManager.COLUMN_STATUS))
+                val msg: String? = statusMessage(url, File(Environment.DIRECTORY_DOWNLOADS), status)
+                if (msg != lastMsg) {
+                    withContext(Dispatchers.Main) {
+                        // Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+                        showtoast(msg.toString())
+                        //Log.e("DownloadManager", "Status is :$msg")
+                    }
+                    lastMsg = msg ?: ""
+                }
+                cursor.close()
+            }
+        }
     }
+    private fun statusMessage(url: String, directory: File, status: Int): String? {
+        var msg = ""
+        msg = when (status) {
+            DownloadManager.STATUS_FAILED -> "Download has been failed, please try again"
+            DownloadManager.STATUS_PAUSED -> "Paused"
+            DownloadManager.STATUS_PENDING -> "Pending"
+            DownloadManager.STATUS_RUNNING -> "Downloading..."
+            DownloadManager.STATUS_SUCCESSFUL -> "PDF downloaded successfully in $directory" + File.separator + url.substring(
+                url.lastIndexOf("/") + 1
+            )
+            else -> "There's nothing to download"
+        }
+        return msg
+    }
+
 
 
 

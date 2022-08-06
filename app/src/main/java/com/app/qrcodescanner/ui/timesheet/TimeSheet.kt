@@ -18,17 +18,23 @@ import com.app.qrcodescanner.model.AuthoriseList
 import com.app.qrcodescanner.model.CareListJson
 import com.app.qrcodescanner.model.GetTimeSheetJson
 import com.app.qrcodescanner.reposiory.CommonRepository
-import com.app.qrcodescanner.ui.GenrateQrCode
-import com.app.qrcodescanner.ui.HomeScreenActivity
-import com.app.qrcodescanner.ui.LoginActivity
-import com.app.qrcodescanner.ui.Signatures
+ import com.app.qrcodescanner.ui.HomeScreenActivity
+ import com.app.qrcodescanner.ui.Signatures
 import com.app.qrcodescanner.ui.feedback.FeedBack
 import com.app.qrcodescanner.utils.Keys
-import com.app.qrcodescanner.utils.SharedPreferenceManager
-import com.app.qrcodescanner.utils.Utils
+ import com.app.qrcodescanner.utils.Utils
 import com.google.gson.JsonObject
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_feed_back.*
 import kotlinx.android.synthetic.main.activity_time_sheet.*
+import kotlinx.android.synthetic.main.activity_time_sheet.cancelbutton
+import kotlinx.android.synthetic.main.activity_time_sheet.clearsign
+import kotlinx.android.synthetic.main.activity_time_sheet.inchargeauto
+import kotlinx.android.synthetic.main.activity_time_sheet.ivsignature
+import kotlinx.android.synthetic.main.activity_time_sheet.llsign
+import kotlinx.android.synthetic.main.activity_time_sheet.p_Bar
+import kotlinx.android.synthetic.main.activity_time_sheet.submit
+import kotlinx.android.synthetic.main.activity_time_sheet.tvsign
 import kotlinx.android.synthetic.main.common_toolbar.*
 import okhttp3.MultipartBody
 import java.io.File
@@ -71,7 +77,7 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
     }
 
     private fun gettimesheetdata() {
-        var url = Keys.BASE_URL + Keys.TIMESHEET + HomeScreenActivity.userdata!!.data.user.id.toString()
+        var url = Keys.BASE_URL + Keys.TIMESHEET + intent.extras!!.getString("punch_in")
         commonRepository.getTimeSheetJson(this, HomeScreenActivity.token, url) {
 
             if (it.code.equals(Keys.RESPONSE_SUCESS)) {
@@ -147,10 +153,16 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
     }
 
     private fun validations(): Boolean {
+        if (inchargeauto.text.toString().isEmpty())
+        {
+            showtoast("Please enter authorised person name")
+            return false
+        }
         if (setauthrisecompanyId.isEmpty()) {
             showtoast("Please enter authorised person name")
             return false
         }
+
         if (signature == null) {
             showtoast("Please sign authorised signature ")
             return false
@@ -181,8 +193,10 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         }
         commonRepository.addtimesheet(this, fields) {
             if (it.data.isNotNull()) {
-
-                openA(FeedBack::class)
+                val bund= Bundle()
+                signature=null
+                bund.putString("punch_in",intent.extras!!.getString("punch_in"))
+                openA(FeedBack::class,bund)
                 finish()
             }
         }
@@ -201,18 +215,24 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
                 companynamelist.add(it.unit)
             }
 
-
+            iscare = true
             autoSuggestAdapter?.setData(careList);
             autoSuggestAdapter?.notifyDataSetChanged();
             if (it.data.size > 0) {
-                iscare = true
+
                 carebutton.gone()
-                clientauto.setDropDownHeight(500);
+                if (it.data.size==1)
+                {
+
+                    clientauto.setDropDownHeight(220);
+                }
+                else{
+
+                    clientauto.setDropDownHeight(500);
+                }
 
 
             } else {
-                iscare = true
-
                 var add = "(Add " + clientauto.text.toString() + " )"
                 careList.add(CareListJson.Data(unit = "No unit found $add"))
                 autoSuggestAdapter?.setData(careList);
@@ -224,6 +244,19 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
 
         }
     }
+    private  fun clearcare()
+    {
+        careList.clear()
+        autoSuggestAdapter?.setData(careList);
+        autoSuggestAdapter?.notifyDataSetChanged();
+    }
+    private  fun authclear()
+        {
+//            setauthrisecompanyId=""
+            authriseList.clear()
+            autjorisedautoSuggestAdapter?.setData(authriseList);
+            autjorisedautoSuggestAdapter?.notifyDataSetChanged();
+        }
 
     private fun getauthriseduser(word: String) {
         p_Bar.visible()
@@ -237,10 +270,11 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
             authriseList.forEach {
                 authrisestringlist.add(it.name)
             }
+            isauth = true
             autjorisedautoSuggestAdapter?.setData(authriseList);
             autjorisedautoSuggestAdapter?.notifyDataSetChanged();
             if (it.data.size == 0) {
-                isauth = false
+
                 var add = "(Add " + inchargeauto.text.toString() + " )"
                 authriseList.add(AuthoriseList.Data(name = "No name found $add"))
                 autjorisedautoSuggestAdapter?.setData(authriseList);
@@ -248,8 +282,14 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
                 autjorisedautoSuggestAdapter?.notifyDataSetChanged();
 
             } else {
-                isauth = true
-                inchargeauto.setDropDownHeight(500);
+                if (it.data.size==1)
+                {
+                    inchargeauto.setDropDownHeight(220);
+                }
+                else
+                {
+                    inchargeauto.setDropDownHeight(500);
+                }
                 //inchargebutton.gone()
             }
 
@@ -275,6 +315,9 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
     private fun settoolbar() {
         ivdot.gone()
         ivback.setOnClickListener {
+            onBackPressed()
+        }
+        cancelbutton.setOnClickListener {
             onBackPressed()
         }
         tvtitle.text = "Time Sheet"
@@ -323,10 +366,13 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         clientauto.setOnItemClickListener(
             OnItemClickListener { parent, view, position, id ->
                 Log.e("clientauto", "clientauto")
-//                var list = careList.filter { it.unit.equals(clientauto.text.toString()) }
-//                if (list.size > 0) {
-//                    selctcompanyid = list[0].id.toString()
-//                }
+                iscare=false
+                var list = careList.filter { it.unit.equals(clientauto.text.toString()) }
+                if (list.size > 0) {
+                     selctcompanyid = list[0].id.toString()
+                    refreshparms()
+                }
+
             })
 //        clientauto.addTextChangedListener {
 //            handler?.removeMessages(TRIGGER_AUTO_COMPLETE);
@@ -335,8 +381,13 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
 //        }
 
         clientauto.afterTextChangedDelayed {
+
             if (!TextUtils.isEmpty(clientauto.getText())&& iscare) {
+
                 getcatenamelist(clientauto.getText().toString())
+            }
+            else{
+                clearcare()
             }
         }
 //        handler = Handler { msg ->
@@ -356,6 +407,7 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         Handler(Looper.getMainLooper()).postDelayed({
             iscare=true
             isauth=true
+            Log.e("authriseiddd",setauthrisecompanyId)
         }, 1000)
     }
 
@@ -370,17 +422,22 @@ class TimeSheet : KotlinBaseActivity(), AutocompletListner
         inchargeauto.setAdapter(autjorisedautoSuggestAdapter)
         inchargeauto.setOnItemClickListener(
             OnItemClickListener { parent, view, position, id ->
-//                var list = authriseList.filter { it.name.equals(inchargeauto.text.toString()) }
-//                if (list.size > 0) {
-//                    setauthrisecompanyId = list[0].id.toString()
-//                }
+                isauth=false
+                var list = authriseList.filter { it.name.equals(inchargeauto.text.toString()) }
+                if (list.size > 0) {
+
+                    setauthrisecompanyId = list[0].id.toString()
+                    Log.e("authriseiddd",setauthrisecompanyId)
+                    refreshparms()
+                }
             })
         inchargeauto.afterTextChangedDelayed {
-            if (!TextUtils.isEmpty(inchargeauto.getText()) ) {
+
+            if (!TextUtils.isEmpty(inchargeauto.getText())&& isauth ) {
                 getauthriseduser(inchargeauto.getText().toString())
             }
             else{
-                setauthrisecompanyId=""
+                authclear()
             }
         }
     }
