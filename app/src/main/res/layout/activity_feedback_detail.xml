@@ -208,15 +208,15 @@
                     style="@style/semiboldfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sign  "
+                    android:text="Signature "
                     android:textColor="@color/black"
                     android:textSize="@dimen/_11sdp" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivsign"
                     style="@style/regularfont"
-                    android:layout_width="@dimen/_80sdp"
-                    android:layout_height="@dimen/_25sdp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_50sdp"
                     android:layout_marginStart="@dimen/_8sdp"
                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_11sdp" />
@@ -312,7 +312,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="Score"
+                android:text="Feedback Question"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_11sdp" />
             <androidx.recyclerview.widget.RecyclerView

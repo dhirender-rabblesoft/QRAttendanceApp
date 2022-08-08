@@ -475,12 +475,16 @@ class CommonRepository(private val baseActivity: Application)
         baseActivity: KotlinBaseActivity,
         token: String,
         url: String,
+        isload: Boolean=true,
         itemClick: (FeebackListJson) -> Unit
     ) {
         if (!NetworkCheck(baseActivity).isNetworkAvailable()) {
             baseActivity.nointernershowToast()
         } else {
-            baseActivity.startProgressDialog()
+            if (isload)
+            {
+                baseActivity.startProgressDialog()
+            }
             retrofitClient =
                 RetrofitClient.with(this.baseActivity)?.client?.create(APIInterface::class.java)
             retrofitClient?.feedbacklist(Keys.BASE_URL + url,token)!!

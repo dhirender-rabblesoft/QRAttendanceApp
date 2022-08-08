@@ -1,5 +1,4 @@
 package com.app.qrcodescanner.viewmodel
-
 import android.Manifest
 import android.app.Activity
 import android.app.Application
@@ -37,8 +36,8 @@ import com.google.gson.Gson
 import com.permissionx.guolindev.PermissionX
 import kotlinx.android.synthetic.main.common_toolbar.view.*
 import kotlinx.android.synthetic.main.side_menu_bar.view.*
-
-class HomeScreenViewModel(application: Application) : AppViewModel(application) {
+class HomeScreenViewModel(application: Application) : AppViewModel(application)
+{
     private val CAMERA_PERMISSION_CODE = 100
     private lateinit var binder: ActivityHomeScreenBinding
     private lateinit var baseActivity: KotlinBaseActivity
@@ -47,17 +46,17 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
 
     var bundle= Bundle()
     var ischeckin = false
-    fun setBinder(binding: ActivityHomeScreenBinding, baseActivity: KotlinBaseActivity) {
+    fun setBinder(binding: ActivityHomeScreenBinding, baseActivity: KotlinBaseActivity)
+    {
         this.binder = binding
         this.baseActivity = baseActivity
         this.mContext = binding.root.context
         bundle = (mContext as Activity).intent.extras!!
-         setClick()
+        setClick()
         settoolbar()
         sidemenuClick()
         setdata()
         bottommenuclicklistner()
-
     }
     fun parsedata()
     {
@@ -67,8 +66,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
         if (HomeScreenActivity.token.isEmpty())
         {
             HomeScreenActivity.token ="Bearer "+SharedPreferenceManager(baseActivity).getString(Keys.TOKEN).toString()
-            Log.e("token", HomeScreenActivity.token)
-            callApi(true)
+             callApi(true)
             upadteimage()
         }
          setdata()
@@ -210,6 +208,7 @@ class HomeScreenViewModel(application: Application) : AppViewModel(application) 
             when (item.itemId) {
                 R.id.attdance->baseActivity.openA(AttendanceListingScreen::class)
                 R.id.settings->baseActivity.openA(EditProfile::class)
+                R.id.timesheet->baseActivity.openA(TimeSheetList::class)
             }
             true
         }

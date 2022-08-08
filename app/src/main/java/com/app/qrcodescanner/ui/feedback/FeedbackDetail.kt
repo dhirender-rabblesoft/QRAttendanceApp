@@ -7,7 +7,9 @@ import com.app.qrcodescanner.base.KotlinBaseActivity
 import com.app.qrcodescanner.extension.capitalizesLetters
 import com.app.qrcodescanner.extension.gone
 import com.app.qrcodescanner.extension.isNotNull
+import com.app.qrcodescanner.model.FeebackListJson
 import com.app.qrcodescanner.model.FeedbackDetailJson
+import com.app.qrcodescanner.model.FeeedbackListJson
 import com.app.qrcodescanner.reposiory.CommonRepository
 import com.app.qrcodescanner.ui.HomeScreenActivity
 import com.app.qrcodescanner.utils.Keys
@@ -18,12 +20,14 @@ import kotlinx.android.synthetic.main.common_toolbar.*
 class FeedbackDetail : KotlinBaseActivity()
 {
     var commonRepository = CommonRepository(QrApplication.myApp!!)
+    var feedbacklist=ArrayList<FeebackListJson.Data>()
     override fun onCreate(savedInstanceState: Bundle?)
     {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feedback_detail)
         settoolbar()
-        feedbackdata()
+        feedbacklist()
+
     }
     private  fun settoolbar()
     {
@@ -36,13 +40,20 @@ class FeedbackDetail : KotlinBaseActivity()
         ivdot.gone()
 
     }
+    private fun feedbacklist() {
+        commonRepository.feedbacklist(this, HomeScreenActivity.token, Keys.FEEDBACK,true) {
+            feedbacklist.addAll(it.data)
+            feedbackdata()
+
+        }
+    }
 
     fun setscoreadapter(list: ArrayList<FeedbackDetailJson.Data.Feedback.FeedbackOption>)
     {
         val adapter= ViewSelectionAdapter(this){
 
         }
-        adapter.addNewList(list)
+        adapter.addNewList(feedbacklist)
         rvlist1.adapter=adapter
     }
 
@@ -56,7 +67,7 @@ class FeedbackDetail : KotlinBaseActivity()
                 tvclientname.text=it.data.feedback.feedback.client.name
                 tvcomments.text=it.data.feedback.feedback.comment
                 var address2=""
-                setscoreadapter(it.data.feedback.feedback_options)
+
                 if (it.data.feedback.feedback.client.address_2.isNotNull())
                 {
                     address2  = it.data.feedback.feedback.client.address_2.toString()
@@ -98,6 +109,18 @@ class FeedbackDetail : KotlinBaseActivity()
 
                     }
                 }
+                for (k in it.data.feedback.feedback_options.indices)
+                {
+                    for (j in feedbacklist.indices )
+                    {
+                        if (it.data.feedback.feedback_options[k].id.equals(feedbacklist[j].id))
+                        {
+                            feedbacklist[j].isfeedback=true
+                        }
+                    }
+                }
+
+                setscoreadapter(it.data.feedback.feedback_options)
 
                 tvaddress.text=it.data.feedback.feedback.client.address+" $address2 "+it.data.feedback.feedback.client.post_code
             }

@@ -18,15 +18,48 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/llconatiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_grey"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvclientname"
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/invoice"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinvoiceId"
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RelativeLayout>
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cldata"
+                app:layout_constraintTop_toBottomOf="@id/llconatiner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/_10sdp"
-                app:layout_constraintTop_toBottomOf="@+id/llconatiner">
+                 >
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/ratingcontainer"
@@ -84,39 +117,17 @@
                     app:layout_constraintTop_toBottomOf="@+id/ratingcontainer" />
                     <LinearLayout
                         android:id="@+id/llclient"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:visibility="gone"
 
                         android:orientation="horizontal"
                         app:layout_constraintTop_toBottomOf="@+id/tvdesc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-                        <androidx.appcompat.widget.AppCompatTextView
-                             style="@style/mediumfont"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:text="Name"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/_11sdp"
-                              />
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tvclientname"
-                            style="@style/regularfont"
-
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:text="N/A "
-                            android:layout_marginStart="@dimen/_5sdp"
-                            android:textColor="@color/black_1"
-                            android:textSize="@dimen/_10sdp"
-                           />
 
                     </LinearLayout>
                     <LinearLayout
                         android:id="@+id/llauth"
-                        android:layout_marginTop="@dimen/_5sdp"
 
                         android:orientation="horizontal"
                         app:layout_constraintTop_toBottomOf="@+id/llclient"

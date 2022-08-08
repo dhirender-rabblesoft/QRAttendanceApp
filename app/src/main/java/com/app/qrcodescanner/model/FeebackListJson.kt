@@ -2,7 +2,7 @@ package com.app.qrcodescanner.model
 
 data class FeebackListJson(
     val code: Int,
-    val `data`: List<Data>,
+    val `data`: ArrayList<Data>,
     val message: String
 ) {
     data class Data(

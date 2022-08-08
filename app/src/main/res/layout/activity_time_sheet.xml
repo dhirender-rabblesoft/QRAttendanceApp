@@ -34,8 +34,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/llbottom"
-        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/clhedaer">
 
         <androidx.appcompat.widget.LinearLayoutCompat
@@ -330,7 +329,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="Authorized By Shift Incharge Name"
+                android:text="Authorized By Shift Incharge Name*"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
@@ -373,7 +372,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:text="Authorized By Shift Incharge Signature"
+                android:text="Authorized By Shift Incharge Signature*"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
@@ -451,6 +450,35 @@
                     android:textSize="@dimen/_10sdp"
                     android:hint="Type here..." />
             </com.google.android.material.textfield.TextInputLayout>
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llbottom"
+                 android:layout_marginBottom="@dimen/_8sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/cancelbutton"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:singleLine="true"
+                    android:layout_weight="1"
+                    style="@style/mainbutton4"
+                    android:enabled="false"
+                    android:layout_marginEnd="@dimen/_3sdp"
+                    android:textAllCaps="false"
+                    android:text="@string/cancel" />
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/submit"
+                    style="@style/mainbutton"
+                    android:layout_marginStart="@dimen/_3sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+
+                    android:text="@string/submit"
+                    android:textAllCaps="false" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
 
             <View
@@ -463,37 +491,6 @@
 
 
     </androidx.core.widget.NestedScrollView>
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/llbottom"
-        android:layout_marginStart="@dimen/_17sdp"
-        android:layout_marginEnd="@dimen/_17sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/cancelbutton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:singleLine="true"
-            android:layout_weight="1"
-            style="@style/mainbutton4"
-            android:enabled="false"
-            android:layout_marginEnd="@dimen/_3sdp"
-            android:textAllCaps="false"
-            android:text="@string/cancel" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/submit"
-            style="@style/mainbutton"
-            android:layout_marginStart="@dimen/_3sdp"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-
-             android:text="@string/submit"
-            android:textAllCaps="false" />
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

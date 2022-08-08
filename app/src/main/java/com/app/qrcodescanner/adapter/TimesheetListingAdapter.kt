@@ -20,10 +20,26 @@ class TimesheetListingAdapter(val baseActivity: KotlinBaseActivity, val itemClic
         holder.itemView.apply {
            if (list[position].client.isNotNull())
            {
-               tvclientname.text=list[position].client.name
+               var branch=""
+               var unit=""
+               if (list[position].branch.isNotNull())
+               {
+                    branch=","+list[position].branch.name
+               }
+               if (list[position].unit.isNotNull())
+               {
+                    unit=","+list[position].unit.unit
+               }
+               tvclientname.text=list[position].client.name+" $branch"+" $unit"
            }
+            if (list[position].break_hours.isNotNull())
+           {
+               tvbreak.text=list[position].break_hours
+           }
+            tvworkinghour.text=list[position].working_hours
             if (list[position].authorized_by.isNotNull())
            {
+               tvinvoicestatus.background=baseActivity.getDrawable(R.drawable.blue_rounded)
                tvauthname.text=list[position].authorized_by.name
                tvinvoicestatus.setOnClickListener {
                    val bund= Bundle()
@@ -33,6 +49,7 @@ class TimesheetListingAdapter(val baseActivity: KotlinBaseActivity, val itemClic
            }
             else
             {
+                tvinvoicestatus.background=baseActivity.getDrawable(R.drawable.black_rounded)
                 tvinvoicestatus.text="Fill Timesheet"
                 tvinvoicestatus.setOnClickListener {
                     val bund= Bundle()

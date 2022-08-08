@@ -19,54 +19,58 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <RelativeLayout
+                android:id="@+id/llconatiner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white_grey"
+                android:orientation="horizontal"
+                android:padding="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvclientname"
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/invoice"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_13sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvinvoiceId"
+                    style="@style/semiboldfont"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:textColor="@color/black_1"
+                    android:textSize="@dimen/_12sdp" />
+
+            </RelativeLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/cldata"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
-                android:padding="@dimen/_10sdp"
+                 android:padding="@dimen/_10sdp"
+                app:layout_constraintTop_toBottomOf="@id/llconatiner"
                  >
-                <LinearLayout
-                    android:id="@+id/llclient"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:orientation="horizontal"
-                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/mediumfont"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:text="Name"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_11sdp"
-                        />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvclientname"
-                        style="@style/regularfont"
-                        android:layout_width="wrap_content"
-                        android:text="N/A"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                         android:layout_marginStart="@dimen/_5sdp"
-                        android:textColor="@color/black_1"
-                        android:textSize="@dimen/_10sdp"
-                        />
-
-                </LinearLayout>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvdatelabel"
                     style="@style/mediumfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Date :"
-                    app:layout_constraintTop_toBottomOf="@+id/llclient"
-                    android:textColor="@color/black_1"
+                     android:text="Date :"
+
+                     android:textColor="@color/black_1"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintStart_toStartOf="parent"
                      />
@@ -76,38 +80,101 @@
                     style="@style/regularfont"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                     app:layout_constraintTop_toBottomOf="@+id/llclient"
-                    android:layout_marginStart="@dimen/_5sdp"
+                    app:layout_constraintTop_toTopOf="parent"
+                      android:layout_marginStart="@dimen/_5sdp"
                     android:textColor="@color/black_1"
                     android:textSize="@dimen/_10sdp"
                     app:layout_constraintStart_toEndOf="@+id/tvdatelabel"
                     />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvinvoiceamountlabel"
-                    style="@style/mediumfont"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:orientation="vertical"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Authorised By : "
-                    android:textColor="@color/black_1"
-                    android:textSize="@dimen/_10sdp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tvdate" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvauthname"
-                    style="@style/regularfont"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_5sdp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="N/A"
-                    android:textColor="@color/black_1"
-                    android:textSize="@dimen/_10sdp"
-                    app:layout_constraintStart_toEndOf="@+id/tvinvoiceamountlabel"
-                    app:layout_constraintTop_toBottomOf="@+id/tvdate" />
+                    android:layout_width="match_parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvdatelabel"
+                    android:layout_height="wrap_content">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.appcompat.widget.AppCompatTextView
+                             style="@style/mediumfont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Working Hour "
+                            android:textColor="@color/black_1"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvdate" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+
+                            style="@style/regularfont"
+                            android:layout_width="wrap_content"
+                            android:id="@+id/tvworkinghour"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="@color/black_1"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintStart_toEndOf="@+id/tvdatelabel"
+                            />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.appcompat.widget.AppCompatTextView
+                             style="@style/mediumfont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Break"
+                            android:textColor="@color/black_1"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvdate" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/regularfont"
+                            android:id="@+id/tvbreak"
+                            android:text="N/A"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:textColor="@color/black_1"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintStart_toEndOf="@+id/tvdatelabel"
+                            />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <androidx.appcompat.widget.AppCompatTextView
+                             style="@style/mediumfont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Authorised By : "
+                            android:textColor="@color/black_1"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/tvdate" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvauthname"
+                            style="@style/regularfont"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_5sdp"
+                             android:text="N/A"
+                            android:textColor="@color/black_1"
+                            android:textSize="@dimen/_10sdp"
+                            app:layout_constraintStart_toEndOf="@+id/tvinvoiceamountlabel"
+                            app:layout_constraintTop_toBottomOf="@+id/tvdate" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+
 
 
 

@@ -16,13 +16,21 @@ import kotlinx.android.synthetic.main.item_faq.view.*
 import kotlinx.android.synthetic.main.item_selection.view.*
 
 class ViewSelectionAdapter(val baseActivity: KotlinBaseActivity, val itemClick: (Int) -> Unit) :
-    BaseAdapter<FeedbackDetailJson.Data.Feedback.FeedbackOption>(R.layout.item_selection) {
+    BaseAdapter<FeebackListJson.Data>(R.layout.item_selection) {
     var isflag:Boolean = true
     override fun onBindViewHolder(holder: IViewHolder, position: Int) {
 
 
         holder.itemView.apply {
-            ivpdf.setImageResource(R.drawable.tick)
+            if (list[position].isfeedback)
+            {
+
+                ivpdf.setImageResource(R.drawable.check)
+            }
+            else{
+
+                ivpdf.setImageResource(R.drawable.uncheck)
+            }
             tvtitle.text=list[position].feedback
 
 
